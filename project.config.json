@@ -13,7 +13,7 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.8.3",
 	"appid": "wx28d20808cea0c171",
 	"projectname": "WeChatApplet",
 	"debugOptions": {
