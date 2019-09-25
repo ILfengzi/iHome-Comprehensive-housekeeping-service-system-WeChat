@@ -9,6 +9,17 @@ App({
     // 登录
     wx.login({
       success: res => {
+        wx.request({
+          url: 'http://10.86.6.43:8080/test',
+          method: "POST",
+          data:{"code":res.code},
+          header: {
+            "content-type":"application/x-www-form-urlencoded",
+          },
+          success: function(data){
+            console.log(data)
+          },
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
