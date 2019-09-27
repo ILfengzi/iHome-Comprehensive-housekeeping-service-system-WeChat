@@ -24,7 +24,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
 	"appid": "wx28d20808cea0c171",
-  "appsecret":"9f37df7b652e2c8a0aef0638c2942f59",
+	"appsecret": "9f37df7b652e2c8a0aef0638c2942f59",
 	"projectname": "WeChatApplet",
 	"debugOptions": {
 		"hidedInDevtools": []
