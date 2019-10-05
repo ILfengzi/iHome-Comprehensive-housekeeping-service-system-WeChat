@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-05 00:27:22
- * @LastEditTime: 2019-10-05 00:45:40
+ * @LastEditTime: 2019-10-05 21:55:45
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -15,6 +15,6 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
 
 </style>
