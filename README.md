@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-05 16:07:28
- * @LastEditTime: 2019-10-05 16:07:28
+ * @LastEditTime: 2019-10-05 22:49:08
  * @LastEditors: Lin Changkun
  -->
 # ihome
@@ -22,9 +22,6 @@ yarn install
 
 # 开发时构建
 yarn start (或者yarn run dev)
-
-# 如果发现缺少依赖，那就一个个地补上吧，如：
-npm install stylus  --save-dev
 
 # 到这一步项目已完成了。。。
 
