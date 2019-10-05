@@ -1,8 +1,8 @@
 <!--
  * @Description: 
  * @Author: 
- * @Date: 2019-10-04 09:02:00
- * @LastEditTime: 2019-10-04 09:02:00
+ * @Date: 2019-10-05 16:07:28
+ * @LastEditTime: 2019-10-05 16:07:28
  * @LastEditors: Lin Changkun
  -->
 # ihome
@@ -11,8 +11,9 @@
 
 ## Build Setup
 
-# 首先确保本地已安装node、yarn、vue-cli等
+### 首先确保本地已安装node、yarn、vue-cli等
 
+```bush
 # 克隆项目
 git clone url(本项目地址)
 
