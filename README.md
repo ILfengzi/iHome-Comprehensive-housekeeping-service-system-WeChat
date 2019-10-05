@@ -1,19 +1,31 @@
+<!--
+ * @Description: 
+ * @Author: 
+ * @Date: 2019-10-04 09:02:00
+ * @LastEditTime: 2019-10-04 09:02:00
+ * @LastEditors: Lin Changkun
+ -->
 # ihome
 
 > WeChat applet of ihome using mpvue framework
 
 ## Build Setup
 
-``` bash
-# 初始化项目
-vue init mpvue/mpvue-quickstart myproject
-cd myproject
+# 首先确保本地已安装node、yarn、vue-cli等
+
+# 克隆项目
+git clone url(本项目地址)
 
 # 安装依赖
-yarn
+yarn install
 
 # 开发时构建
-npm dev
+yarn start (或者yarn run dev)
+
+# 如果发现缺少依赖，那就一个个地补上吧，如：
+npm install stylus  --save-dev
+
+# 到这一步项目已完成了。。。
 
 # 打包构建
 npm build
