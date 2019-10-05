@@ -6,36 +6,36 @@
 
 #首先确保本地已安装node、yarn、vue-cli等
 
-# 克隆项目
+#克隆项目
 git clone url(本项目地址)
 
-# 安装依赖
+#安装依赖
 yarn install
 
-# 开发时构建
+#开发时构建
 yarn start (或者yarn run dev)
 
-# 如果发现缺少依赖，那就一个个地补上吧，如：
+#如果发现缺少依赖，那就一个个地补上吧，如：
 npm install stylus  --save-dev
 
-# 到这一步项目已完成了。。。
+#到这一步项目已完成了。。。
 
-# 打包构建
+#打包构建
 npm build
 
-# 指定平台的开发时构建(微信、百度、头条、支付宝)
+#指定平台的开发时构建(微信、百度、头条、支付宝)
 npm dev:wx
 npm dev:swan
 npm dev:tt
 npm dev:my
 
-# 指定平台的打包构建
+#指定平台的打包构建
 npm build:wx
 npm build:swan
 npm build:tt
 npm build:my
 
-# 生成 bundle 分析报告
+#生成 bundle 分析报告
 npm run build --report
 ```
 
