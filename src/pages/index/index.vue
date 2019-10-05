@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-05 22:18:22
+ * @LastEditTime: 2019-10-05 23:04:04
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -150,14 +150,14 @@ export default {
       if (position === 1) {
         //如果是员工
         wx.redirectTo({
-          url: "../staff/main",
+          url: "../mine/staff/main",
           success() {},
           fail() {}
         });
       } else {
         //普通用户
         wx.redirectTo({
-          url: "../user/main",
+          url: "../mine/user/main",
           success() {},
           fail() {}
         });
