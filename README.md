@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-# 首先确保本地已安装node、yarn、vue-cli等
+#首先确保本地已安装node、yarn、vue-cli等
 
 # 克隆项目
 git clone url(本项目地址)
