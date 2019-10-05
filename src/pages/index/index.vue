@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-05 21:49:25
+ * @LastEditTime: 2019-10-05 22:18:22
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -148,7 +148,19 @@ export default {
 
     isStaff(position) {
       if (position === 1) {
+        //如果是员工
+        wx.redirectTo({
+          url: "../staff/main",
+          success() {},
+          fail() {}
+        });
       } else {
+        //普通用户
+        wx.redirectTo({
+          url: "../user/main",
+          success() {},
+          fail() {}
+        });
       }
     }
   }
