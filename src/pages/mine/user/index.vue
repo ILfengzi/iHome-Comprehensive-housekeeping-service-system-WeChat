@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-05 00:27:22
- * @LastEditTime: 2019-10-05 21:55:45
+ * @LastEditTime: 2019-10-05 23:39:22
  * @LastEditors: Lin Changkun
  -->
 <template>
-    <div></div>
+    <div class="user">普通用户</div>
 </template>
 
 <script>

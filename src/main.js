@@ -2,11 +2,12 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-04 09:02:00
- * @LastEditTime: 2019-10-04 19:13:51
+ * @LastEditTime: 2019-10-08 21:44:55
  * @LastEditors: Lin Changkun
  */
 import Vue from 'vue'
 import App from './App'
+import WeUI from '../static/weui/WeUI.css'
 
 import store from './store/index'
 import interfaces from './utils/interfaces'

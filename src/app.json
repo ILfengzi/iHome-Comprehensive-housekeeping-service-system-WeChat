@@ -6,6 +6,28 @@
     "pages/mine/user/main",
     "pages/order/main"
   ],
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#009eef",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/home/main",
+      "text": "首页",
+      "iconPath": "static/tabs/home.png",
+      "selectedIconPath": "static/tabs/home_s.png"
+    }, {
+      "pagePath": "pages/order/main",
+      "text": "订单",
+      "iconPath": "static/tabs/order.png",
+      "selectedIconPath": "static/tabs/order_s.png"
+    }, {
+      "pagePath": "pages/mine/user/main",
+      "text": "我",
+      "iconPath": "static/tabs/mine.png",
+      "selectedIconPath": "static/tabs/mine_s.png"
+    }]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

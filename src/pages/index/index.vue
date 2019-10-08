@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-05 23:04:04
+ * @LastEditTime: 2019-10-08 21:07:26
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -51,8 +51,8 @@ export default {
         this.$store.dispatch("setIsAuthenticated", true);
         this.$store.dispatch("setUser", e.mp.detail.userInfo);
 
-        //获取code
-        // this.getCode();
+        //跳转到首页
+        this.goToHome();
       }
     },
     // getCode() {
@@ -74,16 +74,6 @@ export default {
       this.$https
         .request({
           url: this.$interfaces.getOpenid,
-          // url: this.$https.getRole,
-
-          // this.$interfaces.getOpenid +
-          // "appid=" +
-          // appid +
-          // "&secret=" +
-          // secret +
-          // "&js_code=" +
-          // code +
-          // "&grant_type=authorization_code",
           data: {
             appid: appid, //开发者appid
             secret: secret, //开发者AppSecret(小程序密钥)
@@ -106,13 +96,13 @@ export default {
     },
 
     //⚠️正式请使用，先把getOpenid（）干掉
-    getRole(js_code) {
+    /*getRole(js_code) {
       //需要三个参数：AppID(小程序ID)、AppSecret(小程序密钥)、code
       const appid = "wx28d20808cea0c171";
 
       this.$https
         .request({
-          url: this.$https.getRole,
+          url: this.$interfaces.getRole,
 
           // this.$interfaces.getOpenid +
           // "appid=" +
@@ -138,31 +128,37 @@ export default {
           this.$store.dispatch("setOpenId", res.openid);
           this.$store.dispatch("setPosition", res.position);
 
-          //根据职位（position）进行页面跳转
-          this.isStaff(res.position);
         })
         .catch(err => {
           console.log(err);
         });
-    },
+    },*/
 
-    isStaff(position) {
-      if (position === 1) {
-        //如果是员工
-        wx.redirectTo({
-          url: "../mine/staff/main",
-          success() {},
-          fail() {}
-        });
-      } else {
-        //普通用户
-        wx.redirectTo({
-          url: "../mine/user/main",
-          success() {},
-          fail() {}
-        });
-      }
+    goToHome() {
+      wx.switchTab({
+        url: "../home/main",
+        success() {},
+        fail() {}
+      });
     }
+
+    // isStaff(position) {
+    //   if (position === 1) {
+    //     //如果是员工
+    //     wx.switchTab({
+    //       url: "../mine/staff/main",
+    //       success() {},
+    //       fail() {}
+    //     });
+    //   } else {
+    //     //普通用户
+    //     wx.switchTab({
+    //       url: "../mine/user/main",
+    //       success() {},
+    //       fail() {}
+    //     });
+    //   }
+    // }
   }
 };
 </script>
