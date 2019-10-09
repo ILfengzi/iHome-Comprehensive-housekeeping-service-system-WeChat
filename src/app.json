@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/order/main",
     "pages/index/main",
     "pages/home/main",
     "pages/mine/staff/main",
-    "pages/mine/user/main",
-    "pages/order/main"
+    "pages/mine/user/main"
   ],
   "tabBar": {
     "color": "#959394",
