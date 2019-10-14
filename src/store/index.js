@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:18
- * @LastEditTime: 2019-10-05 00:10:01
+ * @LastEditTime: 2019-10-12 15:05:42
  * @LastEditors: Lin Changkun
  */
 import Vue from "vue";
@@ -14,16 +14,18 @@ import * as actions from "./actions";
 Vue.use(Vuex);
 
 const state = {
-    // 判断用户是否授权，如果授权则改为 true，然后将用户信息赋给user
+  // 判断用户是否授权，如果授权则改为 true，然后将用户信息赋给user
   isAuthenticated: false,
   user: null,
-  openId: '',
-  position:''
+  position: "",
+  inputVal: "",
+  searchResults: null, //搜索结果
+  serviceDetail: null  //服务详情
 };
 
 export default new Vuex.Store({
-    state,
-    getters,
-    mutations,
-    actions
+  state,
+  getters,
+  mutations,
+  actions
 });

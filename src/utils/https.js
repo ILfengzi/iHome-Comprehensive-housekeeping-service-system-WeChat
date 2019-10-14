@@ -2,7 +2,7 @@
  * @Description: 封装专门用于请求的文件
  * @Author: 
  * @Date: 2019-10-04 16:49:00
- * @LastEditTime: 2019-10-04 19:40:31
+ * @LastEditTime: 2019-10-10 11:43:40
  * @LastEditors: Lin Changkun
  */
 const https = {
@@ -21,7 +21,7 @@ const https = {
         header,
         method,
         success(res) {
-        //   wx.hideLoading();
+          // wx.hideLoading();
           //判断网络
           if (res.statusCode == 404) {
             reject();
@@ -39,7 +39,7 @@ const https = {
         //   console.log(res.data);
         },
         fail(err) {
-        //   wx.hideLoading();
+          // wx.hideLoading();
           console.log(err);
         },
         complete() {//成功与否都会执行

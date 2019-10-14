@@ -2,12 +2,13 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-04 09:02:00
- * @LastEditTime: 2019-10-08 21:44:55
+ * @LastEditTime: 2019-10-09 11:07:38
  * @LastEditors: Lin Changkun
  */
 import Vue from 'vue'
 import App from './App'
-import WeUI from '../static/weui/WeUI.css'
+// import WeUI from '../static/weui/WeUI.css'
+import 'mpvue-weui/src/style/weui.css';
 
 import store from './store/index'
 import interfaces from './utils/interfaces'

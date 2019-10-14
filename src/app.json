@@ -1,14 +1,19 @@
 {
   "pages": [
-    "pages/index/main",
     "pages/home/main",
-    "pages/mine/staff/main",
+    "pages/reservation/common/main",
+    "pages/reservation/longTerm/main",
+    "pages/reservation/homeAppliances/main",
     "pages/mine/user/main",
+    "pages/mine/staff/main",
+    "pages/service/main",
+    "pages/booking/main",
+    "pages/index/main",
     "pages/order/main"
   ],
   "tabBar": {
     "color": "#959394",
-    "selectedColor": "#009eef",
+    "selectedColor":"green",
     "borderStyle": "black",
     "backgroundColor": "#fff",
     "list": [{

@@ -2,18 +2,20 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-07 23:38:36
+ * @LastEditTime: 2019-10-12 15:58:36
  * @LastEditors: Lin Changkun
  */
-const domain1 = "https://api.weixin.qq.com/sns/jscode2session";
-const domain = "http://10.86.2.11:8080/";    //局域网通信
+const domain = "http://10.86.2.14:8080/json/";    //局域网通信
 
 const interfaces = {
-  getOpenid: domain1, // 获取openID的接口
+  getOpenid: domain + 'getCode', // 获取openID的接口
   getRole: domain + 'role', //获取角色接口
   getHome: domain + 'home',  //获取首页接口
   getOrder: domain + 'order', //获取订单接口
-  getMine: domain + 'mine'  //获取我的接口
+  getMine: domain + 'mine',  //获取我的接口
+  getSearchResults: domain + 'order/selectBytypename',  //获取搜索结果接口
+  getServiceDetails: domain + 'order/typelist',  //获取服务详情接口
+  getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
 };
 
 module.exports = interfaces;
