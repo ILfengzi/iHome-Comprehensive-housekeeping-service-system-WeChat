@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 <!--
@@ -107,3 +108,24 @@ export default {
 
 </style>
 >>>>>>> Stashed changes
+=======
+<!--
+ * @Description: 
+ * @Author: 
+ * @Date: 2019-10-05 00:38:41
+ * @LastEditTime: 2019-10-05 00:38:41
+ * @LastEditors: Lin Changkun
+ -->
+<template>
+    <div class="aa">
+    </div>
+</template>
+<script>
+export default {
+    
+}
+</script>
+<style scoped>
+
+</style>
+>>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7

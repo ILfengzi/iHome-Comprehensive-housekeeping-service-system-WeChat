@@ -3825,6 +3825,7 @@ move-concurrently@^1.0.1:
 
 mp-weui@^1.0.4:
   version "1.0.4"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/mp-weui/download/mp-weui-1.0.4.tgz#395baf05fbc8eb7d1460305bc083dda8fd7856b8"
   integrity sha1-OVuvBfvI630UYDBbwIPdqP14Vrg=
 
@@ -3832,6 +3833,15 @@ mpvue-citypicker@^1.0.6:
   version "1.0.6"
   resolved "https://registry.npm.taobao.org/mpvue-citypicker/download/mpvue-citypicker-1.0.6.tgz#861b9d4b1ed2245ad860d7e29dd2872d8fa7c74a"
   integrity sha1-hhudSx7SJFrYYNfindKHLY+nx0o=
+=======
+  resolved "https://registry.yarnpkg.com/mp-weui/-/mp-weui-1.0.4.tgz#395baf05fbc8eb7d1460305bc083dda8fd7856b8"
+  integrity sha512-kFKbXirFcqbBESBCHcPBTg3RtNMm0eY760NQVr4Pg6/DE+D36oxsRVIKI2E/WDhbVInwpV076o/qRsMbQft5xg==
+
+mpvue-citypicker@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/mpvue-citypicker/-/mpvue-citypicker-1.0.6.tgz#861b9d4b1ed2245ad860d7e29dd2872d8fa7c74a"
+  integrity sha512-V8TuUILYw7pFV0ii02tXKUtLmoa+mTxxJS85dEIc4sp85dVTLNi2GmXqBoz9MkT+QwKeOf3fPvFZzoucERz5rA==
+>>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7
 
 mpvue-loader@^2.0.1:
   version "2.0.1"
@@ -3860,8 +3870,13 @@ mpvue-loader@^2.0.1:
 
 mpvue-picker@^2.1.6:
   version "2.1.6"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/mpvue-picker/download/mpvue-picker-2.1.6.tgz#e4e423bf66e063e3ab17076094601e847f670798"
   integrity sha1-5OQjv2bgY+OrFwdglGAehH9nB5g=
+=======
+  resolved "https://registry.yarnpkg.com/mpvue-picker/-/mpvue-picker-2.1.6.tgz#e4e423bf66e063e3ab17076094601e847f670798"
+  integrity sha512-qm4sAw8uFfwIl6CBSyKWij8OcAcLntag3acqeYJy4TgNjaANOrZMx8UaA9dY+NZOrLmFJL/rZwxWKd3rg3O7dA==
+>>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7
 
 mpvue-template-compiler@^2.0.6:
   version "2.0.6"
@@ -3878,8 +3893,13 @@ mpvue-webpack-target@^1.0.3:
 
 mpvue-weui@^1.0.13:
   version "1.0.13"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/mpvue-weui/download/mpvue-weui-1.0.13.tgz#d4b42a42f7b73fa32526deb54f3d48dc6e776c7d"
   integrity sha1-1LQqQve3P6MlJt61Tz1I3G53bH0=
+=======
+  resolved "https://registry.yarnpkg.com/mpvue-weui/-/mpvue-weui-1.0.13.tgz#d4b42a42f7b73fa32526deb54f3d48dc6e776c7d"
+  integrity sha512-zgIQ0LqOVywaASOLJptgI3MAEiTcO9cwKO2NTO0dBBF3kFwbopAGMROOd+lRqQFuC9+46huYxjqijVbNMfkejg==
+>>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7
   dependencies:
     mpvue-citypicker "^1.0.6"
     mpvue-picker "^2.1.6"

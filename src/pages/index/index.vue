@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-08 21:07:26
+ * @LastEditTime: 2019-10-11 10:05:35
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -20,10 +20,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      js_code: ""
+    };
+  },
   mounted() {
     // const _this = this;
     wx.checkSession({
-      success() {
+      success: res => {
         //session_key 未过期，并且在本生命周期一直有效
         console.log("session_key 未过期");
       },
@@ -33,9 +38,9 @@ export default {
         console.log("session_key 已经过期");
         wx.login({
           success: res => {
-            console.log(res);
-            this.getOpenid(res.code); //⚠️前端测试
-            // this.getRole(res.code); //⚠️正式请用，先把上面那个干掉
+            this.js_code = res.code;
+            // console.log(res);
+            // this.getRole(res.code); //正式请用，先把上面那个干掉
           }
         });
       }
@@ -50,26 +55,16 @@ export default {
         //将用户信息存储到vuex
         this.$store.dispatch("setIsAuthenticated", true);
         this.$store.dispatch("setUser", e.mp.detail.userInfo);
-
-        //跳转到首页
-        this.goToHome();
+        // this.userInfo = e.mp.detail.userInfo;
+        this.getRole(); //获取角色
       }
     },
-    // getCode() {
-    //   //在mpvue中，提供了一个全局的小程序对象 wx
-    //   wx.login({
-    //     success: res => {
-    //       console.log(res);
-    //       this.getOpenid(res.code);
-    //     }
-    //   });
-    // },
 
-    //⚠️前端测试，secret 应该存在后端服务器中，应由后端发起 auth.getAccessToken 获取openid和session_key
-    getOpenid(code) {
+    //前端测试，secret 应该存在后端服务器中，应由后端发起 auth.getAccessToken 获取openid和session_key
+    /* getOpenid(code) {
       //需要三个参数：AppID(小程序ID)、AppSecret(小程序密钥)、code
       const appid = "wx28d20808cea0c171";
-      const secret = "834ac5963ea499f9ac8dd4ff2ae59e87"; //⚠️前端测试，secret 应该存在后端服务器中
+      const secret = "834ac5963ea499f9ac8dd4ff2ae59e87"; //前端测试，secret 应该存在后端服务器中
 
       this.$https
         .request({
@@ -93,29 +88,19 @@ export default {
         .catch(err => {
           console.log(err);
         });
-    },
+    },*/
 
-    //⚠️正式请使用，先把getOpenid（）干掉
-    /*getRole(js_code) {
-      //需要三个参数：AppID(小程序ID)、AppSecret(小程序密钥)、code
-      const appid = "wx28d20808cea0c171";
-
+    //正式请使用，先把getOpenid（）干掉
+    getRole() {
+      console.log("#######################");
+      console.log(this.js_code);
+      console.log(this.$store.state.user);
       this.$https
         .request({
-          url: this.$interfaces.getRole,
-
-          // this.$interfaces.getOpenid +
-          // "appid=" +
-          // appid +
-          // "&secret=" +
-          // secret +
-          // "&js_code=" +
-          // code +
-          // "&grant_type=authorization_code",
+          url: this.$interfaces.getOpenid,
           data: {
-            appid: appid, //开发者appid
-            grant_type: "authorization_code", //默认authorization_code
-            js_code: js_code //wx.login登录获取的code值
+            userInfo: this.$store.state.user, //用户信息
+            getcode: this.js_code //wx.login登录获取的code值
           },
           header: {
             "content-type": "application/json" // 默认值
@@ -124,15 +109,19 @@ export default {
         })
         .then(res => {
           console.log(res);
-          // 成功，则将后端返回的openid和position存储到vuex中
-          this.$store.dispatch("setOpenId", res.openid);
-          this.$store.dispatch("setPosition", res.position);
-
+          // 成功，则将后端返回的position（1为员工，4为普通员工）存储到vuex中
+          // this.$store.("setPosition", res.position);
+          // console.log(this.$interfaces.getOpenid);
+          if (res == 4) {
+            this.goToHome();
+          } else {
+            this.goToOrder();
+          }
         })
         .catch(err => {
           console.log(err);
         });
-    },*/
+    },
 
     goToHome() {
       wx.switchTab({
@@ -140,25 +129,15 @@ export default {
         success() {},
         fail() {}
       });
-    }
+    },
 
-    // isStaff(position) {
-    //   if (position === 1) {
-    //     //如果是员工
-    //     wx.switchTab({
-    //       url: "../mine/staff/main",
-    //       success() {},
-    //       fail() {}
-    //     });
-    //   } else {
-    //     //普通用户
-    //     wx.switchTab({
-    //       url: "../mine/user/main",
-    //       success() {},
-    //       fail() {}
-    //     });
-    //   }
-    // }
+    goToOrder() {
+      wx.switchTab({
+        url: "../order/main",
+        success() {},
+        fail() {}
+      });
+    }
   }
 };
 </script>
