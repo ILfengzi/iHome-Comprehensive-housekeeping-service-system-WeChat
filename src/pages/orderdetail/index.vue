@@ -1,11 +1,11 @@
 <!--
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-10 08:13:38 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-10 17:08:00
- */
--->
+ * @Description: 订单详情页面
+ * @Author:Celine
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 10:56:05
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="orderdetail">
     <div class="state">

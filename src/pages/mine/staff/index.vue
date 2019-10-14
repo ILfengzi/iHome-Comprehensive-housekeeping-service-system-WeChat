@@ -1,13 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 <!--
- * @Author: Wanlin Chen 
- * @Date: 2019-10-08 08:19:28 
- * @Last Modified by:   Wanlin Chen 
- * @Last Modified time: 2019-10-08 08:19:28 
- */
--->
+ * @Description: “我的” -- 员工
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-09 11:02:29
+ * @LastEditTime: 2019-10-14 11:16:39
+ * @LastEditors: Lin Changkun
+ -->
+
 <template>
   <div class="mine">
     <div class="user_info">
@@ -103,4 +101,3 @@ export default {
   margin-top: 16px;
 }
 
-</style>

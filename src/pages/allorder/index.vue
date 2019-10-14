@@ -1,10 +1,20 @@
 <!--
+<<<<<<< HEAD
  * @Description: 
  * @Author: chen wanlin
  * @Date: 2019-10-14 10:14:28
  * @LastEditTime: 2019-10-14 10:19:37
  * @LastEditors: Lin Changkun
  -->
+=======
+ * @Description: 全部订单页面
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 10:53:36
+ * @LastEditors: Wanlin Chen
+ -->
+
+>>>>>>> 8c4e8dc1185ccfb57480d8623fbb64f88a201ab7
 <template>
   <div class="allorder">
       <mp-searchbar :isFocus=true :inputValue="inputValue" :placeholder="placeholder" @input="input" @blur="blur" @focus="focus" @confirm="confirm"></mp-searchbar>

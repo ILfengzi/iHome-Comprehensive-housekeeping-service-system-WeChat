@@ -1,11 +1,11 @@
 <!--
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-12 15:05:04 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-13 17:24:37
- */
+ * @Description: 服务详情页面
+ * @Author: Celine
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 11:00:21
+ * @LastEditors: Wanlin Chen
  -->
+
  <template>
   <div class="serviceDetail">
     <img src="../../../static/images/日常保洁.jpg" mode="center" />
@@ -40,10 +40,7 @@
         </div>
       </div>
       <CustomPopup ref="CustomPopupRef">
-        <div slot-scope="PoperContent" class="PoperContentView">
-          <!-- <div class="ServiceNoteTitle W100">服务说明</div>
-          <icon @click="closerButton" class="iconfont closer closerButton"></icon>-->
-        </div>
+        <div  class="PoperContentView"></div>
       </CustomPopup>
     </div>
     <div class="foot">
