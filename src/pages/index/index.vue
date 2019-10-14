@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-11 10:05:35
+ * @LastEditTime: 2019-10-14 11:38:28
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -60,36 +60,6 @@ export default {
       }
     },
 
-    //前端测试，secret 应该存在后端服务器中，应由后端发起 auth.getAccessToken 获取openid和session_key
-    /* getOpenid(code) {
-      //需要三个参数：AppID(小程序ID)、AppSecret(小程序密钥)、code
-      const appid = "wx28d20808cea0c171";
-      const secret = "834ac5963ea499f9ac8dd4ff2ae59e87"; //前端测试，secret 应该存在后端服务器中
-
-      this.$https
-        .request({
-          url: this.$interfaces.getOpenid,
-          data: {
-            appid: appid, //开发者appid
-            secret: secret, //开发者AppSecret(小程序密钥)
-            grant_type: "authorization_code", //默认authorization_code
-            js_code: code //wx.login登录获取的code值
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "GET"
-        })
-        .then(res => {
-          console.log(res);
-          // 成功，则将openid存储到vuex中
-          this.$store.dispatch("setOpenId", res.openid);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },*/
-
     //正式请使用，先把getOpenid（）干掉
     getRole() {
       console.log("#######################");
@@ -110,8 +80,9 @@ export default {
         .then(res => {
           console.log(res);
           // 成功，则将后端返回的position（1为员工，4为普通员工）存储到vuex中
-          // this.$store.("setPosition", res.position);
-          // console.log(this.$interfaces.getOpenid);
+          this.$store.dispatch("setPosition", res.position);
+          console.log('已成功将position存起，为：',this.$store.state.position);
+          // 根据角色不同，进行页面的跳转
           if (res == 4) {
             this.goToHome();
           } else {

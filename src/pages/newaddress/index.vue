@@ -2,7 +2,7 @@
  * @Description: 编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 11:17:46
+ * @LastEditTime: 2019-10-14 14:54:39
  * @LastEditors: Lin Changkun
  -->
 
@@ -35,7 +35,7 @@
         <div :inputValue="formaddr.area" class="area">{{inputValue}}</div>
         <img
           class="btn"
-          src="../../../static/images/icon/选择展开.png"
+          src="/static/images/icon/选择展开.png"
           @click="showMulLinkageTwoPicker"
         />
         <mp-citypicker

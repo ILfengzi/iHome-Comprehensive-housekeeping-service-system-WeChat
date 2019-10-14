@@ -2,15 +2,15 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-14 10:54:57
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-14 14:54:15
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="mine">
     <div class="user_info">
         <!-- 用户信息 -->
-        <img src="../../../../static/images/logo.jpg" alt>
+        <img src="/static/images/logo.jpg" alt>
         <div class="user_detail">
             <h4>Celine</h4>
             <span>13202019516</span>

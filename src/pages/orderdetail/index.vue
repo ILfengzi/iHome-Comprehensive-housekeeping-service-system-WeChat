@@ -2,27 +2,27 @@
  * @Description: 订单详情页面
  * @Author:Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 10:56:05
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-14 14:55:54
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="orderdetail">
     <div class="state">
       <div v-if="state===0" class="order_state">
-        <img src="../../../static/images/icon/orderdetail/tijiao.png" />已提交
+        <img src="/static/images/icon/orderdetail/tijiao.png" />已提交
       </div>
       <div v-else-if="state===1" class="order_state">
-        <img src="../../../static/images/icon/orderdetail/del.png" />已取消
+        <img src="/static/images/icon/orderdetail/del.png" />已取消
       </div>
       <div v-else-if="state===2" class="order_state">
-        <img src="../../../static/images/icon/orderdetail/daifuwu01.png" />待服务
+        <img src="/static/images/icon/orderdetail/daifuwu01.png" />待服务
       </div>
       <div v-else-if="state===3" class="order_state">
-        <img src="../../../static/images/icon/orderdetail/fuwuservice3.png" />服务中
+        <img src="/static/images/icon/orderdetail/fuwuservice3.png" />服务中
       </div>
       <div v-else-if="state===4" class="order_state">
-        <img src="../../../static/images/icon/orderdetail/yiwancheng.png" />已完成
+        <img src="/static/images/icon/orderdetail/yiwancheng.png" />已完成
       </div>
   </div>
     <div class="weui-form-preview">

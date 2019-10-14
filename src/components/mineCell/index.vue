@@ -10,7 +10,7 @@
       <span>{{title}}</span>
       <span class="r_icon" >
           <span v-if="text" class="detail">{{text}}</span>
-          <img src="../../../static/images/icon/mine/icon_r.jpg" alt>
+          <img src="/static/images/icon/mine/icon_r.jpg" alt>
       </span>
   </div>
 </template>

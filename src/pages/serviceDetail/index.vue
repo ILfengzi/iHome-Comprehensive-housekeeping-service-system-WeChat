@@ -2,13 +2,13 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 11:00:21
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-14 14:50:41
+ * @LastEditors: Lin Changkun
  -->
 
  <template>
   <div class="serviceDetail">
-    <img src="../../../static/images/日常保洁.jpg" mode="center" />
+    <img src="/static/images/日常保洁.jpg" mode="center" />
     <div class="head">
       <div class="nameAndPrice">
         <div class="title">

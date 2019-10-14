@@ -8,9 +8,9 @@
 -->
 <template>
   <div class="evaluate"> 
-    <div class="user_info" style="background:url('/../../static/images/评价背景.png')">
+    <div class="user_info" style="background:url('/static/images/评价背景.png')">
         <!-- 用户信息 -->
-        <img src="../../../../static/images/logo.jpg" alt>
+        <img src="/static/images/logo.jpg" alt>
         <div class="user_detail">
             <h4>Celine</h4>
             <span>已贡献2条数据</span>
