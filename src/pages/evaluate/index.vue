@@ -2,15 +2,15 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 14:55:34
+ * @LastEditTime: 2019-10-14 15:13:37
  * @LastEditors: Wanlin Chen
  -->
 
 <template>
-  <div class="evaluate">
-    <div class="user_info" style="background:url('/../../static/images/评价背景.png')">
+<div class="evaluate">
+    <div class="user_info" style="background:url('/static/images/评价背景.png')">
       <!-- 用户信息 -->
-      <img src="../../../../static/images/logo.jpg" alt />
+      <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
         <h4>Celine</h4>
         <span>已贡献2条数据</span>
@@ -38,6 +38,7 @@
             <div class="weui-form-preview__label">文字评价</div>
             <div class="weui-form-preview__value">{{evaluate.attitude}}</div>
           </div>
+
         </div>
       </div>
     </div>

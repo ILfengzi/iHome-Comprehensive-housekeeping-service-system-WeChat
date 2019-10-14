@@ -2,15 +2,15 @@
  * @Description: “我的” -- 员工
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-14 10:54:15
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-14 14:53:42
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="mine">
     <div class="user_info">
         <!-- 用户信息 -->
-        <img src="../../../../static/images/logo.jpg" alt>
+        <img src="/static/images/logo.jpg" alt>
         <div class="user_detail">
             <h4>Celine</h4>
             <span>13202019516</span>
@@ -100,9 +100,4 @@ export default {
 .order_info {
   margin-top: 16px;
 }
-
-
-
-
-</style>
 
