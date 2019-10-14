@@ -1,11 +1,11 @@
-<!-- 
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-08 17:01:41 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-11 10:33:11
- */
--->
+<!--
+ * @Description: 订单列表的组件
+ * @Author: Celine
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 11:12:35
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="page" @click="$emit('click')">
     <div class="weui-form-preview">

@@ -1,16 +1,18 @@
 <!--
- * @Author: Wanlin Chen 
- * @Date: 2019-10-08 08:19:28 
- * @Last Modified by:   Wanlin Chen 
- * @Last Modified time: 2019-10-08 08:19:28 
--->
+ * @Description: “我的”页面 组件
+ * @Author: Celine
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 14:52:59
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="mineCell"  @click="$emit('click')">
       <img :src="icon" alt>
       <span>{{title}}</span>
       <span class="r_icon" >
           <span v-if="text" class="detail">{{text}}</span>
-          <img src="../../../static/images/icon/mine/icon_r.jpg" alt>
+          <img src="/static/images/icon/mine/icon_r.jpg" alt>
       </span>
   </div>
 </template>
