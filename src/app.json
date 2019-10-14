@@ -1,15 +1,21 @@
 {
   "pages": [
-    "pages/reservation/common/main",
+    "pages/mine/user/main",
+    "pages/evaluate/main", 
+    "pages/newaddress/main",   
+    "pages/serviceDetail/main",
+    "pages/order/main", 
+    "pages/address/main",
+    "pages/allorder/main", 
+    "pages/orderdetail/main",     
+    "pages/mine/staff/main",
+    "pages/index/main",
     "pages/home/main",
+    "pages/reservation/common/main",
     "pages/reservation/longTerm/main",
     "pages/reservation/homeAppliances/main",
-    "pages/mine/user/main",
-    "pages/mine/staff/main",
     "pages/service/main",
-    "pages/booking/main",
-    "pages/index/main",
-    "pages/order/main"
+    "pages/booking/main"
   ],
   "tabBar": {
     "color": "#959394",

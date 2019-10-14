@@ -7,7 +7,10 @@
  */
 import Vue from 'vue'
 import App from './App'
+<<<<<<< HEAD
+=======
 // import WeUI from '../static/weui/WeUI.css'
+>>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7
 import 'mpvue-weui/src/style/weui.css';
 
 import store from './store/index'

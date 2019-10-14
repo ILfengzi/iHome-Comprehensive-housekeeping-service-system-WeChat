@@ -23,6 +23,7 @@
     "build": "node build/build.js wx"
   },
   "dependencies": {
+    "animate.css": "^3.7.2",
     "mp-weui": "^1.0.4",
     "mpvue": "^2.0.6",
     "mpvue-weui": "^1.0.13",
