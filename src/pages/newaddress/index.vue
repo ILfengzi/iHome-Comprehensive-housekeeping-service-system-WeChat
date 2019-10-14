@@ -1,13 +1,14 @@
-<!-- 
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-11 16:22:10 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-13 18:05:24
- */
--->
+<!--
+ * @Description: 编辑地址页面
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 10:52:55
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="newaddress">
+    <form>
          <div class="form_group">
           <span>用户名：</span>
             <input name="name" placeholder="请输入您的名字" type="text" v-model="formaddr.name"  @focus="inputFocus" />
@@ -19,7 +20,7 @@
         <div class="form_group">
           <span class="title">所在地区：</span>
           <!-- <input v-model="formaddr.area" class="area"> -->
-          <div v-model="formaddr.area" class="area">{{inputValue}}</div>
+          <div :inputValue="formaddr.phone"  class="area">{{inputValue}}</div>
           <img class="btn" src="../../../static/images/icon/选择展开.png"  @click="showMulLinkageTwoPicker" >
           <mp-citypicker
               ref="mpCityPicker"

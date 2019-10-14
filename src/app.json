@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/serviceDetail/main",
     "pages/mine/user/main",
     "pages/evaluate/main", 
     "pages/newaddress/main",   
-    "pages/serviceDetail/main",
+    
     "pages/order/main", 
     "pages/address/main",
     "pages/allorder/main", 

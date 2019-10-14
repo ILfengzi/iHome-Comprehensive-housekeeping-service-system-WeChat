@@ -1,10 +1,11 @@
 <!--
- * @Description: 
- * @Author: 
- * @Date: 2019-10-05 00:27:22
- * @LastEditTime: 2019-10-05 23:39:22
- * @LastEditors: Lin Changkun
+ * @Description: “我的” -- 用户
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-09 11:02:29
+ * @LastEditTime: 2019-10-14 10:54:57
+ * @LastEditors: Wanlin Chen
  -->
+
 <template>
   <div class="mine">
     <div class="user_info">
@@ -15,21 +16,6 @@
             <span>13202019516</span>
         </div>
     </div>
-    <!-- <div class="work_info">
-        <!-- 工时信息
-        <div class="work_detail">
-            <h4>总订单</h4>
-            <span>12</span>
-        </div>
-        <div class="work_detail">
-            <h4>总工时</h4>
-            <span>12</span>
-        </div>
-        <div class="work_detail">
-            <h4>本月工时</h4>
-            <span>12</span>
-        </div>
-    </div> -->
     <div class="order_info">
         <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单" :text="88"></mineCell>
         <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址" :text="88"></mineCell>

@@ -1,13 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 <!--
- * @Author: Wanlin Chen 
- * @Date: 2019-10-08 08:19:28 
- * @Last Modified by:   Wanlin Chen 
- * @Last Modified time: 2019-10-08 08:19:28 
- */
--->
+ * @Description: “我的” -- 员工
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-09 11:02:29
+ * @LastEditTime: 2019-10-14 10:54:15
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="mine">
     <div class="user_info">
@@ -107,25 +105,4 @@ export default {
 
 
 </style>
->>>>>>> Stashed changes
-=======
-<!--
- * @Description: 
- * @Author: 
- * @Date: 2019-10-05 00:38:41
- * @LastEditTime: 2019-10-05 00:38:41
- * @LastEditors: Lin Changkun
- -->
-<template>
-    <div class="aa">
-    </div>
-</template>
-<script>
-export default {
-    
-}
-</script>
-<style scoped>
 
-</style>
->>>>>>> 825285f09a7bb290c4f0055576f818f0006e5de7

@@ -1,3 +1,11 @@
+<!--
+ * @Description: 地址管理界面
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 10:42:55
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="addresslist">
       <div class="address_info">
@@ -10,8 +18,12 @@
             <span>xx市xx区xx路xx号</span>
           </div>
           <span class="icon">
-              <img class="cal" src="../../../static/images/icon/删除.png">
-              <img class="mod" src="/static/images/icon/修改.png">
+              <img @click="showModal" class="cal" src="../../../static/images/icon/删除.png">
+              
+              <mp-toast value="true" type="success" v-model="showToast" content="删除成功" duration=20></mp-toast>
+
+              <img   class="mod" src="/static/images/icon/修改.png">
+              <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm" ></mp-modal>
               
           </span>  
       </div>
@@ -22,15 +34,27 @@
 </template>
 
 <script>
+import mpToast from 'mpvue-weui/src/toast';
 import mpButton from 'mpvue-weui/src/button';
+import mpModal from 'mpvue-weui/src/modal';
 export default {
     data(){
-        
+
     },
     components: {
+        mpToast,
+        mpModal,
         mpButton
     },
     methods:{
+        confirm(e){
+            console.log(123);
+            showToast();
+        },
+        showModal(){
+            
+            this.$refs.mpModal.show();
+        },
         switchToNewAddress(){
             wx.navigateTo({
                 url: '../newaddress/main'

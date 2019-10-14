@@ -1,12 +1,11 @@
-
 <!--
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-08 14:54:24 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-14 09:29:12
- */    
--->
+ * @Description: 订单列表界面
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-09 11:02:29
+ * @LastEditTime: 2019-10-14 10:55:43
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="order">
     <div class="search">

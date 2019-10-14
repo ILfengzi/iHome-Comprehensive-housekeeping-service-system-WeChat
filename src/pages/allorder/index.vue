@@ -1,11 +1,11 @@
 <!--
-/*
- * @Author: Wanlin Chen 
- * @Date: 2019-10-11 09:07:35 
- * @Last Modified by: Wanlin Chen
- * @Last Modified time: 2019-10-11 11:01:24
- */
--->
+ * @Description: 全部订单页面
+ * @Author: Wanlin Chen
+ * @Date: 2019-10-14 09:03:52
+ * @LastEditTime: 2019-10-14 10:53:36
+ * @LastEditors: Wanlin Chen
+ -->
+
 <template>
   <div class="allorder">
       <mp-searchbar :isFocus=true :inputValue="inputValue" :placeholder="placeholder" @input="input" @blur="blur" @focus="focus" @confirm="confirm"></mp-searchbar>
