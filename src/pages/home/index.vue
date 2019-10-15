@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-12 20:16:36
+ * @LastEditTime: 2019-10-15 10:00:05
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -58,6 +58,7 @@
     </div>
 
     <!-- 服务保障 -->
+
     <div class="serviceGuarantee">
       <p>服务保障</p>
       <div v-for="(item,index) in service" :key="index">
@@ -88,13 +89,13 @@ export default {
     return {
       images: [
         {
-          url: "/static/images/logo.jpg"
+          url: "/static/images/首页轮播1.jpg"
         },
         {
-          url: "/static/images/logo.jpg"
+          url: "/static/images/首页轮播3.jpg"
         },
         {
-          url: "/static/images/logo.jpg"
+          url: "/static/images/首页轮播2.jpg"
         }
       ],
       inputShowed: false, //搜索
@@ -250,10 +251,13 @@ export default {
   padding: 10px;
   overflow: hidden;
 }
-/* .serviceGuarantee {
+.serviceGuarantee p {
   width: 100%;
-  margin-top: 16px;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+  /* margin-top: 16px;
   background-color: #fff;
-  border: 1px solid #ebeef5;
-} */
+  border: 1px solid #ebeef5;*/
+} 
 </style>

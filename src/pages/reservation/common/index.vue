@@ -1,8 +1,8 @@
 <!--
- * @Description: 一般家政服务
+ * @Description: 钟点工
  * @Author: 
  * @Date: 2019-10-13 09:04:47
- * @LastEditTime: 2019-10-14 08:46:23
+ * @LastEditTime: 2019-10-15 10:52:30
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -10,7 +10,7 @@
     <form report-submit="true" @submit="formSubmit" @reset="formReset">
       <!-- 带跳转带列表项 -->
       <div class="weui-cells weui-cells_after-title">
-        <navigator url class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <navigator url="../../address/main" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <div class="weui-cell__hd">
             <img
               src="/static/images/dingwei.png"
