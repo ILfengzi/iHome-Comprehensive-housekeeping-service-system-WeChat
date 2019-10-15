@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-15 10:00:05
+ * @LastEditTime: 2019-10-15 11:55:17
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -53,7 +53,7 @@
     <div class="popService">
       <p>热门服务</p>
       <div class="grid-content">
-        <mp-grid :gridData="gridData"></mp-grid>
+        <mp-grid :gridData="gridData" @click="passData(item.name)"></mp-grid>
       </div>
     </div>
 
@@ -223,6 +223,11 @@ export default {
           console.log(err);
         });
     }
+  },
+
+  // 将name传回给后台
+  passData(name){
+
   },
   computed: {}
 };

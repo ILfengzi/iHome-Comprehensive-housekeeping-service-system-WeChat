@@ -2,7 +2,7 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 11:20:19
+ * @LastEditTime: 2019-10-15 11:31:20
  * @LastEditors: Lin Changkun
  -->
 
@@ -84,8 +84,7 @@ export default {
       iServiceItemList: [],
       // content: '',
       // standard: '',
-      comm:
-        "我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注",
+      comm: '',
       servicetpyeId: '', //服务类型
     };
   },
