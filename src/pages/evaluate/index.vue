@@ -2,62 +2,73 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 15:13:37
+ * @LastEditTime: 2019-10-15 10:04:03
  * @LastEditors: Wanlin Chen
  -->
 
 <template>
-<div class="evaluate">
+  <div class="evaluate">
     <div class="user_info" style="background:url('/static/images/评价背景.png')">
       <!-- 用户信息 -->
       <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
         <h4>Celine</h4>
-        <span>已贡献2条数据</span>
+        <span>已贡献{{num}}条数据</span>
       </div>
-    </div>/
+    </div>
     <!-- 评价列表 -->
     <div class="eva_list">
-      <div class="weui-form-preview">
-        <div class="weui-form-preview__hd">
-          <div class="weui-form-preview__item">
-            <div class="weui-form-preview__label">服务</div>
-            <div class="weui-form-preview__value_in-hd">{{evaluate.detailType}}</div>
-          </div>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <div class="weui-form-preview__label">服务质量评分</div>
-            <div class="weui-form-preview__value">{{evaluate.quality}}</div>
-          </div>
-          <div class="weui-form-preview__item">
-            <div class="weui-form-preview__label">服务态度评分</div>
-            <div class="weui-form-preview__value">{{evaluate.attitude}}</div>
-          </div>
-          <div class="weui-form-preview__item">
-            <div class="weui-form-preview__label">文字评价</div>
-            <div class="weui-form-preview__value">{{evaluate.attitude}}</div>
-          </div>
-
-        </div>
-      </div>
+      <evaluateCell
+        :detailType="evaluate.detailType"
+        :quality="evaluate.quality"
+        :attitude="evaluate.attitude"
+        :describe="evaluate.describe"
+        :time="evaluate.time"
+      ></evaluateCell>
+      <evaluateCell
+        :detailType="evaluate.detailType"
+        :quality="evaluate.quality"
+        :attitude="evaluate.attitude"
+        :describe="evaluate.describe"
+        :time="evaluate.time"
+      ></evaluateCell>
+      <evaluateCell
+        :detailType="evaluate.detailType"
+        :quality="evaluate.quality"
+        :attitude="evaluate.attitude"
+        :describe="evaluate.describe"
+        :time="evaluate.time"
+      ></evaluateCell>
+      <evaluateCell
+        :detailType="evaluate.detailType"
+        :quality="evaluate.quality"
+        :attitude="evaluate.attitude"
+        :describe="evaluate.describe"
+        :time="evaluate.time"
+      ></evaluateCell>
     </div>
   </div>
 </template>
 
 <script>
+import evaluateCell from "../../components/evaluateCell/index";
 export default {
-  data(){
-    return{
-      evaluate:{
-        detailType:"服务名",
-        quality:"3",
-        attitude:"4",
-        describe:"很好"
+  components: {
+    evaluateCell
+  },
+  data() {
+    return {
+      num:3,////统计该用户评价表数据库中有多少条数据
+      evaluate: {
+        detailType: "服务名",
+        quality: 3,
+        attitude: 4,
+        describe: "很好",
+        time: "2019/10/14"
       }
-      
-    }
-  }
+    };
+  },
+  methods: {}
 };
 </script>
 

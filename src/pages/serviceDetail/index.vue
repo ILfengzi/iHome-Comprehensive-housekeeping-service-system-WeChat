@@ -2,8 +2,8 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 14:50:41
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-14 16:56:06
+ * @LastEditors: Wanlin Chen
  -->
 
  <template>
@@ -48,9 +48,15 @@
         <div class="foot_content">
           <div class="foot_content_title">服务项目</div>
           <div class="foot_content_body">{{content}}</div>
+          <div class="foot_content_body">{{content}}</div>
+          <div class="foot_content_body">{{content}}</div>
+          <div class="foot_content_body">{{content}}</div>
         </div>
         <div class="foot_standard">
           <div class="foot_standard_title">服务标准</div>
+          <div class="foot_standard_body">{{standard}}</div>
+          <div class="foot_standard_body">{{standard}}</div>
+          <div class="foot_standard_body">{{standard}}</div>
           <div class="foot_standard_body">{{standard}}</div>
         </div>
       </div>
@@ -222,6 +228,7 @@ export default {
 .foot_content_body,
 .foot_standard_body {
   font-size: 13px;
+  border-bottom: 0.5px solid rgb(209, 208, 208);
   margin: 10px;
 }
 .comm {
@@ -237,8 +244,7 @@ export default {
   left: 0px;
   bottom: 0px;
   width: 100%;
-  height: 50px;
-  background-color: #000;
+  background-color:gray;
   z-index: 10;
 }
 </style>
