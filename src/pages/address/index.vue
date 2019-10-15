@@ -2,8 +2,13 @@
  * @Description: 地址管理界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-15 09:46:49
  * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-14 17:53:17
+ * @LastEditors: Wanlin Chen
+>>>>>>> a4a4110e98ba93d41f777029a2583a0f3f3429fb
  -->
 
 <template>
@@ -19,12 +24,9 @@
           </div>
           <span class="icon">
               <img @click="showModal" class="cal" src="/static/images/icon/删除.png">
-              
               <mp-toast value="true" type="success" v-model="showToast" content="删除成功" duration=20></mp-toast>
-
               <img class="mod" src="/static/images/icon/修改.png">
               <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm" ></mp-modal>
-              
           </span>  
       </div>
         <div class="btn">

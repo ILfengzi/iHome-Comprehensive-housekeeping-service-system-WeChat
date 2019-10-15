@@ -2,7 +2,7 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 11:04:57
+ * @LastEditTime: 2019-10-15 11:20:19
  * @LastEditors: Lin Changkun
  -->
 
@@ -257,6 +257,7 @@ export default {
 .foot_content_body,
 .foot_standard_body {
   font-size: 13px;
+  border-bottom: 0.5px solid rgb(209, 208, 208);
   margin: 10px;
 }
 .comm {
