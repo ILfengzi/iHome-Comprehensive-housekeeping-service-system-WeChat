@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-12 15:58:36
+ * @LastEditTime: 2019-10-15 08:46:14
  * @LastEditors: Lin Changkun
  */
 const domain = "http://10.86.2.14:8080/json/";    //局域网通信

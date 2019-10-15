@@ -2,8 +2,13 @@
  * @Description: 地址管理界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-15 09:46:49
+ * @LastEditors: Lin Changkun
+=======
  * @LastEditTime: 2019-10-14 17:53:17
  * @LastEditors: Wanlin Chen
+>>>>>>> a4a4110e98ba93d41f777029a2583a0f3f3429fb
  -->
 
 <template>
@@ -111,8 +116,7 @@ right: 20rpx;
   left: 0px;
   bottom: 0px;
   width: 100%;
-  height: 50px;
-  background-color: #000;
+  background-color:gray;
   z-index: 10;
 }
 </style>

@@ -2,13 +2,19 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 15:44:45
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-15 16:19:17
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-15 11:20:19
+ * @LastEditors: Lin Changkun
+>>>>>>> 18af93e5374a745101875d87ce93d8629a2dd1b6
  -->
 
  <template>
   <div class="serviceDetail">
-    <img src="/static/images/日常保洁.jpg" mode="center" />
+    <!-- 改为从vuex中动态获取 -->
+    <img :src="img" mode="center" />
     <div class="head">
       <div class="nameAndPrice">
         <div class="title">
@@ -16,12 +22,14 @@
           <span>服务价格</span>
         </div>
         <div class="content">
+          <!-- 以下两项改为从vuex中动态获取 -->
           <span>{{name}}</span>
           <span style="color:red;">{{price}}</span>
         </div>
       </div>
       <div class="warmtag">
         <div class="text">温馨提示：</div>
+        <!-- 静态，通用 -->
         <div class="text">
           1.以上为参考市场，请您根据自家的洁净程度以及具体户型来合理安排时间
           <br />2.服务仅限室内进行，不提供室外作业服务，外窗不在服务范围内
@@ -50,7 +58,8 @@
           <div>服务标准</div>
         </div>
         <div class="foot_content">
-          <div class="foot_content_body">{{content}}</div>
+
+          <!-- <div class="foot_content_body">{{content}}</div>
           <div>{{standard}}</div>
         </div>
         <div class="foot_content">
@@ -59,7 +68,13 @@
         </div>
         <div class="foot_content">
           <div class="foot_content_body">{{content}}</div>
-          <div>{{standard}}</div>
+          <div>{{standard}}</div> -->
+          <div class="foot_content_title">服务项目</div>
+          <div class="foot_content_body" v-for="item in iServiceItemList" :key="item.id">{{item.content}}</div>
+        </div>
+        <div class="foot_standard">
+          <div class="foot_standard_title">服务标准</div>
+          <div class="foot_standard_body" v-for="item in iServiceItemList" :key="item.id">{{item.standard}}</div>
         </div>
       </div>
       <div class="comm">
@@ -69,7 +84,7 @@
       </div>
     </div>
     <div class="btn">
-      <button type="primary">预约</button>
+      <button type="primary" @click="toReservation(servicetpyeId)">预约</button>
     </div>
   </div>
 </template>
@@ -79,18 +94,32 @@ import CustomPopup from "../../components/CustomPopup/index";
 
 export default {
   components: {
-    CustomPopup
+    CustomPopup,
   },
   data() {
     return {
       name: "日常保洁",
       price: 12,
-      content: "厨房、阳台、卫生间、客厅、卧室、等等等等",
-      standard:
-        "把啦啦啦啦、把啦啦啦啦、把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦,把啦啦啦啦、把啦啦啦啦、把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦",
+      img: '',
+      name: '',
+      price: '',
+      iServiceItemList: [],
+      // content: '',
+      // standard: '',
       comm:
-        "我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注"
+        "我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注",
+      servicetpyeId: '', //服务类型
     };
+  },
+    mounted() {
+    // 先从vuex中取出，更新到data数据中
+    this.img = this.$store.state.serviceDetail.picturepath2;
+    this.name = this.$store.state.serviceDetail.typename;
+    this.price = this.$store.state.serviceDetail.chargeType;
+    this.iServiceItemList = this.$store.state.serviceDetail.iServiceItemList;
+    this.comm = this.$store.state.serviceDetail.comm;
+    this.servicetpyeId = this.$store.state.serviceDetail.servicetpyeId;
+    // console.log('@@@@@@@@@@@@',this.iServiceItemList);
   },
   methods: {
     showCustomPopupClick() {
@@ -98,6 +127,25 @@ export default {
     },
     closerButton() {
       this.$refs.CustomPopupRef.maskClick();
+    },
+
+    // 根据服务类型进行跳转到预约界面
+    toReservation(servicetpyeId){
+      // 1：钟点工、2：一般家政和家电维修、3:长期工
+      console.log('servicetpyeId:',servicetpyeId);
+      if (servicetpyeId === 1) {
+        wx.navigateTo({
+          url: "../reservation/common/main"
+        });
+      } else if (servicetpyeId === 2) {
+        wx.navigateTo({
+          url: "../reservation/homeAppliances/main"
+        });
+      } else {
+        wx.navigateTo({
+          url: "../reservation/longTerm/main"
+        });
+      }
     }
   }
 };
