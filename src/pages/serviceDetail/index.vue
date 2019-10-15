@@ -2,7 +2,7 @@
  * @Description: 服务详情页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 16:56:06
+ * @LastEditTime: 2019-10-15 15:44:45
  * @LastEditors: Wanlin Chen
  -->
 
@@ -40,24 +40,26 @@
         </div>
       </div>
       <CustomPopup ref="CustomPopupRef">
-        <div  class="PoperContentView"></div>
+        <div class="PoperContentView"></div>
       </CustomPopup>
     </div>
     <div class="foot">
       <div class="contentAndStandard">
-        <div class="foot_content">
-          <div class="foot_content_title">服务项目</div>
-          <div class="foot_content_body">{{content}}</div>
-          <div class="foot_content_body">{{content}}</div>
-          <div class="foot_content_body">{{content}}</div>
-          <div class="foot_content_body">{{content}}</div>
+        <div class="foot_title">
+          <div>服务项目</div>
+          <div>服务标准</div>
         </div>
-        <div class="foot_standard">
-          <div class="foot_standard_title">服务标准</div>
-          <div class="foot_standard_body">{{standard}}</div>
-          <div class="foot_standard_body">{{standard}}</div>
-          <div class="foot_standard_body">{{standard}}</div>
-          <div class="foot_standard_body">{{standard}}</div>
+        <div class="foot_content">
+          <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div>
+        </div>
+        <div class="foot_content">
+          <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div>
+        </div>
+        <div class="foot_content">
+          <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div>
         </div>
       </div>
       <div class="comm">
@@ -84,7 +86,8 @@ export default {
       name: "日常保洁",
       price: 12,
       content: "厨房、阳台、卫生间、客厅、卧室、等等等等",
-      standard: "把啦啦啦啦、把啦啦啦啦、把啦啦啦啦",
+      standard:
+        "把啦啦啦啦、把啦啦啦啦、把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦,把啦啦啦啦、把啦啦啦啦、把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦把啦啦啦啦",
       comm:
         "我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注我是一个备注"
     };
@@ -104,8 +107,8 @@ export default {
 .head {
   background-color: #fff;
 }
-.serviceDetail{
-    padding-bottom:50px;
+.serviceDetail {
+  padding-bottom: 50px;
 }
 .serviceDetail img {
   width: 100%;
@@ -201,36 +204,36 @@ export default {
   width: 100%;
   background-color: #fff;
 }
-.contentAndStandard {
+.foot_title {
   display: flex;
   flex-direction: row;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 0 10px;
 }
 .foot_content {
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px 0 10px;
   border: 1px solid rgb(209, 208, 208);
+  border-top: none;
 }
-.foot_content_title,
-.foot_standard_title {
+.foot_title div {
+  flex: 1;
   height: 40px;
-  border-bottom: 0.5px solid rgb(209, 208, 208);
   background-color: rgb(209, 208, 208);
   color: rgb(1, 128, 1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.foot_standard {
+.foot_content div {
   flex: 1;
-  border: 1px solid rgb(209, 208, 208);
-  border-left: none;
-}
-.foot_content_body,
-.foot_standard_body {
   font-size: 13px;
-  border-bottom: 0.5px solid rgb(209, 208, 208);
   margin: 10px;
 }
+.foot_content_body {
+  border-right: 0.5px solid rgb(209, 208, 208);
+}
+
 .comm {
   color: red;
   border-top: 1px dashed rgb(209, 208, 208);
@@ -238,13 +241,13 @@ export default {
   font-size: 12px;
   line-height: 22px;
   padding: 10px;
-}
+} 
 .btn {
   position: fixed;
   left: 0px;
   bottom: 0px;
   width: 100%;
-  background-color:gray;
+  background-color: gray;
   z-index: 10;
 }
 </style>

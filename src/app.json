@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/evaluate/main",     
-    "pages/address/main",   
     "pages/serviceDetail/main",
     "pages/mine/user/main",
+    "pages/evaluate/main",     
+    "pages/address/main",   
     "pages/newaddress/main",
     "pages/home/main",
     "pages/order/main", 
