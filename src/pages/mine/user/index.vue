@@ -2,8 +2,8 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-14 14:54:15
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-15 11:24:51
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -19,10 +19,9 @@
     <div class="order_info">
         <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单" :text="88"></mineCell>
         <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址" :text="88"></mineCell>
-        <mineCell icon="/static/images/icon/mine/评价.png" title="我的评价" :text="19"></mineCell>
+        <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价" :text="19"></mineCell>
     </div>
     <div class="order_info">
-        <mineCell icon="/static/images/icon/mine/消费记录.png" title="消费记录" :text="12"></mineCell>
         <mineCell icon="/static/images/icon/mine/联系客服.png" title="联系客服" ></mineCell>
     </div>
     <div class="order_info">
@@ -43,6 +42,11 @@ export default {
         console.log(123)
         wx.navigateTo({
           url: '../../allorder/main'
+        })
+      },
+      swithToEvaluate(){
+        wx.navigateTo({
+          url: '../../evaluate/main'
         })
       },
       swithToaddress(){

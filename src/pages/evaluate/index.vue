@@ -2,7 +2,7 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 10:04:03
+ * @LastEditTime: 2019-10-15 11:13:34
  * @LastEditors: Wanlin Chen
  -->
 
@@ -58,7 +58,7 @@ export default {
   },
   data() {
     return {
-      num:3,////统计该用户评价表数据库中有多少条数据
+      num: 3, ////统计该用户评价表数据库中有多少条数据
       evaluate: {
         detailType: "服务名",
         quality: 3,
@@ -68,7 +68,14 @@ export default {
       }
     };
   },
-  methods: {}
+  methods: {
+    swithToOrder: function() {
+      console.log(123);
+      wx.navigateBack({
+        delta: 1 // 回退前 delta(默认为1) 页面
+      });
+    }
+  }
 };
 </script>
 

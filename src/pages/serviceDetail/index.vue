@@ -1,8 +1,8 @@
 <!--
- * @Description: 服务详情页面
- * @Author: Celine
- * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 11:31:20
+ * @Description: 
+ * @Author: 
+ * @Date: 2019-10-15 17:02:36
+ * @LastEditTime: 2019-10-15 17:02:36
  * @LastEditors: Lin Changkun
  -->
 
@@ -48,7 +48,22 @@
     </div>
     <div class="foot">
       <div class="contentAndStandard">
+        <div class="foot_title">
+          <div>服务项目</div>
+          <div>服务标准</div>
+        </div>
         <div class="foot_content">
+
+          <!-- <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div>
+        </div>
+        <div class="foot_content">
+          <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div>
+        </div>
+        <div class="foot_content">
+          <div class="foot_content_body">{{content}}</div>
+          <div>{{standard}}</div> -->
           <div class="foot_content_title">服务项目</div>
           <div class="foot_content_body" v-for="item in iServiceItemList" :key="item.id">{{item.content}}</div>
         </div>
@@ -78,6 +93,8 @@ export default {
   },
   data() {
     return {
+      name: "日常保洁",
+      price: 12,
       img: '',
       name: '',
       price: '',
@@ -229,36 +246,36 @@ export default {
   width: 100%;
   background-color: #fff;
 }
-.contentAndStandard {
+.foot_title {
   display: flex;
   flex-direction: row;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 0 10px;
 }
 .foot_content {
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px 0 10px;
   border: 1px solid rgb(209, 208, 208);
+  border-top: none;
 }
-.foot_content_title,
-.foot_standard_title {
+.foot_title div {
+  flex: 1;
   height: 40px;
-  border-bottom: 0.5px solid rgb(209, 208, 208);
   background-color: rgb(209, 208, 208);
   color: rgb(1, 128, 1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.foot_standard {
+.foot_content div {
   flex: 1;
-  border: 1px solid rgb(209, 208, 208);
-  border-left: none;
-}
-.foot_content_body,
-.foot_standard_body {
   font-size: 13px;
-  border-bottom: 0.5px solid rgb(209, 208, 208);
   margin: 10px;
 }
+.foot_content_body {
+  border-right: 0.5px solid rgb(209, 208, 208);
+}
+
 .comm {
   color: red;
   border-top: 1px dashed rgb(209, 208, 208);
@@ -266,7 +283,7 @@ export default {
   font-size: 12px;
   line-height: 22px;
   padding: 10px;
-}
+} 
 .btn {
   position: fixed;
   left: 0px;

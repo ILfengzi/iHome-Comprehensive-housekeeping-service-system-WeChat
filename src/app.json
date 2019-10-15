@@ -2,10 +2,11 @@
   "pages": [
     "pages/home/main",
     "pages/reservation/common/main",
-    "pages/address/main",
     "pages/serviceDetail/main",
     "pages/evaluate/main",
     "pages/mine/user/main",
+    "pages/evaluate/main",     
+    "pages/address/main",   
     "pages/newaddress/main",
     "pages/order/main", 
     "pages/allorder/main", 
