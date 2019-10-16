@@ -1,10 +1,11 @@
 /*
- * @Description: “我的评价”界面
+ * @Description: "关于我们"的界面
  * @Author: Celine
- * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 17:57:59
+ * @Date: 2019-10-15 17:27:07
+ * @LastEditTime: 2019-10-15 17:27:34
  * @LastEditors: Wanlin Chen
  */
+
 
 import Vue from 'vue'
 import App from './index'

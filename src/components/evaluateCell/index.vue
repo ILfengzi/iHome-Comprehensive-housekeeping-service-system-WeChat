@@ -2,7 +2,7 @@
  * @Description: "我的评价" 评价列表组件
  * @Author: Celine
  * @Date: 2019-10-15 09:33:29
- * @LastEditTime: 2019-10-15 11:06:32
+ * @LastEditTime: 2019-10-16 15:41:41
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -10,7 +10,7 @@
     <div class="weui-form-preview__hd">
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">服务</div>
-        <div class="weui-form-preview__value_in-hd">服务名</div>
+        <div class="weui-form-preview__value_in-hd">{{detailType}}</div>
       </div>
     </div>
     <div class="weui-form-preview__bd">

@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/makeEval/main",
+    "pages/aboutUs/main",
+    "pages/mine/user/main",
     "pages/home/main",
     "pages/reservation/common/main",
     "pages/serviceDetail/main",
     "pages/evaluate/main",
-    "pages/mine/user/main",
-    "pages/evaluate/main",     
     "pages/address/main",   
     "pages/newaddress/main",
     "pages/order/main", 
