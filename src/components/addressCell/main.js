@@ -1,8 +1,8 @@
 /*
- * @Description: “我的评价”界面
+ * @Description: “地址列表”页面组件
  * @Author: Celine
- * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 17:57:59
+ * @Date: 2019-10-15 09:32:24
+ * @LastEditTime: 2019-10-18 08:47:58
  * @LastEditors: Wanlin Chen
  */
 

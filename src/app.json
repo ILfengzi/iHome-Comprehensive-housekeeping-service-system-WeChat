@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/address/main",      
+    "pages/mine/user/main",
+    "pages/makeEval/main",
+    "pages/aboutUs/main",
+    "pages/home/main",
     "pages/reservation/common/main",
     "pages/index/main",
     "pages/serviceDetail/main",
-    "pages/home/main",
-    "pages/mine/user/main",
-    "pages/evaluate/main",     
-    "pages/address/main",   
+    "pages/evaluate/main",
     "pages/newaddress/main",
     "pages/order/main", 
     "pages/allorder/main", 

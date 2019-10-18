@@ -2,7 +2,7 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-15 11:24:51
+ * @LastEditTime: 2019-10-15 17:15:34
  * @LastEditors: Wanlin Chen
  -->
 
@@ -21,12 +21,15 @@
         <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址" :text="88"></mineCell>
         <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价" :text="19"></mineCell>
     </div>
-    <div class="order_info">
+    <!-- <div class="order_info">
         <mineCell icon="/static/images/icon/mine/联系客服.png" title="联系客服" ></mineCell>
-    </div>
+        
+    </div> -->
+ 
     <div class="order_info">
         <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们" ></mineCell>
     </div>
+    <div class="contact"><button open-type="contact" bindcontact="handleContact">联系客服</button></div>
   </div>
 
 </template>
@@ -38,6 +41,10 @@ export default {
 
     },
     methods:{
+      handleContact (e) {
+        console.log(e.detail.path)
+        console.log(e.detail.query)
+      },
       swithToallOrder(){
         console.log(123)
         wx.navigateTo({
@@ -106,5 +113,7 @@ export default {
 .order_info {
   margin-top: 16px;
 }
-
+.contact{
+  margin-top: 60px;
+}
 </style>
