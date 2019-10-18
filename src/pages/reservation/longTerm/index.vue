@@ -2,7 +2,7 @@
  * @Description: 预约：选时间、地点等
  * @Author: 
  * @Date: 2019-10-13 09:04:47
- * @LastEditTime: 2019-10-13 17:37:38
+ * @LastEditTime: 2019-10-18 15:25:36
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -28,6 +28,7 @@
       <button type="primary" form-type="“submit”">立即支付</button>
     </form>
   </div>
+  
 </template>
 
 <script>

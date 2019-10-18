@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-15 08:46:14
+ * @LastEditTime: 2019-10-17 10:54:36
  * @LastEditors: Lin Changkun
  */
 const domain = "http://10.86.2.14:8080/json/";    //局域网通信
@@ -16,6 +16,7 @@ const interfaces = {
   getSearchResults: domain + 'order/selectBytypename',  //获取搜索结果接口
   getServiceDetails: domain + 'order/typelist',  //获取服务详情接口
   getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
+  getTime: domain + 'timer/getMessage'  //获取服务时间
 };
 
 module.exports = interfaces;

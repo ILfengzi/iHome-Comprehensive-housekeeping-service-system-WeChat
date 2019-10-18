@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/home/main",
     "pages/reservation/common/main",
+    "pages/index/main",
     "pages/serviceDetail/main",
-    "pages/evaluate/main",
+    "pages/home/main",
     "pages/mine/user/main",
     "pages/evaluate/main",     
     "pages/address/main",   
@@ -12,7 +12,6 @@
     "pages/allorder/main", 
     "pages/orderdetail/main",     
     "pages/mine/staff/main",
-    "pages/index/main",
     "pages/reservation/longTerm/main",
     "pages/reservation/homeAppliances/main",
     "pages/service/main",

@@ -2,7 +2,7 @@
  * @Description: 钟点工
  * @Author: 
  * @Date: 2019-10-13 09:04:47
- * @LastEditTime: 2019-10-15 10:52:30
+ * @LastEditTime: 2019-10-18 15:21:03
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -10,52 +10,55 @@
     <form report-submit="true" @submit="formSubmit" @reset="formReset">
       <!-- 带跳转带列表项 -->
       <div class="weui-cells weui-cells_after-title">
-        <navigator url="../../address/main" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <div class="weui-cell__hd">
-            <img
-              src="/static/images/dingwei.png"
-              style="margin-right: 10px;vertical-align: middle;width:22px; height: 22px;"
-            />
-          </div>
-          <div class="weui-cell__bd">服务地址</div>
-          <div class="weui-cell__ft weui-cell__ft_in-access">我的地址</div>
-        </navigator>
-        <navigator url class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <div class="weui-cell__hd">
-            <img
-              src="/static/images/shijian.png"
-              style="margin-right: 10px;vertical-align: middle;width:22px; height: 22px;"
-            />
-          </div>
-          <div class="weui-cell__bd">服务时长</div>
-          <div class="weui-cell__ft weui-cell__ft_in-access">选择时长</div>
-        </navigator>
-        <navigator url class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <div class="weui-cell__hd">
-            <img
-              src="/static/images/riqi.png"
-              style="margin-right: 10px;vertical-align: middle;width:22px; height: 22px;"
-            />
-          </div>
-          <div class="weui-cell__bd">预约日期</div>
-          <div class="weui-cell__ft weui-cell__ft_in-access">选择日期</div>
-        </navigator>
+        <!-- 选择地点 -->
+        <address-picker></address-picker>
+        <!-- 选择时长 -->
+        <duration-picker @click="getChildDuration"></duration-picker>
+        <!-- 选择日期 -->
+        <time-picker :pickerValueArray="pickerValueArray" :deepLength="deepLength" @click="getChildTime"></time-picker>
+        <!-- 选择备注 -->
+        <remarks-picker @click="getChildRemarks"></remarks-picker>
       </div>
-      <button type="primary" form-type="“submit”">立即支付</button>
+      <button type="primary" form-type="submit">提交订单</button>
     </form>
   </div>
 </template>
 
 <script>
 import mpPicker from "mpvue-weui/src/picker";
+import addressPicker from "../../../components/addressPicker/index";
+import durationPicker from "../../../components/durationPicker/index";
+import timePicker from "../../../components/timePicker/index";
+import remarksPicker from "../../../components/remarksPicker/index";
 
 export default {
   components: {
-    mpPicker
+    mpPicker,
+    addressPicker,
+    durationPicker,
+    timePicker,
+    remarksPicker
   },
   data() {
     return {
-      icon: ""
+      // icon: "",
+      duration: undefined,
+      pickerValueArray: undefined,
+      time: undefined,
+      remarks: undefined,
+      deepLength:2,
+      pickerValueArray: [
+        {
+          label: "请先选择",
+          value: "1231231231",
+          children: [
+            {
+              label: "服务时间",
+              value: "qweqeqeq"
+            }
+          ]
+        }
+      ]
     };
   },
 
@@ -65,6 +68,43 @@ export default {
     },
     formReset() {
       console.log("form发生了reset事件");
+    },
+
+    getChildDuration(childDuration) {
+      // 拿到子组件传回来的时长
+      this.duration = childDuration;
+
+      //向后端传值，拿到可用的服务时间
+      this.$https
+        .request({
+          url: this.$interfaces.getTime,
+          data: {
+            hours: childDuration
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          // 成功，获取到可用的服务时间
+          console.log("我进来了");
+          console.log(res);
+          this.pickerValueArray = res.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
+    getChildTime(childTime) {
+      // console.log('时间:', childTime);
+      this.time = childTime;
+    },
+
+    getChildRemarks(childRemarks){
+      // console.log('备注：', childRemarks);
+      this.remarks = childRemarks;
     }
   }
 };

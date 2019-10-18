@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-15 11:55:17
+ * @LastEditTime: 2019-10-16 10:10:43
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -52,8 +52,15 @@
     <!-- 热门服务 -->
     <div class="popService">
       <p>热门服务</p>
-      <div class="grid-content">
-        <mp-grid :gridData="gridData" @click="passData(item.name)"></mp-grid>
+      <div class="page__bd">
+        <div class="weui-grids">
+          <div v-for="item in grids" :key="item.index" @click="passData(item.index)">
+            <div class="weui-grid" hover-class="weui-grid_active">
+              <image class="weui-grid__icon" :src="item.src" />
+              <div class="weui-grid__label">{{item.name}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -100,47 +107,15 @@ export default {
       ],
       inputShowed: false, //搜索
       inputVal: "", //输入值
-      gridData: [
-        {
-          src: "/static/images/xinju.png",
-          name: "新居",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/caboli.png",
-          name: "擦玻璃",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/baojie.png",
-          name: "日常保洁",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/zuofan.png",
-          name: "做饭",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/jiesong.png",
-          name: "接送",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/ktwx.png",
-          name: "空调维修",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/matong.png",
-          name: "通马桶",
-          url: "/pages/button/main"
-        },
-        {
-          src: "/static/images/all.png",
-          name: "全部服务",
-          url: "/pages/service/main"
-        }
+      grids: [
+        { src: "/static/images/xinju.png", name: "新居", index: 6 },
+        { src: "/static/images/caboli.png", name: "擦玻璃", index: 2 },
+        { src: "/static/images/baojie.png", name: "日常保洁", index: 3 },
+        { src: "/static/images/zuofan.png", name: "做饭", index: 4 },
+        { src: "/static/images/jiesong.png", name: "接送", index: 5 },
+        { src: "/static/images/ktwx.png", name: "空调维修", index: 1 },
+        { src: "/static/images/matong.png", name: "通马桶", index: 7 },
+        { src: "/static/images/all.png", name: "全部服务", index: 8 }
       ],
       service: [
         {
@@ -222,12 +197,45 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+
+    // 点击图标，进行相应的跳转
+    passData(index) {
+      console.log("$$$$$$$$$$$");
+      console.log(index);
+      if (index === 8) {
+        //点击全部，跳转到分类页面
+        wx.navigateTo({
+          url: "../service/main"
+        });
+      } else {
+        //跳转到相应的服务详情页、传id给后端
+        this.$https
+          .request({
+            url: this.$interfaces.getServiceDetails,
+            data: {
+              id: index
+            },
+            header: {
+              "content-type": "application/json" // 默认值
+            },
+            method: "POST"
+          })
+          .then(res => {
+            // 成功，获取到后端传回到服务详情，并将其存到vuex中,给跳转后的页面用
+            this.$store.dispatch("setServiceDetail", res.detailtype);
+            console.log("我进来了");
+            console.log(this.$store.state.serviceDetail);
+            //跳转到服务详情页
+            wx.navigateTo({
+              url: "../serviceDetail/main"
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     }
-  },
-
-  // 将name传回给后台
-  passData(name){
-
   },
   computed: {}
 };
@@ -264,5 +272,5 @@ export default {
   /* margin-top: 16px;
   background-color: #fff;
   border: 1px solid #ebeef5;*/
-} 
+}
 </style>

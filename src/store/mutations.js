@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-12 15:07:18
+ * @LastEditTime: 2019-10-17 17:17:05
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = (state, data) => {
@@ -27,4 +27,8 @@ export const setSearchResults = (state, data) => {
 
 export const setServiceDetail = (state, data) => {
     state.serviceDetail = data;
+};
+
+export const setFakeId = (state, data) => {
+    state.fakeId = data;
 };

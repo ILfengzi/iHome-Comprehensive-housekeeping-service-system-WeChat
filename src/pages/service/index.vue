@@ -2,7 +2,7 @@
  * @Description: 全部服务
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-12 17:25:13
+ * @LastEditTime: 2019-10-16 08:59:23
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -16,7 +16,7 @@
     <div class="showAndSelect">
       <div v-for="(item,index) in showResults" :key="index">
         <service-cell
-          :img="item.img"
+          :img="item.picturepath1"
           :title="item.typename"
           :describe="item.ddescribe"
           :level="item.chargeType"
@@ -107,11 +107,11 @@ export default {
         .then(res => {
           // 成功，获取到后端传回到服务详情，并将其存到vuex中,给跳转后的页面用
           this.$store.dispatch("setServiceDetail", res.detailtype);
-          // console.log(this.$store.state.serviceDetail);
-          
+          console.log("我进来了");
+          console.log(this.$store.state.serviceDetail);
           //跳转到服务详情页
           wx.navigateTo({
-            url: "../index/main"
+            url: "../serviceDetail/main"
           });
         })
         .catch(err => {

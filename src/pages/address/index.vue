@@ -2,13 +2,8 @@
  * @Description: 地址管理界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-15 09:46:49
+ * @LastEditTime: 2019-10-16 14:46:38
  * @LastEditors: Lin Changkun
-=======
- * @LastEditTime: 2019-10-14 17:53:17
- * @LastEditors: Wanlin Chen
->>>>>>> a4a4110e98ba93d41f777029a2583a0f3f3429fb
  -->
 
 <template>
