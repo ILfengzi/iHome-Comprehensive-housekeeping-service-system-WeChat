@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:18
- * @LastEditTime: 2019-10-12 15:05:42
+ * @LastEditTime: 2019-10-17 17:14:52
  * @LastEditors: Lin Changkun
  */
 import Vue from "vue";
@@ -17,6 +17,7 @@ const state = {
   // 判断用户是否授权，如果授权则改为 true，然后将用户信息赋给user
   isAuthenticated: false,
   user: null,
+  fakeId:"",  //后端返回的非openid的用户唯一凭证
   position: "",
   inputVal: "",
   searchResults: null, //搜索结果

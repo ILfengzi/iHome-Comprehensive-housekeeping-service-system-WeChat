@@ -2,13 +2,12 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-15 17:02:36
+ * @LastEditTime: 2019-10-16 20:58:34
  * @LastEditors: Lin Changkun
  -->
 
  <template>
   <div class="serviceDetail">
-    <!-- 改为从vuex中动态获取 -->
     <img :src="img" mode="center" />
     <div class="head">
       <div class="nameAndPrice">
@@ -17,7 +16,6 @@
           <span>服务价格</span>
         </div>
         <div class="content">
-          <!-- 以下两项改为从vuex中动态获取 -->
           <span>{{name}}</span>
           <span style="color:red;">{{price}}</span>
         </div>
@@ -52,24 +50,9 @@
           <div>服务项目</div>
           <div>服务标准</div>
         </div>
-        <div class="foot_content">
-
-          <!-- <div class="foot_content_body">{{content}}</div>
-          <div>{{standard}}</div>
-        </div>
-        <div class="foot_content">
-          <div class="foot_content_body">{{content}}</div>
-          <div>{{standard}}</div>
-        </div>
-        <div class="foot_content">
-          <div class="foot_content_body">{{content}}</div>
-          <div>{{standard}}</div> -->
-          <div class="foot_content_title">服务项目</div>
-          <div class="foot_content_body" v-for="item in iServiceItemList" :key="item.id">{{item.content}}</div>
-        </div>
-        <div class="foot_standard">
-          <div class="foot_standard_title">服务标准</div>
-          <div class="foot_standard_body" v-for="item in iServiceItemList" :key="item.id">{{item.standard}}</div>
+        <div class="foot_content" v-for="item in iServiceItemList" :key="item.id">
+          <div class="foot_content_body">{{item.content}}</div>
+          <div>{{item.standard}}</div>
         </div>
       </div>
       <div class="comm">
@@ -89,23 +72,23 @@ import CustomPopup from "../../components/CustomPopup/index";
 
 export default {
   components: {
-    CustomPopup,
+    CustomPopup
   },
   data() {
     return {
       name: "日常保洁",
       price: 12,
-      img: '',
-      name: '',
-      price: '',
+      img: "",
+      name: "",
+      price: "",
       iServiceItemList: [],
       // content: '',
       // standard: '',
-      comm: '',
-      servicetpyeId: '', //服务类型
+      comm: "",
+      servicetpyeId: "" //服务类型
     };
   },
-    mounted() {
+  mounted() {
     // 先从vuex中取出，更新到data数据中
     this.img = this.$store.state.serviceDetail.picturepath2;
     this.name = this.$store.state.serviceDetail.typename;
@@ -124,9 +107,9 @@ export default {
     },
 
     // 根据服务类型进行跳转到预约界面
-    toReservation(servicetpyeId){
+    toReservation(servicetpyeId) {
       // 1：钟点工、2：一般家政和家电维修、3:长期工
-      console.log('servicetpyeId:',servicetpyeId);
+      console.log("servicetpyeId:", servicetpyeId);
       if (servicetpyeId === 1) {
         wx.navigateTo({
           url: "../reservation/common/main"
@@ -283,7 +266,7 @@ export default {
   font-size: 12px;
   line-height: 22px;
   padding: 10px;
-} 
+}
 .btn {
   position: fixed;
   left: 0px;

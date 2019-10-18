@@ -2,7 +2,7 @@
  * @Description: 预约：选时间、地点等
  * @Author: 
  * @Date: 2019-10-13 09:04:47
- * @LastEditTime: 2019-10-13 17:37:38
+ * @LastEditTime: 2019-10-17 16:25:41
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -25,7 +25,7 @@
           <div class="weui-cell__ft weui-cell__ft_in-access">1222</div>
         </navigator>
       </div>
-      <button type="primary" form-type="“submit”">立即支付</button>
+      <button type="primary" form-type="“submit”">提交订单</button>
     </form>
   </div>
 </template>
