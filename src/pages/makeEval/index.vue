@@ -2,17 +2,17 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-16 16:58:38
+ * @LastEditTime: 2019-10-18 08:26:34
  * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="makeEval">
-    <div class="serviceInfo">
+    <!-- <div class="serviceInfo">
       <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
         <h4>{{evaluate.detailType}}</h4>
       </div>
-    </div>
+    </div> -->
     <div class="quality">
       <div class="head">您对服务质量满意吗？</div>
 
@@ -86,27 +86,6 @@ export default {
   background-color: white;
   padding: 10px;
 }
-.staffInfo,
-.serviceInfo {
-  border-radius: 10%;
-  background-color: #ebeef5;
-  padding: 5px 15px;
-  margin: 2px 55px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ebeef5;
-  border-top: 1px solid #ebeef5;
-  display: flex;
-  flex-direction: row;
-}
-.staffInfo img,
-.serviceInfo img {
-  width: 35px;
-  height: 35px;
-  margin-right: 20px;
-  border-radius: 50%;
-  /* margin-right: 20px;
-  margin-left: 105px; */
-}
 .weui-rate {
   margin-left: 100px;
 }
@@ -117,6 +96,7 @@ export default {
 }
 .inp {
   border-top: 1px solid #f4f4f4;
+  height:60px;
 }
 textarea {
   height: 120rpx;
