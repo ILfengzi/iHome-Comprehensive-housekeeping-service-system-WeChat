@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-16 10:10:43
+ * @LastEditTime: 2019-10-19 21:08:52
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import Swiper from "../../components/swiper";
+import Swiper from "../../components/swiper/index";
 import mpGrid from "mpvue-weui/src/grid";
 import serviceCell from "../../components/serviceCell/index";
 

@@ -1,10 +1,11 @@
 /*
  * @Description: 
  * @Author: 
- * @Date: 2019-10-13 19:44:45
- * @LastEditTime: 2019-10-13 19:44:45
+ * @Date: 2019-10-20 10:00:13
+ * @LastEditTime: 2019-10-20 10:29:29
  * @LastEditors: Lin Changkun
  */
+
 import Vue from 'vue'
 import App from './index'
 

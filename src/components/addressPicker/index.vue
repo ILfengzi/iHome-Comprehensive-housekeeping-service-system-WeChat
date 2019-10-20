@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-17 10:16:43
- * @LastEditTime: 2019-10-17 16:15:14
+ * @LastEditTime: 2019-10-19 21:18:55
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -35,31 +35,9 @@ export default {
   },
   methods: {
     goMyAddress() {
-      //向后端传值，拿到可用的服务时间
-      // this.$https
-      //   .request({
-      //     url: this.$interfaces.getTime,
-      //     data: {
-      //       hours: childDuration
-      //     },
-      //     header: {
-      //       "content-type": "application/json" // 默认值
-      //     },
-      //     method: "POST"
-      //   })
-      //   .then(res => {
-      //     // 成功，获取到可用的服务时间
-      //     console.log("我进来了");
-      //     console.log(res);
-      //     this.pickerValueArray = res.data;
-
-          wx.navigateTo({
-            url: "../../address/main"
-          });
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      wx.navigateTo({
+        url: "../../address/main"
+      });
     }
   }
 };

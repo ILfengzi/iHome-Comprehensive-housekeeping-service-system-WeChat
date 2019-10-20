@@ -2,7 +2,7 @@
  * @Description: 服务时长
  * @Author: 
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-17 15:52:23
+ * @LastEditTime: 2019-10-19 16:50:28
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -43,7 +43,7 @@ export default {
   data(){
     return{
       title: "服务时长",
-      tips: "选择时长",
+      tips: "时长越长越优惠哦～",
       indexPicker: "0",
       array: ["2小时", "3小时", "4小时", "5小时", "6小时", "7小时", "8小时"],
       time: [],

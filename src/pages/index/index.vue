@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-17 17:26:14
+ * @LastEditTime: 2019-10-20 00:16:29
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -80,13 +80,13 @@ export default {
         .then(res => {
           console.log("ddasdasdasdasdadasdasdas");
           console.log(res);
-          // 成功，则将后端返回的position（1为员工，4为普通员工）和非openid的用户id存储到vuex中
+          // 成功，则将后端返回的position（1为员工，4为普通用户）和非openid的用户id存储到vuex中
           this.$store.dispatch("setPosition", res.map.existence);
           this.$store.dispatch("setFakeId", res.map.userid);
           console.log('存起来了，好开森～',this.$store.state.position);
           console.log(this.$store.state.fakeId);
           // 根据角色不同，进行页面的跳转
-          if (res == 4) {
+          if (res.map.existence == 4) {
             this.goToHome();
           } else {
             this.goToOrder();
