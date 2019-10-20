@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-17 17:06:00
+ * @LastEditTime: 2019-10-19 17:34:40
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = ({ commit }, data) => {
@@ -31,4 +31,8 @@ export const setPosition = ({ commit }, data) => {
 
   export const setFakeId = ({ commit }, data) => {
     commit("setFakeId", data);
+  };
+  
+  export const setOrderForm = ({ commit }, data) => {
+    commit("setOrderForm", data);
   };

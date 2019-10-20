@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-16 20:58:34
+ * @LastEditTime: 2019-10-20 10:18:56
  * @LastEditors: Lin Changkun
  -->
 
@@ -108,19 +108,23 @@ export default {
 
     // 根据服务类型进行跳转到预约界面
     toReservation(servicetpyeId) {
-      // 1：钟点工、2：一般家政和家电维修、3:长期工
+      // 1：按时间算钱、2：按平方、3:按数量、3:线下定价
       console.log("servicetpyeId:", servicetpyeId);
       if (servicetpyeId === 1) {
         wx.navigateTo({
-          url: "../reservation/common/main"
+          url: "../reservation/forDuration/main"
         });
       } else if (servicetpyeId === 2) {
         wx.navigateTo({
-          url: "../reservation/homeAppliances/main"
+          url: "../reservation/forSquare/main"
         });
-      } else {
+      } else if (servicetpyeId === 3) {
         wx.navigateTo({
-          url: "../reservation/longTerm/main"
+          url: "../reservation/forAmount/main"
+        });
+      } else{
+        wx.navigateTo({
+          url: "../reservation/forOffline/main"
         });
       }
     }

@@ -2,7 +2,7 @@
  * @Description: 选择日期时间弹出联动框
  * @Author: 
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-17 15:50:29
+ * @LastEditTime: 2019-10-20 16:55:48
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -31,8 +31,6 @@
       @onConfirm="onConfirm"
       @onCancel="onCancel"
       :pickerValueArray="pickerValueArray"
-      name="time"
-      @click="aa"
     ></mp-picker>
  </div>
 </template>
@@ -47,6 +45,9 @@ export default {
   props:{
     pickerValueArray: Object,
     deepLength: String
+  },
+  mounted(){
+    console.log()
   },
   data() {
     return {

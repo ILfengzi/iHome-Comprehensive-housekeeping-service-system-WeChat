@@ -2,14 +2,14 @@
  * @Description: 备注
  * @Author: 
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-17 20:47:19
+ * @LastEditTime: 2019-10-19 18:08:11
  * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="remarksPicker">
     <div class='searchItem'>
     <img src="/static/images/beizhu.png" />
-    <input placeholder="备注" v-model="inputValue" @input="inputHandle" @confirm="confirmHandle" />
+    <input placeholder="备注" v-model="inputValue" @input="inputHandle" @confirm="confirmHandle" @blur="losefocus">
     </div>
   </div>
 </template>
@@ -35,18 +35,23 @@ export default {
     confirmHandle(e) {
       // console.log(this.inputValue);
       this.$emit('click', this.inputValue);
+    },
+    //输入框失去焦点时触发
+    losefocus(e){
+      this.$emit('click', this.inputValue);
     }
   }
 };
 </script>
 
 <style>
-.remarksPickerview {
-    display: flex;
-    flex-direction: row;
-    height: 98px;
-    background: #efeff4;
-    align-items: center;
+.remarksPicker{
+  margin-top: 20rpx;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* height: 98px; */
+    /* background: #efeff4; */
+    /* align-items: center; */
 }
 
 .searchItem {
@@ -69,6 +74,6 @@ export default {
 
 .searchItem input {
     flex: 1;
-    font-size: 32rpx;
+    font-size: 34rpx;
 }
 </style>

@@ -2,10 +2,11 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-20 18:35:19
+ * @LastEditTime: 2019-10-20 19:18:30
  * @LastEditors: Wanlin Chen
  */
 const domain = "https://www.ilfengzi.club/json";    //局域网通信
+
 
 const interfaces = {
   getOpenid: domain + 'getCode', // 获取openID的接口
@@ -18,6 +19,8 @@ const interfaces = {
   getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
   getTime: domain + 'timer/getMessage',  //获取服务时间
   getUserAddress: domain + 'user/selectUserAddress' //获取用户信息
+  
+
 };
 
 module.exports = interfaces;
