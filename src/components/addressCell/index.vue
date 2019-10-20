@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-10-18 10:34:11
+ * @LastEditTime: 2019-10-18 15:21:05
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -41,6 +41,15 @@ export default {
     mpModal,
     mpButton
   },
+  methods:{
+    confirm(e) {
+      console.log(123);
+      showToast();
+    },
+    showModal() {
+      this.$refs.mpModal.show();
+    },
+  }
 };
 </script>
 

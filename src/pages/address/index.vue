@@ -2,33 +2,21 @@
  * @Description: 地址管理界面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-19 20:47:42
+ * @LastEditTime: 2019-10-20 19:12:06
  * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="addresslist">
-    <addressCell
-      :province="userdetail.province"
-      :city="userdetail.city"
-      :phone="userdetail.phone"
-      :detail="userdetail.detail"
-      :username="userdetail.username"
-    ></addressCell>
-    <addressCell
-      :province="userdetail.province"
-      :city="userdetail.city"
-      :phone="userdetail.phone"
-      :detail="userdetail.detail"
-      :username="userdetail.username"
-    ></addressCell>
-    <addressCell
-      :province="userdetail.province"
-      :city="userdetail.city"
-      :phone="userdetail.phone"
-      :detail="userdetail.detail"
-      :username="userdetail.username"
-    ></addressCell>
+    <div v-for="(item,index) in searchResults" :key="index">
+        <addressCell
+        :province="item.province"
+        :city="item.city"
+        :phone="item.phone"
+        :detail="item.detail"
+        :username="item.username"
+        ></addressCell>
+    </div>
     <div class="btn">
       <button @click="switchToNewAddress" form-type="submit" type="primary">新建</button>
     </div>
@@ -41,6 +29,7 @@ import addressCell from "../../components/addressCell/index";
 export default {
   data() {
     return {
+      searchResults,
       userdetail: {
         province: "广东省",
         city: "广州市荔湾区",
@@ -55,13 +44,6 @@ export default {
     addressCell
   },
   methods: {
-    confirm(e) {
-      console.log(123);
-      showToast();
-    },
-    showModal() {
-      this.$refs.mpModal.show();
-    },
     switchToNewAddress() {
       wx.navigateTo({
         url: "../newaddress/main"
