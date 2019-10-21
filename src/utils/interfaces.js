@@ -3,7 +3,7 @@
  * @Author: 
  * @Date: 2019-10-03 00:07:05
 <<<<<<< HEAD
- * @LastEditTime: 2019-10-21 11:23:16
+ * @LastEditTime: 2019-10-21 21:34:40
 =======
 <<<<<<< HEAD
  * @LastEditTime: 2019-10-21 10:34:58
@@ -29,7 +29,8 @@ const interfaces = {
   getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
   getTime: domain + 'timer/getMessage',  //获取服务时间
   getUserAddress: domain + 'user/selectUserAddress', //获取用户地址信息
-  setUserAddress: domain + 'user/addUserAddress'
+  setUserAddress: domain + 'user/addUserAddress',
+  getDefaultAddress: domain + 'user/selectUserDefaultAddress',  //获取用户默认地址接口
 };
 
 module.exports = interfaces;

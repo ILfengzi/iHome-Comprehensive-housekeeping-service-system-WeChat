@@ -2,19 +2,17 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 10:49:38
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-21 23:55:16
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
-  <div class="addresslist">
-    <div v-for="(item,index) in userAddress" :key="index">
+    <div class="addresslist">
+      <div v-for="(item,index) in userAddress" :key="index">
         <addressCell
-        :province="item.province"
-        :city="item.city"
-        :phone="item.phone"
-        :detail="item.detail"
-        :username="item.username"
+          :userAddress="item"
+          @isDelete="isDelete"
+          @isEdit="isEdit"
         ></addressCell>
     </div>
     <div class="btn">
@@ -29,30 +27,21 @@ import addressCell from "../../components/addressCell/index";
 export default {
   data() {
     return {
-      userAddress:null,
-      // userdetail: {
-      //   province: "广东省",
-      //   city: "广州市荔湾区",
-      //   phone: "123456789",
-      //   detail:
-      //     "春田花花幼稚园xxx街道123号我是一个假数据我是一个假数据我是一个假数据我是一个假数据",
-      //   username: "celine"
-      // }
+      userAddress: null
     };
   },
   components: {
     addressCell
   },
   onShow() {
-     console.log("成功加载");        
+    console.log("成功加载");
     //输入完成，传递输入值给后端、刷新页面
-  //   let a = this.$store.state.fakeId;
-  //   console.log(a);
     this.$https
-      .request({   
+      .request({
         url: this.$interfaces.getUserAddress,
         data: {
-          id: 1 //输入值
+          // id: this.$store.state.fakeId //⚠️正式用：用户id
+          id: 1
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -75,11 +64,17 @@ export default {
         url: "../newaddress/main"
       });
     },
-    swithToOrder: function() {
-      console.log(123);
-      wx.navigateBack({
-        delta: 1 // 回退前 delta(默认为1) 页面
-      });
+
+    isDelete(e){
+      if (e === 1) {
+        console.log('删好友！哼～');
+      }
+    },
+
+    isEdit(e){
+      if (e === 1) {
+        console.log('编辑哦，小哥哥～');
+      }
     }
   }
 };

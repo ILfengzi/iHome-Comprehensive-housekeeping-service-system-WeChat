@@ -23,6 +23,7 @@ const state = {
   searchResults: null, //搜索结果
   serviceDetail: null,  //服务详情
   orderForm: null, //下单
+  userAddress: null //用户默认地址、选取的下单地址
 };
 
 export default new Vuex.Store({

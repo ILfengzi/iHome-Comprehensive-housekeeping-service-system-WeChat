@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-20 20:40:34
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-21 20:00:34
+ * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = ({ commit }, data) => {
   commit("setIsAuthenticated", data);
@@ -14,26 +14,28 @@ export const setUser = ({ commit }, data) => {
 };
 
 export const setPosition = ({ commit }, data) => {
-    commit("setPosition", data);
-  };
+  commit("setPosition", data);
+};
 
-  export const setInputVal = ({ commit }, data) => {
-    commit("setInputVal", data);
-  };
+export const setInputVal = ({ commit }, data) => {
+  commit("setInputVal", data);
+};
 
-  export const setSearchResults = ({ commit }, data) => {
-    commit("setSearchResults", data);
-  };
+export const setSearchResults = ({ commit }, data) => {
+  commit("setSearchResults", data);
+};
 
-  export const setServiceDetail = ({ commit }, data) => {
-    commit("setServiceDetail", data);
-  };
+export const setServiceDetail = ({ commit }, data) => {
+  commit("setServiceDetail", data);
+};
 
-  export const setFakeId = ({ commit }, data) => {
-    commit("setFakeId", data);
-  };
-  
-  export const setOrderForm = ({ commit }, data) => {
-    commit("setOrderForm", data);
-  };
+export const setFakeId = ({ commit }, data) => {
+  commit("setFakeId", data);
+};
 
+export const setOrderForm = ({ commit }, data) => {
+  commit("setOrderForm", data);
+};
+export const setUserAddress = ({ commit }, data) => {
+  commit("setUserAddress", data);
+};
