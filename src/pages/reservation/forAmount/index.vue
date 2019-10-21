@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-20 18:09:26
+ * @LastEditTime: 2019-10-21 09:16:08
  * @LastEditors: Lin Changkun
  -->
 
@@ -23,7 +23,7 @@
       <div class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <div class="weui-cell__hd">
           <img
-            src="/static/images/shijian.png"
+            src="/static/images/shuzi.png"
             style="margin-right: 10px;vertical-align: middle;width:22px; height: 22px;"
           />
         </div>
@@ -34,7 +34,6 @@
         </div>
       </div>
 
-      <div class="showPriceAndRemarks">
         <!-- 估价 -->
         <div class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <div class="weui-cell__hd">
@@ -48,11 +47,8 @@
         </div>
         <!-- 选择备注 -->
         <remarks-picker @click="getChildRemarks"></remarks-picker>
-      </div>
     </div>
-    <!-- <button type="primary" form-type="submit">提交订单</button> -->
     <button type="primary" @click="submitMessage">提交订单</button>
-    <!-- </form> -->
   </div>
 </template>
 
@@ -75,14 +71,12 @@ export default {
       inputValue:'',
       orderForm: {
         address: "undefined", //⚠️地址
-        duration: undefined, //服务时长
         time: undefined, //服务时间
         price: 10, //价格
         remarks: "" //备注
       }, //订单
       pickerValueArray: undefined,
       deepLength: 2,
-      showPriceAndRemarks: false, //先选择日期才会出现金额和备注
       pickerValueArray: [
         {
           children: []
@@ -92,20 +86,6 @@ export default {
   },
 
   methods: {
-    formSubmit(e) {
-      console.log("form发生了submit事件，携带数据为：", e.mp.detail.value);
-    },
-    formReset() {
-      console.log("form发生了reset事件");
-    },
-
-    confirmHandle(){
-      console.log('输入值：', this.inputValue);
-    },
-    losefocus(){
-      console.log('输入值是：', this.inputValue);
-    },
-
     getChildDuration(childDuration) {
       // 拿到子组件传回来的时长
       // this.duration = childDuration;
@@ -116,7 +96,8 @@ export default {
         .request({
           url: this.$interfaces.getTime,
           data: {
-            hours: childDuration
+            hours: childDuration,
+            type: 1,
           },
           header: {
             "content-type": "application/json" // 默认值
@@ -135,9 +116,6 @@ export default {
     },
 
     getChildTime(childTime) {
-      // console.log('时间:', childTime);
-      this.showPriceAndRemarks = true;
-      // this.time = childTime;
       this.orderForm.time = childTime;
       this.orderForm.price = this.$store.state.searchResults.price;
     },
@@ -161,7 +139,6 @@ export default {
           icon: "none",
           duration: 2000
         });
-        console.log("订单：");
       } else if (this.orderForm.duration === undefined) {
         wx.showToast({
           title: "请选择服务时长",
