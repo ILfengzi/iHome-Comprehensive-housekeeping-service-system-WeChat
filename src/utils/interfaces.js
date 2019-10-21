@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-21 10:35:19
+ * @LastEditTime: 2019-10-21 11:23:16
  * @LastEditors: Wanlin Chen
  */
 // const domain = "http://10.86.2.14:80/json/"; 
@@ -19,8 +19,8 @@ const interfaces = {
   getServiceDetails: domain + 'order/typelist',  //获取服务详情接口
   getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
   getTime: domain + 'timer/getMessage',  //获取服务时间
-  getUserAddress: domain + 'user/selectUserAddress' //获取用户地址信息
-
+  getUserAddress: domain + 'user/selectUserAddress', //获取用户地址信息
+  setUserAddress: domain + 'user/addUserAddress'
 };
 
 module.exports = interfaces;

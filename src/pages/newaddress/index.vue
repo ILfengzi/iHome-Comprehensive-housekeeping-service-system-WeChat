@@ -2,7 +2,7 @@
  * @Description: 编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 09:12:19
+ * @LastEditTime: 2019-10-21 15:30:12
  * @LastEditors: Wanlin Chen
  -->
 
@@ -89,7 +89,9 @@ export default {
       inputPhone:"",
       inputArea:"",
       inputDetail:"",
-      inputDefault:false,
+      inputProvince:"",
+      inputCity:"",
+      inputStatus:0
       // userAddress: {
       //   username: "",
       //   phone: "",
@@ -99,18 +101,19 @@ export default {
       // }
     };
   },
-  mounted(){
-    this.userAddress = this.$store.state.userAddress;
-  },
   methods: {
     submited:function(){
     this.$https
       .request({   
-        url: this.$interfaces.getUserAddress,
+        url: this.$interfaces.setUserAddress,
         data: {
-          username:this.inputName,
+          userName:this.inputName,
           phone:this.inputPhone,
-          area:this.inputArea, //输入值
+          userId:3, //目前写死，需要动态获取user_id
+          province:this.inputProvince,
+          city:this.inputCity,
+          detail:this.inputDetail,
+          status:this.inputStatus
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -140,12 +143,18 @@ export default {
     onConfirm(e) {
       console.log(e);
       this.inputArea=e.label;
-      // var str=this.inputArea.split("-");
-      // console.log(str);
+      var str=this.inputArea.split("-");
+      console.log(str);
+      this.inputProvince = str[0];
+      this.inputCity = str[1];
     },
     switchChange(e) {
       console.log(e);
-      this.inputDefault = e;
+      console.log(typeof(e));
+      if(e==true){
+        console.log("!23");
+        this.inputStatus = 2;
+      }
     }
   }
 };

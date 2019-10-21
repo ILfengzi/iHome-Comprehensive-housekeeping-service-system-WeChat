@@ -1,13 +1,16 @@
 {
   "pages": [
+
+    "pages/evaluate/main",
+    "pages/newaddress/main",   
+    "pages/address/main",  
+     
     "pages/orderAddress/main", 
     "pages/index/main",
      
-    "pages/address/main",    
+      
     "pages/mine/staff/main",  
     "pages/mine/user/main",     
-         
-    "pages/newaddress/main",    
     "pages/reservation/forAmount/main",
     "pages/reservation/forDuration/main",
     "pages/payOver/main",
@@ -16,11 +19,8 @@
     "pages/orderPreview/main",
     "pages/home/main",
     "pages/orderdetail/main",
-     
     "pages/makeEval/main",
     "pages/aboutUs/main",
-
-    "pages/evaluate/main",
     "pages/order/main", 
     "pages/allorder/main",     
     "pages/reservation/forOffline/main",

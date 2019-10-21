@@ -2,7 +2,7 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-15 11:13:34
+ * @LastEditTime: 2019-10-21 15:50:45
  * @LastEditors: Wanlin Chen
  -->
 
@@ -18,27 +18,6 @@
     </div>
     <!-- 评价列表 -->
     <div class="eva_list">
-      <evaluateCell
-        :detailType="evaluate.detailType"
-        :quality="evaluate.quality"
-        :attitude="evaluate.attitude"
-        :describe="evaluate.describe"
-        :time="evaluate.time"
-      ></evaluateCell>
-      <evaluateCell
-        :detailType="evaluate.detailType"
-        :quality="evaluate.quality"
-        :attitude="evaluate.attitude"
-        :describe="evaluate.describe"
-        :time="evaluate.time"
-      ></evaluateCell>
-      <evaluateCell
-        :detailType="evaluate.detailType"
-        :quality="evaluate.quality"
-        :attitude="evaluate.attitude"
-        :describe="evaluate.describe"
-        :time="evaluate.time"
-      ></evaluateCell>
       <evaluateCell
         :detailType="evaluate.detailType"
         :quality="evaluate.quality"
