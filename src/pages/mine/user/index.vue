@@ -2,7 +2,7 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-15 17:15:34
+ * @LastEditTime: 2019-10-21 09:40:58
  * @LastEditors: Wanlin Chen
  -->
 
@@ -17,9 +17,9 @@
         </div>
     </div>
     <div class="order_info">
-        <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单" :text="88"></mineCell>
-        <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址" :text="88"></mineCell>
-        <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价" :text="19"></mineCell>
+        <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单" ></mineCell>
+        <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址"></mineCell>
+        <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价" ></mineCell>
     </div>
     <!-- <div class="order_info">
         <mineCell icon="/static/images/icon/mine/联系客服.png" title="联系客服" ></mineCell>
@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .user_info {
   background-color: #fff;
   padding: 8px 16px;

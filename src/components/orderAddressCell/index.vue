@@ -2,11 +2,12 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-10-18 17:08:25
+ * @LastEditTime: 2019-10-21 09:59:02
  * @LastEditors: Wanlin Chen
  -->
 <template>
-  <div class="address_info">
+  <div class="address_info" >
+    <div @click="$emit('click')">
       <div class="user">
         <span>收货人：</span>
         <span class="user">{{username}} {{phone}}</span>
@@ -14,7 +15,8 @@
       <div class="address">
         <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
         <div class="addr">{{province}}{{city}}{{detail}}</div>
-      </div>      
+      </div>       
+    </div>
     <span class="icon">
       <img class="mod" src="/static/images/icon/修改.png" />
       <img @click="showModal" class="cal" src="/static/images/icon/删除.png" />

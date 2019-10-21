@@ -2,20 +2,20 @@
  * @Description: 编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 14:54:39
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-21 09:12:19
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
-  <div class="newaddress">
-    <form>
+  <div class="newaddress" enctype="multipart/form-data">
+    <form action="">
       <div class="form_group">
         <span>用户名：</span>
         <input
-          name="name"
+          name="username"
           placeholder="请输入您的名字"
           type="text"
-          v-model="formaddr.name"
+          v-model="inputName"
           @focus="inputFocus"
         />
       </div>
@@ -25,14 +25,14 @@
           name="phone"
           type="number"
           placeholder="请输入您的手机号"
-          v-model="formaddr.phone"
+          v-model="inputPhone"
           @focus="inputFocus"
         />
       </div>
       <div class="form_group">
         <span class="title">所在地区：</span>
         <!-- <input v-model="formaddr.area" class="area"> -->
-        <div :inputValue="formaddr.area" class="area">{{inputValue}}</div>
+        <div :inputArea="inputArea" class="area">{{inputArea}}</div>
         <img
           class="btn"
           src="/static/images/icon/选择展开.png"
@@ -55,21 +55,22 @@
           maxlength="50"
           autofocus="true"
           v-bind="changContext"
-          v-model="formaddr.detail"
+          v-model="inputDetail"
         ></textarea>
       </div>
       <div class="form_group defaultaddr">
         <span class="title">设为默认地址</span>
-        <mp-switch :checkd="formaddr.default" @change="switchChange"></mp-switch>
+        <mp-switch :checkd="inputDefault" @change="switchChange"></mp-switch>
       </div>
       <div class="save">
-        <button form-type="submit" type="primary" size="large">保存</button>
+        <button @click="submited" form-type="submit" type="primary" size="large">保存</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import mpButton from "mpvue-weui/src/button";
 import mpSwitch from "mpvue-weui/src/switch";
 import mpCitypicker from "mpvue-weui/src/city-picker";
@@ -84,17 +85,48 @@ export default {
       mode: "multiLinkageSelector",
       deepLength: 3,
       pickerValueDefault: [1, 0],
-      inputValue: "",
-      formaddr: {
-        username: "",
-        phone: "",
-        area: "",
-        detail: "",
-        default: false
-      }
+      inputName:"",
+      inputPhone:"",
+      inputArea:"",
+      inputDetail:"",
+      inputDefault:false,
+      // userAddress: {
+      //   username: "",
+      //   phone: "",
+      //   area: "",
+      //   detail: "",
+      //   default: false
+      // }
     };
   },
+  mounted(){
+    this.userAddress = this.$store.state.userAddress;
+  },
   methods: {
+    submited:function(){
+    this.$https
+      .request({   
+        url: this.$interfaces.getUserAddress,
+        data: {
+          username:this.inputName,
+          phone:this.inputPhone,
+          area:this.inputArea, //输入值
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+        // 成功，刷新页面
+        // this.userAddress = res.addressList;
+        // console.log(this.userAddress);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    },
     swithToaddress: function() {
       console.log(123);
       wx.navigateBack({
@@ -107,20 +139,14 @@ export default {
     },
     onConfirm(e) {
       console.log(e);
-      this.inputValue = e.label;
-      this.formaddr.area = this.inputValue;
+      this.inputArea=e.label;
+      // var str=this.inputArea.split("-");
+      // console.log(str);
     },
     switchChange(e) {
       console.log(e);
-      this.formaddr.default = e;
+      this.inputDefault = e;
     }
-    // },
-    // onChange(e) {
-    //   console.log(e);
-    // },
-    // onCancel(e) {
-    //   console.log(e);
-    // }
   }
 };
 </script>
@@ -159,7 +185,7 @@ textarea {
   width: 440rpx;
   /* border:1px solid #ddd;
     border-radius:8rpx; */
-  height: 60rpx;
+  height: 112rpx;
   line-height: 60rpx;
   padding: 10rpx 20rpx;
   float: right;

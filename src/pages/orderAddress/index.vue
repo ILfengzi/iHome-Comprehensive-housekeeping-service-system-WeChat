@@ -1,21 +1,22 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: "订单跳转"的我的地址页面
+ * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 10:49:38
+ * @LastEditTime: 2019-10-21 10:58:07
  * @LastEditors: Wanlin Chen
  -->
 
 <template>
   <div class="addresslist">
     <div v-for="(item,index) in userAddress" :key="index">
-        <addressCell
+        <orderAddressCell
         :province="item.province"
         :city="item.city"
         :phone="item.phone"
         :detail="item.detail"
         :username="item.username"
-        ></addressCell>
+        @click="swithToOrder"
+        ></orderAddressCell>
     </div>
     <div class="btn">
       <button @click="switchToNewAddress" form-type="submit" type="primary">新建</button>
@@ -24,12 +25,12 @@
 </template>
 
 <script>
-import addressCell from "../../components/addressCell/index";
+import orderAddressCell from "../../components/orderAddressCell/index";
 
 export default {
   data() {
     return {
-      userAddress:null,
+      userAddress: null,
       // userdetail: {
       //   province: "广东省",
       //   city: "广州市荔湾区",
@@ -41,8 +42,9 @@ export default {
     };
   },
   components: {
-    addressCell
+    orderAddressCell
   },
+
   onShow() {
      console.log("成功加载");        
     //输入完成，传递输入值给后端、刷新页面
@@ -64,6 +66,7 @@ export default {
         // 成功，刷新页面
         this.userAddress = res.addressList;
         console.log(this.userAddress);
+        
       })
       .catch(err => {
         console.log(err);

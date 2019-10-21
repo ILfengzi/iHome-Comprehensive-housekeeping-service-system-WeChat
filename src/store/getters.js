@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:11
- * @LastEditTime: 2019-10-19 17:32:39
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-21 08:48:44
+ * @LastEditors: Wanlin Chen
  */
 export const isAuthenticated = state => state.isAuthenticated;
 export const user = state => state.user;

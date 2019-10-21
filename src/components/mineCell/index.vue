@@ -2,7 +2,7 @@
  * @Description: “我的”页面 组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 14:52:59
+ * @LastEditTime: 2019-10-21 09:24:47
  * @LastEditors: Wanlin Chen
  -->
 
@@ -11,7 +11,6 @@
       <img :src="icon" alt>
       <span>{{title}}</span>
       <span class="r_icon" >
-          <span v-if="text" class="detail">{{text}}</span>
           <img src="/static/images/icon/mine/icon_r.jpg" alt>
       </span>
   </div>
@@ -41,14 +40,6 @@ export default {
   height: 26px;
   margin-right: 16px;
   float: left;
-}
-.mineCell .detail {
-  font-size: 12px;
-  color: #8fc31f;
-  padding: 0 5px;
-  background-color: #eee;
-  border-radius: 20px;
-  margin-right: 10px;
 }
 .r_icon {
   font-size: 16px;

@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:18
- * @LastEditTime: 2019-10-19 17:32:02
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-20 20:39:23
+ * @LastEditors: Wanlin Chen
  */
 import Vue from "vue";
 import Vuex from "vuex";
@@ -22,7 +22,8 @@ const state = {
   inputVal: "",
   searchResults: null, //搜索结果
   serviceDetail: null,  //服务详情
-  orderForm: null //下单
+  orderForm: null, //下单
+  userAddres:null //用户地址
 };
 
 export default new Vuex.Store({

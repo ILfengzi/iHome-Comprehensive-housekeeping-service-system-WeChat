@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-19 17:34:40
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-20 20:40:34
+ * @LastEditors: Wanlin Chen
  */
 export const setIsAuthenticated = ({ commit }, data) => {
   commit("setIsAuthenticated", data);
@@ -36,3 +36,4 @@ export const setPosition = ({ commit }, data) => {
   export const setOrderForm = ({ commit }, data) => {
     commit("setOrderForm", data);
   };
+

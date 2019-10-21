@@ -1,23 +1,21 @@
 <!--
- * @Description: “我的” -- 员工
- * @Author: Wanlin Chen
+ * @Description: "我的"员工页面
+ * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-14 14:53:42
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-21 09:52:24
+ * @LastEditors: Wanlin Chen
  -->
-
 <template>
-  <div class="mine">
-    <div class="user_info">
+  <div>
+      <div class="user_info">
         <!-- 用户信息 -->
         <img src="/static/images/logo.jpg" alt>
         <div class="user_detail">
             <h4>Celine</h4>
             <span>13202019516</span>
         </div>
-    </div>
+    </div>        
     <div class="work_info">
-        <!-- 工时信息 -->
         <div class="work_detail">
             <h4>总订单</h4>
             <span>12</span>
@@ -32,8 +30,9 @@
         </div>
     </div>
     <div class="order_info">
-        <mineCell icon="/static/images/icon/mine/我的订单.png" title="我的订单" :text="88"></mineCell>
-        <mineCell icon="/static/images/icon/mine/评价.png" title="我的评价" :text="19"></mineCell>
+        <mineCell icon="/static/images/icon/mine/我的订单.png" title="我的订单" ></mineCell>
+        <mineCell icon="/static/images/icon/mine/评价.png" title="我的评价" ></mineCell>
+        <mineCell icon="/static/images/icon/mine/tool.png" title="我的工具" ></mineCell>
     </div>
     <div class="order_info">
         <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们" ></mineCell>
@@ -96,8 +95,7 @@ export default {
   color: #aaa;
   font-size: 14px;
 }
-
 .order_info {
   margin-top: 16px;
 }
-
+</style>
