@@ -2,7 +2,7 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-21 11:47:55
+ * @LastEditTime: 2019-10-21 11:55:50
  * @LastEditors: Lin Changkun
  -->
 
@@ -90,7 +90,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .user_info {
   background-color: #fff;
   padding: 8px 16px;

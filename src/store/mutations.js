@@ -1,9 +1,9 @@
 /*
  * @Description: 
- * @Author: 
+ * @Author:  Lin Changkun
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-19 17:33:55
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-21 08:49:04
+ * @LastEditors: Wanlin Chen
  */
 export const setIsAuthenticated = (state, data) => {
     state.isAuthenticated = data;

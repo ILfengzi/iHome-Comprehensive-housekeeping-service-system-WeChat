@@ -2,11 +2,17 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-21 10:34:58
  * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-21 10:35:19
+ * @LastEditors: Wanlin Chen
+>>>>>>> e1c3ddce4c1c761925fc2531607a697b48548184
  */
-// const domain = "http://10.86.2.14:8080/json/";    //局域网通信
-const domain = "http://ilfengzi.club/json/";    //服务器通信
+// const domain = "http://10.86.2.14:80/json/"; 
+const domain = "http://www.ilfengzi.club/json/";    //局域网通信
+
 
 const interfaces = {
   getOpenid: domain + 'getCode', // 获取openID的接口
@@ -18,8 +24,8 @@ const interfaces = {
   getServiceDetails: domain + 'order/typelist',  //获取服务详情接口
   getServiceClass: domain + 'order/selectByserviceid',  //获取分类服务接口
   getTime: domain + 'timer/getMessage',  //获取服务时间
-  getUser: domain + 'user/selectUsers', //获取用户信息
-  sendOrder: domain + ''  //发送订单接口
+  getUserAddress: domain + 'user/selectUserAddress' //获取用户地址信息
+
 };
 
 module.exports = interfaces;
