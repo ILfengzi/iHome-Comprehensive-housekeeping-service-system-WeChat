@@ -2,8 +2,17 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-21 11:23:16
+=======
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-21 10:34:58
+ * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-21 10:35:19
+>>>>>>> 38ce81b93972f9d7f0e3c067f19530c85a08a7b6
  * @LastEditors: Wanlin Chen
+>>>>>>> e1c3ddce4c1c761925fc2531607a697b48548184
  */
 // const domain = "http://10.86.2.14:80/json/"; 
 const domain = "http://www.ilfengzi.club/json/";    //局域网通信

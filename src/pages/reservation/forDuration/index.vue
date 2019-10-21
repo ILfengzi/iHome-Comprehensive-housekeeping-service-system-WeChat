@@ -2,13 +2,12 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-20 10:27:33
+ * @LastEditTime: 2019-10-21 09:01:16
  * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="reservation">
-    <!-- <form report-submit="true" @submit="formSubmit" @reset="formReset"> -->
     <!-- 带跳转带列表项 -->
     <div class="weui-cells weui-cells_after-title">
       <!-- 选择地点 -->
@@ -39,9 +38,7 @@
         <remarks-picker @click="getChildRemarks"></remarks-picker>
       </div>
     </div>
-    <!-- <button type="primary" form-type="submit">提交订单</button> -->
     <button type="primary" @click="submitMessage">提交订单</button>
-    <!-- </form> -->
   </div>
 </template>
 
@@ -69,12 +66,8 @@ export default {
         time: undefined, //服务时间
         price: 10, //价格
         remarks: "" //备注
-      }, //订单
-      // duration: undefined, //服务时长
+      },
       pickerValueArray: undefined,
-      // time: undefined, //服务时间
-      // price: 10,
-      // remarks: undefined, //备注
       deepLength: 2,
       showTimePicker: false, //先选择时长才能选择日期
       showPriceAndRemarks: false, //先选择日期才会出现金额和备注
@@ -87,13 +80,6 @@ export default {
   },
 
   methods: {
-    formSubmit(e) {
-      console.log("form发生了submit事件，携带数据为：", e.mp.detail.value);
-    },
-    formReset() {
-      console.log("form发生了reset事件");
-    },
-
     getChildDuration(childDuration) {
       // 拿到子组件传回来的时长
       // this.duration = childDuration;
@@ -104,7 +90,8 @@ export default {
         .request({
           url: this.$interfaces.getTime,
           data: {
-            hours: childDuration
+            hours: childDuration,
+            type: 0
           },
           header: {
             "content-type": "application/json" // 默认值

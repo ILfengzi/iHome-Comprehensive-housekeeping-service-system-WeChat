@@ -2,7 +2,7 @@
  * @Description: 备注
  * @Author: 
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-19 18:08:11
+ * @LastEditTime: 2019-10-21 08:45:53
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -33,11 +33,12 @@ export default {
 
     // 输入完成触发
     confirmHandle(e) {
-      // console.log(this.inputValue);
+      console.log(this.inputValue);
       this.$emit('click', this.inputValue);
     },
     //输入框失去焦点时触发
     losefocus(e){
+      console.log(this.inputValue);
       this.$emit('click', this.inputValue);
     }
   }
