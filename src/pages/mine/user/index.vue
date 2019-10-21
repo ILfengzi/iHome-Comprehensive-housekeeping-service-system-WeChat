@@ -2,7 +2,7 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-21 11:55:50
+ * @LastEditTime: 2019-10-21 12:58:19
  * @LastEditors: Lin Changkun
  -->
 
@@ -52,7 +52,7 @@ export default {
       nickName: "获取中...",
       country: "中国",
       province: "广东",
-      city: "肇庆"
+      city: "湛江"
     };
   },
   mounted() {

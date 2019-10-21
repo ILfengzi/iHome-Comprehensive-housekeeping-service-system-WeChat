@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-19 21:08:52
+ * @LastEditTime: 2019-10-21 15:28:35
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -96,58 +96,58 @@ export default {
     return {
       images: [
         {
-          url: "/static/images/首页轮播1.jpg"
+          url: "http://47.100.139.184:8080/首页轮播1.jpg"
         },
         {
-          url: "/static/images/首页轮播3.jpg"
+          url: "http://47.100.139.184:8080/首页轮播3.jpg"
         },
         {
-          url: "/static/images/首页轮播2.jpg"
+          url: "http://47.100.139.184:8080/首页轮播2.jpg"
         }
       ],
       inputShowed: false, //搜索
       inputVal: "", //输入值
       grids: [
-        { src: "/static/images/xinju.png", name: "新居", index: 6 },
-        { src: "/static/images/caboli.png", name: "擦玻璃", index: 2 },
-        { src: "/static/images/baojie.png", name: "日常保洁", index: 3 },
-        { src: "/static/images/zuofan.png", name: "做饭", index: 4 },
-        { src: "/static/images/jiesong.png", name: "接送", index: 5 },
-        { src: "/static/images/ktwx.png", name: "空调维修", index: 1 },
-        { src: "/static/images/matong.png", name: "通马桶", index: 7 },
-        { src: "/static/images/all.png", name: "全部服务", index: 8 }
+        { src: "http://47.100.139.184:8080/xinju.png", name: "新居", index: 6 },
+        { src: "http://47.100.139.184:8080/caboli.png", name: "擦玻璃", index: 2 },
+        { src: "http://47.100.139.184:8080/baojie.png", name: "日常保洁", index: 3 },
+        { src: "http://47.100.139.184:8080/zuofan.png", name: "做饭", index: 4 },
+        { src: "http://47.100.139.184:8080/jiesong.png", name: "接送", index: 5 },
+        { src: "http://47.100.139.184:8080/ktwx.png", name: "空调维修", index: 1 },
+        { src: "http://47.100.139.184:8080/matong.png", name: "通马桶", index: 7 },
+        { src: "http://47.100.139.184:8080/all.png", name: "全部服务", index: 8 }
       ],
       service: [
         {
-          img: "/static/images/bjdc.jpg",
+          img: "http://47.100.139.184:8080/bjdc.jpg",
           title: "背景调查",
           describe: "入职前的背景调查，保障从业人员无任何背景问题",
           level: "完全放心",
           count: "层层把关"
         },
         {
-          img: "/static/images/zypx.jpg",
+          img: "http://47.100.139.184:8080/zypx.jpg",
           title: "专业培训",
           describe: "定期的专业培训，不断提高从业人员的服务质量和专业素养",
           level: "完全安心",
           count: "服务提升"
         },
         {
-          img: "/static/images/zyrz.jpg",
+          img: "http://47.100.139.184:8080/zyrz.jpg",
           title: "专业认证",
           describe: "每个从业人员皆持证上岗，且都经过行业的专业认证",
           level: "完全走心",
           count: "行业认可"
         },
         {
-          img: "/static/images/fwzd.jpg",
+          img: "http://47.100.139.184:8080/fwzd.jpg",
           title: "服务周到",
           describe: "周到的服务，一丝不苟、细致入微是我们的追求",
           level: "完全称心",
           count: "客户至上"
         },
         {
-          img: "/static/images/shbz.jpg",
+          img: "http://47.100.139.184:8080/shbz.jpg",
           title: "售后保障",
           describe: "完善的售后制度，时刻保障您的权益，完全无后顾之忧",
           level: "完全诚心",
@@ -175,9 +175,6 @@ export default {
     },
     complete(e) {
       //输入完成，传递输入值给后端、进行页面跳转
-      wx.navigateTo({
-        url: "../booking/main"
-      });
       console.log("输入完成！输入的值为：");
       console.log(this.$store.state.inputVal);
       this.$https
@@ -193,6 +190,9 @@ export default {
         })
         .then(res => {
           this.$store.dispatch("setSearchResults", res.listd);
+          wx.navigateTo({
+            url: "../booking/main"
+          });
         })
         .catch(err => {
           console.log(err);

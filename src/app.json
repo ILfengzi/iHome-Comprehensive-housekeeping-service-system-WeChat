@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/mine/user/main",
     "pages/orderPreview/main",
     "pages/reservation/forSquare/main",
     "pages/orderAddress/main", 
     "pages/index/main",
     "pages/address/main",    
-    "pages/mine/staff/main",  
-    "pages/mine/user/main",
+    "pages/mine/staff/main",
     "pages/newaddress/main",
     "pages/reservation/forDuration/main",
     "pages/reservation/forOffline/main",
