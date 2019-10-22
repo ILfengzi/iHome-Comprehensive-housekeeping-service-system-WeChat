@@ -8,7 +8,7 @@
 <template>
   <div class="address_info">
       <div class="user">
-        <span>收货人：</span>
+        <span>顾客名：</span>
         <span class="user">{{username}} {{phone}}</span>
       </div>
       <div class="address">

@@ -1,28 +1,16 @@
 {
   "pages": [
-<<<<<<< HEAD
-
-    "pages/evaluate/main",
+    "pages/makeEval/main",
+    "pages/order/main", 
+    "pages/evaluate/main", 
+    "pages/address/main", 
     "pages/newaddress/main",   
-    "pages/address/main",  
-     
     "pages/orderAddress/main", 
     "pages/index/main",
-     
-      
-    "pages/mine/staff/main",  
     "pages/mine/user/main",     
-    "pages/reservation/forAmount/main",
-=======
-    "pages/mine/user/main",
     "pages/orderPreview/main",
     "pages/reservation/forSquare/main",
-    "pages/orderAddress/main", 
-    "pages/index/main",
-    "pages/address/main",    
     "pages/mine/staff/main",
-    "pages/newaddress/main",
->>>>>>> 38ce81b93972f9d7f0e3c067f19530c85a08a7b6
     "pages/reservation/forDuration/main",
     "pages/reservation/forOffline/main",
     "pages/reservation/forAmount/main",
@@ -30,13 +18,7 @@
     "pages/serviceDetail/main",
     "pages/home/main",
     "pages/orderdetail/main",
-    "pages/makeEval/main",
     "pages/aboutUs/main",
-<<<<<<< HEAD
-=======
-    "pages/evaluate/main",
->>>>>>> 38ce81b93972f9d7f0e3c067f19530c85a08a7b6
-    "pages/order/main", 
     "pages/service/main",
     "pages/booking/main"
   ],

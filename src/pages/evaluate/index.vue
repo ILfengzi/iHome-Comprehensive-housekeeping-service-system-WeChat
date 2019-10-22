@@ -2,7 +2,7 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 15:50:45
+ * @LastEditTime: 2019-10-21 16:57:33
  * @LastEditors: Wanlin Chen
  -->
 
@@ -40,13 +40,36 @@ export default {
       num: 3, ////统计该用户评价表数据库中有多少条数据
       evaluate: {
         detailType: "服务名",
-        quality: 3,
+        quality: 3.5,
         attitude: 4,
         describe: "很好",
         time: "2019/10/14"
       }
     };
-  },
+  }, 
+  // onShow() {
+  //    console.log("成功加载");        
+  //   this.$https
+  //     .request({   
+  //       url: this.$interfaces.getUserAddress,
+  //       data: {
+  //         id: 1 //输入值
+  //       },
+  //       header: {
+  //         "content-type": "application/json" // 默认值
+  //       },
+  //       method: "POST"
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       // 成功，刷新页面
+  //       this.userAddress = res.addressList;
+  //       console.log(this.userAddress);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // },
   methods: {
     swithToOrder: function() {
       console.log(123);

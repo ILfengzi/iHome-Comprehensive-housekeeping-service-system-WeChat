@@ -2,14 +2,14 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-10-21 09:59:02
+ * @LastEditTime: 2019-10-21 16:36:02
  * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="address_info" >
     <div @click="$emit('click')">
       <div class="user">
-        <span>收货人：</span>
+        <span>顾客名：</span>
         <span class="user">{{username}} {{phone}}</span>
       </div>
       <div class="address">

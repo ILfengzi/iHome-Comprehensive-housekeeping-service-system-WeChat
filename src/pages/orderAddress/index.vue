@@ -30,15 +30,7 @@ import orderAddressCell from "../../components/orderAddressCell/index";
 export default {
   data() {
     return {
-      userAddress: null,
-      // userdetail: {
-      //   province: "广东省",
-      //   city: "广州市荔湾区",
-      //   phone: "123456789",
-      //   detail:
-      //     "春田花花幼稚园xxx街道123号我是一个假数据我是一个假数据我是一个假数据我是一个假数据",
-      //   username: "celine"
-      // }
+      userAddress: null
     };
   },
   components: {
@@ -47,9 +39,6 @@ export default {
 
   onShow() {
      console.log("成功加载");        
-    //输入完成，传递输入值给后端、刷新页面
-  //   let a = this.$store.state.fakeId;
-  //   console.log(a);
     this.$https
       .request({   
         url: this.$interfaces.getUserAddress,
