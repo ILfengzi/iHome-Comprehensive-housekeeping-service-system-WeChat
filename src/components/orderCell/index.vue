@@ -2,7 +2,7 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-22 14:52:09
+ * @LastEditTime: 2019-10-22 15:53:01
  * @LastEditors: Wanlin Chen
  -->
 
@@ -34,7 +34,8 @@ export default {
   methods:{
     switchToDetail(){
       this.$store.dispatch('setOrderDetail',this.allOrderList);
-      console.log("sss"+this.$store.state.orderDetail);
+      // console.log("sss");
+      // console.log(this.$store.state.orderDetail);
       wx.navigateTo({
         url: '/pages/orderdetail/main',
         success: function(res){

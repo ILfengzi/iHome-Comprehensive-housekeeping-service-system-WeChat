@@ -2,23 +2,12 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-22 11:10:45
+ * @LastEditTime: 2019-10-22 20:50:31
  * @LastEditors: Wanlin Chen
  -->
 
 <template>
   <div class="order">
-    <div class="search">
-      <mp-searchbar
-        :isFocus="true"
-        :inputValue="inputValue"
-        :placeholder="placeholder"
-        @input="input"
-        @blur="blur"
-        @focus="focus"
-        @confirm="confirm"
-      ></mp-searchbar>
-    </div>
     <div class="page">
       <div class="page__bd">
         <div class="weui-tab">
@@ -33,7 +22,7 @@
               </div>
             </block>
           </div>
-          <div class="weui-tab__panel" >
+          <div class="weui-tab__panel">
             <div class="weui-tab__content" :hidden="activeIndex != 0">
               <div v-for="(item,index) in allOrderList" :key="index">
                 <orderCell :allOrderList="item"></orderCell>
@@ -44,13 +33,15 @@
                 <orderCell :allOrderList="item"></orderCell>
               </div>
             </div>
-            <div class="weui-tab__content" :hidden="activeIndex != 2">              
+            <div class="weui-tab__content" :hidden="activeIndex != 2">
               <div v-for="(item,index) in allOrderList" :key="index">
                 <orderCell :allOrderList="item"></orderCell>
-              </div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div :class="{'hide':isHide,'tips':istips}">没有该状态的订单哦！</div>
     </div>
   </div>
 </template>
@@ -58,30 +49,31 @@
 <script>
 import orderCell from "../../components/orderCell/index";
 import mpNavbar from "mpvue-weui/src/navbar";
-import mpSearchbar from "mpvue-weui/src/searchbar";
 export default {
   data() {
     return {
       tabs: ["待服务", "服务中", "已完成"],
       activeIndex: 0,
-      allOrderList:null,
-      state:2
+      allOrderList: null,
+      state: 2,
+      inputValue: "",
+      isHide: true,
+      istips: true
     };
   },
   components: {
     orderCell,
-    mpNavbar,
-    mpSearchbar
+    mpNavbar
   },
   onShow() {
-     console.log("成功加载");        
+    console.log("成功加载");
     this.$https
-      .request({   
+      .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
           userid: 1, //输入值
-          temp:2, //用户类型 1为员工，2为普通用户
-          state:this.state
+          temp: 2, //用户类型 1为员工，2为普通用户
+          state: this.state
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -92,6 +84,10 @@ export default {
         console.log(res);
         // 成功，刷新页面
         this.allOrderList = res.iOrderList;
+        if (this.allOrderList.length == 0) {
+          this.isHide = false;
+          console.log(this.isHide);
+        }
       })
       .catch(err => {
         console.log(err);
@@ -99,37 +95,43 @@ export default {
   },
   methods: {
     tabClick(e) {
+      this.isHide = true;
       console.log(e);
+      // if (this.inputValue == "") {
       this.activeIndex = Number(e.currentTarget.id);
       // console.log(typeof(this.activeIndex));
-      if(this.activeIndex===0){
+      if (this.activeIndex === 0) {
         this.state = 2;
-      }else if(this.activeIndex===1){
+      } else if (this.activeIndex === 1) {
         this.state = 3;
-      }else if (this.activeIndex===2){
+      } else if (this.activeIndex === 2) {
         this.state = 4;
-      };
-    this.$https
-      .request({   
-        url: this.$interfaces.getOrderlistByid,
-        data: {
-          userid: 1, //输入值
-          temp:2, //用户类型 1为员工，2为普通用户
-          state:this.state
-        },
-        header: {
-          "content-type": "application/json" // 默认值
-        },
-        method: "POST"
-      })
-      .then(res => {
-        console.log(res);
-        // 成功，刷新页面
-        this.allOrderList = res.iOrderList;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      }
+      this.$https
+        .request({
+          url: this.$interfaces.getOrderlistByid,
+          data: {
+            userid: 1, //输入值
+            temp: 2, //用户类型 1为员工，2为普通用户
+            state: this.state
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          // 成功，刷新页面
+          this.allOrderList = res.iOrderList;
+          if (this.allOrderList.length == 0) {
+            this.isHide = false;
+            console.log(this.isHide);
+          }
+          
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
@@ -139,6 +141,7 @@ export default {
 .page,
 .page__bd {
   height: 100%;
+  margin-top: 0px;
 }
 .page__bd {
   padding-bottom: 0;
@@ -149,5 +152,12 @@ export default {
 .weui-tab__content {
   padding-top: 10px;
   /* text-align: center; */
+}
+.tips {
+  color: slategrey;
+  margin: 300rpx 0 0 250rpx;
+}
+.hide {
+  display: none;
 }
 </style>
