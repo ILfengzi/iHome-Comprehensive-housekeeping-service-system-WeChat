@@ -2,7 +2,7 @@
  * @Description: 
  * @Author:  Lin Changkun
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-21 08:49:04
+ * @LastEditTime: 2019-10-22 11:21:49
  * @LastEditors: Wanlin Chen
  */
 export const setIsAuthenticated = (state, data) => {
@@ -36,3 +36,11 @@ export const setFakeId = (state, data) => {
 export const setOrderForm = (state, data) => {
     state.orderForm = data;
 };
+
+export const setUserAddress = (state, data) => {
+    state.userAddress = data;
+};
+
+export const setOrderDetail = (state,data) =>{
+    state.orderDetail = data;
+}

@@ -2,7 +2,7 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-21 20:56:23
+ * @LastEditTime: 2019-10-22 09:51:47
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -44,10 +44,10 @@ export default {
   },
   data() {
     return {
-        detailType: "日常清洁",
+        orderId:3,//从前一个跳转页面获取
         quality: "",
         attitude: "",
-        describe: ""  
+        describe: "" 
     };
   },
   methods: {
@@ -65,7 +65,7 @@ export default {
         data: {
           attitude_valuation:this.attitude,
           e_describe:this.describe,
-          id:3, //目前写死，需要动态获取order_id
+          id:this.orderId, //目前写死，需要动态获取order_id
           quality_valuation:this.quality,
         },
         header: {

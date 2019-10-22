@@ -1,9 +1,9 @@
 <!--
- * @Description: 
+ * @Description: "服务详情"页面
  * @Author: 
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-20 10:18:56
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-22 09:40:13
+ * @LastEditors: Wanlin Chen
  -->
 
  <template>

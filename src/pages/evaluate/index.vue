@@ -2,7 +2,7 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 16:57:33
+ * @LastEditTime: 2019-10-22 09:51:21
  * @LastEditors: Wanlin Chen
  -->
 
@@ -13,18 +13,17 @@
       <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
         <h4>Celine</h4>
-        <span>已贡献{{num}}条数据</span>
+        <span>已贡献{{length}}条数据</span>
       </div>
     </div>
     <!-- 评价列表 -->
     <div class="eva_list">
-      <evaluateCell
-        :detailType="evaluate.detailType"
-        :quality="evaluate.quality"
-        :attitude="evaluate.attitude"
-        :describe="evaluate.describe"
-        :time="evaluate.time"
-      ></evaluateCell>
+      <div v-for="(item,index) in evaluateList" :key="index">
+        <evaluateCell
+          :evaluateList="item"
+        ></evaluateCell>        
+      </div>
+
     </div>
   </div>
 </template>
@@ -37,39 +36,35 @@ export default {
   },
   data() {
     return {
-      num: 3, ////统计该用户评价表数据库中有多少条数据
-      evaluate: {
-        detailType: "服务名",
-        quality: 3.5,
-        attitude: 4,
-        describe: "很好",
-        time: "2019/10/14"
-      }
+      length: Number, ////统计该用户评价表数据库中有多少条数据
+      evaluateList:null
     };
   }, 
-  // onShow() {
-  //    console.log("成功加载");        
-  //   this.$https
-  //     .request({   
-  //       url: this.$interfaces.getUserAddress,
-  //       data: {
-  //         id: 1 //输入值
-  //       },
-  //       header: {
-  //         "content-type": "application/json" // 默认值
-  //       },
-  //       method: "POST"
-  //     })
-  //     .then(res => {
-  //       console.log(res);
-  //       // 成功，刷新页面
-  //       this.userAddress = res.addressList;
-  //       console.log(this.userAddress);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // },
+  onShow() {
+     console.log("成功加载");        
+    this.$https
+      .request({   
+        url: this.$interfaces.getEvaluate,
+        data: {
+          userid: 3, //输入值
+          temp:2 //用户类型 1为员工，2为普通用户
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+        // 成功，刷新页面
+         this.evaluateList = res.iEvaluateList;
+         this.length = this.evaluateList.length;
+         console.log(this.evaluateList);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
     swithToOrder: function() {
       console.log(123);

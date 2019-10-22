@@ -2,7 +2,7 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-14 10:55:43
+ * @LastEditTime: 2019-10-22 11:10:45
  * @LastEditors: Wanlin Chen
  -->
 
@@ -34,12 +34,20 @@
             </block>
           </div>
           <div class="weui-tab__panel" >
-            <div class="weui-tab__content" :hidden="activeIndex != 0" @click="switchTodetail()">
-              <orderCell title="清洁" time="2019/10/09"></orderCell>
-              <orderCell title="清洁" time="2019/10/09"></orderCell>
+            <div class="weui-tab__content" :hidden="activeIndex != 0">
+              <div v-for="(item,index) in allOrderList" :key="index">
+                <orderCell :allOrderList="item"></orderCell>
+              </div>
             </div>
-            <div class="weui-tab__content" :hidden="activeIndex != 1">选项二的内容</div>
-            <div class="weui-tab__content" :hidden="activeIndex != 2">选项三的内容</div>
+            <div class="weui-tab__content" :hidden="activeIndex != 1">
+              <div v-for="(item,index) in allOrderList" :key="index">
+                <orderCell :allOrderList="item"></orderCell>
+              </div>
+            </div>
+            <div class="weui-tab__content" :hidden="activeIndex != 2">              
+              <div v-for="(item,index) in allOrderList" :key="index">
+                <orderCell :allOrderList="item"></orderCell>
+              </div></div>
           </div>
         </div>
       </div>
@@ -54,8 +62,10 @@ import mpSearchbar from "mpvue-weui/src/searchbar";
 export default {
   data() {
     return {
-      tabs: ["待服务", "服务中", "待确认"],
-      activeIndex: 0
+      tabs: ["待服务", "服务中", "已完成"],
+      activeIndex: 0,
+      allOrderList:null,
+      state:2
     };
   },
   components: {
@@ -63,13 +73,63 @@ export default {
     mpNavbar,
     mpSearchbar
   },
+  onShow() {
+     console.log("成功加载");        
+    this.$https
+      .request({   
+        url: this.$interfaces.getOrderlistByid,
+        data: {
+          userid: 1, //输入值
+          temp:2, //用户类型 1为员工，2为普通用户
+          state:this.state
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+        // 成功，刷新页面
+        this.allOrderList = res.iOrderList;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
-    switchIndex(index) {
-      this.currentIndex = index;
-    },
     tabClick(e) {
       console.log(e);
       this.activeIndex = Number(e.currentTarget.id);
+      // console.log(typeof(this.activeIndex));
+      if(this.activeIndex===0){
+        this.state = 2;
+      }else if(this.activeIndex===1){
+        this.state = 3;
+      }else if (this.activeIndex===2){
+        this.state = 4;
+      };
+    this.$https
+      .request({   
+        url: this.$interfaces.getOrderlistByid,
+        data: {
+          userid: 1, //输入值
+          temp:2, //用户类型 1为员工，2为普通用户
+          state:this.state
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+        // 成功，刷新页面
+        this.allOrderList = res.iOrderList;
+      })
+      .catch(err => {
+        console.log(err);
+      });
     }
   }
 };
