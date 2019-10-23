@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 按时长计费（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-21 20:26:18
+ * @LastEditTime: 2019-10-23 17:03:31
  * @LastEditors: Lin Changkun
  -->
 
@@ -60,14 +60,15 @@ export default {
   data() {
     return {
       // icon: "",
+      userAddress: {},
       orderForm: {
-        address: "undefined", //⚠️地址
         duration: undefined, //服务时长
         time: undefined, //服务时间
+        date: undefined, //给后台的时间
         price: 10, //价格
         remarks: "" //备注
       },
-      pickerValueArray: undefined,
+      // pickerValueArray: undefined,
       deepLength: 2,
       showTimePicker: false, //先选择时长才能选择日期
       showPriceAndRemarks: false, //先选择日期才会出现金额和备注
@@ -82,8 +83,6 @@ export default {
   methods: {
     getChildDuration(childDuration) {
       // 拿到子组件传回来的时长
-      // this.duration = childDuration;
-      this.orderForm.duration = childDuration;
 
       //向后端传值，拿到可用的服务时间
       this.$https
@@ -91,7 +90,8 @@ export default {
           url: this.$interfaces.getTime,
           data: {
             hours: childDuration,
-            type: 0
+            type: 0, //0是钟点工，1为其他员工
+            serviceId: this.$store.state.serviceDetail.servicetpyeId
           },
           header: {
             "content-type": "application/json" // 默认值
@@ -104,6 +104,10 @@ export default {
           console.log(res);
           this.pickerValueArray = res.data;
           this.showTimePicker = true;
+          this.orderForm.price =
+            Number(this.$store.state.serviceDetail.price) *
+            Number(childDuration);
+          this.orderForm.duration = childDuration + '小时';
         })
         .catch(err => {
           console.log(err);
@@ -113,9 +117,9 @@ export default {
     getChildTime(childTime) {
       // console.log('时间:', childTime);
       this.showPriceAndRemarks = true;
-      // this.time = childTime;
-      this.orderForm.time = childTime;
-      this.orderForm.price = this.$store.state.searchResults.price;
+      this.orderForm.time = childTime.label;
+      this.orderForm.date = childTime.date;
+      // this.orderForm.price = this.$store.state.searchResults.price;
     },
 
     getChildRemarks(childRemarks) {
@@ -131,14 +135,7 @@ export default {
       console.log(this.$store.state.orderForm);
 
       // 校验
-      if (this.orderForm.address === undefined) {
-        wx.showToast({
-          title: "请选择地址",
-          icon: "none",
-          duration: 2000
-        });
-        console.log("订单：");
-      } else if (this.orderForm.duration === undefined) {
+      if (this.orderForm.duration === undefined) {
         wx.showToast({
           title: "请选择服务时长",
           icon: "none",

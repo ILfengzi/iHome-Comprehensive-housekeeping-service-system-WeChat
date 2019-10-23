@@ -1,13 +1,12 @@
 /*
  * @Description: 
  * @Author: 
- * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-23 10:02:10
+ * @Date: 2019-10-03 00:07:05
+ * @LastEditTime: 2019-10-23 17:48:27
  * @LastEditors: Wanlin Chen
  */
-
-const domain = "http://10.86.2.14:80/json/"; 
-// const domain = "http://www.ilfengzi.club/json/";    //局域网通信
+// const domain = "http://10.86.2.14:80/json/"; //局域网通信
+const domain = "http://www.ilfengzi.club/json/";    //服务器通信
 
 
 const interfaces = {
@@ -25,9 +24,10 @@ const interfaces = {
   setEvaluate: domain + 'order/addEvaluate', //新建评价
   getEvaluate: domain + 'order/evlistByid', //获取评价
   getDefaultAddress: domain + 'user/selectUserDefaultAddress',  //获取用户默认地址接口
+  submitOrder: domain + 'order/addOrder',  //提交订单
   getOrderlistByid: domain + 'order/orderlistByid',//获取订单列表
-  getOrderlistBytypename: domain + 'order/orderBytypename',  //获取模糊查询订单
-  updateOrderState: domain + 'order/updateOrderState' //更新订单状态
+  updateOrderState: domain + 'order/updateOrderState', //更新订单状态
+  getOrderlistBytypename: domain + 'order/orderBytypename'  //获取模糊查询订单
 };
 
 module.exports = interfaces;

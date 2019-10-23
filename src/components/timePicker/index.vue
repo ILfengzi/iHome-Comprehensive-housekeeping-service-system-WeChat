@@ -1,8 +1,8 @@
 <!--
- * @Description: 选择日期时间弹出联动框
- * @Author: 
+ * @Description: 选择日期时间弹出联动框（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-20 16:55:48
+ * @LastEditTime: 2019-10-23 17:06:34
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -61,11 +61,12 @@ export default {
       this.$refs.mpPicker.show();
     },
     onConfirm(e) {
+      console.log('获取到预约上门的时间：');
       console.log(e);
       this.title = e.label;
       this.tips = "";
       // 向父组件传数据
-      this.$emit('click', e.label);
+      this.$emit('click', e);
     }
   }
 };

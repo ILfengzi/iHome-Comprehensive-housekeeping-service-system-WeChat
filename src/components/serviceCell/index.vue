@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 服务小项（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-10 16:40:27
- * @LastEditTime: 2019-10-12 20:01:55
+ * @LastEditTime: 2019-10-23 17:07:14
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -25,10 +25,9 @@ export default {
     title: String,
     level: String,
     describe: String,
-    count: String,
+    count: String
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 <style>
@@ -72,6 +71,9 @@ export default {
 }
 .cell_text p {
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .cell_text p .level {
   color: #eb8831;

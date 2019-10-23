@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 地址选择器（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-17 10:16:43
- * @LastEditTime: 2019-10-22 00:16:05
+ * @LastEditTime: 2019-10-23 17:05:51
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -16,7 +16,7 @@
       </div>
       <div
         class="weui-cell__bd"
-      >{{userAddress.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{userAddress.province}}-{{userAddress.city}}-{{userAddress.detail}}</div>
+      >{{userAddress.username}}&nbsp;&nbsp;&nbsp;&nbsp;{{userAddress.province}}-{{userAddress.city}}-{{userAddress.detail}}</div>
       <div class="weui-cell__ft weui-cell__ft_in-access">{{tips}}</div>
     </div>
   </div>
@@ -29,39 +29,35 @@ export default {
   components: {
     mpPicker
   },
+  // props: {
+  //   userAddress: Object
+  // },
   data() {
     return {
-      // title: "服务地址",
       tips: "我的地址",
-      userAddress: {},
+      // userAddress: {},
+      aa: "-"
     };
   },
-  mounted() {
-    // 向后端拿默认地址
-    this.$https
-      .request({
-        url: this.$interfaces.getDefaultAddress,
-        data: {
-          // userId: this.$store.state.fakeId //⚠️正式用：用户id
-          userId: 1
-        },
-        header: {
-          "content-type": "application/json" // 默认值
-        },
-        method: "POST"
-      })
-      .then(res => {
-        console.log(res);
-        // 将默认地址存到vuex
-        this.$store.dispatch("setUserAddress", res.iUserDetail);
-        console.log(this.$store.state.userAddress);
-        //将页面显示的地址为默认地址，或者是点击本组件选取的地址
-        this.userAddress = this.$store.state.userAddress;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+
+  // 采用计算属性来让组件进行刷新
+  computed: {
+    userAddress: function() {
+      // `this` 指向 vm 实例
+      return this.$store.state.userAddress;
+    }
   },
+
+  // watch:{
+  //   $store.state.userAddress: function(newVal,oldVal){
+  //   }
+  // },
+
+  // mounted() {
+  //   //将页面显示的地址为默认地址，或者是点击本组件选取的地址
+  //   this.userAddress = this.$store.state.userAddress;
+  // },
+
   methods: {
     goMyAddress() {
       wx.navigateTo({
@@ -73,4 +69,9 @@ export default {
 </script>
 
 <style>
+.addressPicker .weui-cell__bd{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>

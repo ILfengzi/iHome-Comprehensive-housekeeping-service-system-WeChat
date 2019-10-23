@@ -2,8 +2,13 @@
  * @Description: 地址组件
  * @Author: Celine
  * @Date: 2019-10-18 08:44:31
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-22 19:37:21
+ * @LastEditors: Lin Changkun
+=======
  * @LastEditTime: 2019-10-22 15:41:22
  * @LastEditors: Wanlin Chen
+>>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
 <template>
   <div class="address_info" >
@@ -71,7 +76,7 @@ export default {
     selectAndBack() {
       // 将vuex中的默认地址更新为选取的地址
       this.$store.dispatch('setUserAddress', this.userAddress);
-      console.log("点击将对象存起，并返回！");
+      console.log("默认地址更新为选取的地址: ");
       console.log(this.$store.state.userAddress);
       // 返回上一级：delta(默认为1) 页面
       wx.navigateBack({
