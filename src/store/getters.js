@@ -14,3 +14,4 @@ export const serviceDetail = state => state.serviceDetail;
 export const fakeId = state => state.fakeId;
 export const orderForm = state => state.orderForm;
 export const userAddress = state => state.userAddress;
+export const orderDetail = state => state.orderDetail;

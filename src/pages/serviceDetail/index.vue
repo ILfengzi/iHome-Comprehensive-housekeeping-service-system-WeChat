@@ -1,9 +1,14 @@
 <!--
- * @Description: 
+ * @Description: "服务详情"页面
  * @Author: 
  * @Date: 2019-10-15 17:02:36
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-22 15:27:17
  * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-22 09:40:13
+ * @LastEditors: Wanlin Chen
+>>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
 
  <template>

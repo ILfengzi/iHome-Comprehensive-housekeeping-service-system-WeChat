@@ -1,26 +1,47 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 地址组件
+ * @Author: Celine
  * @Date: 2019-10-18 08:44:31
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-22 19:37:21
  * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-22 15:41:22
+ * @LastEditors: Wanlin Chen
+>>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
 <template>
-  <div class="address_info" @click="selectAndBack">
-    <div class="user">
-      <span>顾客名：</span>
-      <span class="user">{{userAddress.username}} {{userAddress.phone}}</span>
-    </div>
-    <div class="address">
-      <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
-      <div class="addr">{{userAddress.province}}{{userAddress.city}}{{userAddress.detail}}</div>
+  <div class="address_info" >
+    <!-- <div @click="selectAndBack">
+      <div class="user">
+        <span>顾客名：</span>
+        <span class="user">{{userAddress.username}} {{userAddress.phone}}</span>
+      </div>
+      <div class="address">
+        <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
+        <div class="addr">{{userAddress.province}}{{userAddress.city}}{{userAddress.detail}}</div>
+      </div>      
     </div>
     <span class="icon">
       <img class="mod" src="/static/images/icon/修改.png" @click="isEdit" />
       <img @click="showModal" class="cal" src="/static/images/icon/删除.png" />
-      <!-- <mp-toast value="true" type="success" v-model="showToast" content="删除成功" duration="2000"></mp-toast> -->
       <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm"></mp-modal>
-    </span>
+    </span> -->
+    <div class="detail">
+      <div class="user">
+        <span>顾客名：</span>
+        <span class="user">{{userAddress.username}} {{userAddress.phone}}</span>
+      </div>
+      <div class="address">
+        <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
+        <div class="addr">{{userAddress.province}}{{userAddress.city}}{{userAddress.detail}}</div>
+      </div>      
+    </div>
+    <div class="icon">
+      <img class="mod" src="/static/images/icon/修改.png" @click="isEdit" />
+      <img @click="showModal" class="cal" src="/static/images/icon/删除.png" />
+      <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm"></mp-modal>
+    </div>
   </div>
 </template>
 
@@ -67,40 +88,42 @@ export default {
 </script>
 
 <style>
-.address_info {
+.address_info{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #fff;
-  padding: 20rpx 0 20rpx 24rpx;
+  padding: 20rpx 20rpx 20rpx 24rpx; 
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 16px;   
+}
+.icon{
+  flex:1;
   position: relative;
 }
-.user {
-  flex: 1;
+.detail{
+  flex: 4;
+  display: inline-block;
 }
 .address {
   flex: 1;
-  position: relative;
-}
-.address div {
-  display: inline-block;
-  justify-content: right;
 }
 .addr {
   margin-left: 126rpx;
-  width: 62%;
-  /* position:absolute;
-  top: 36px; */
-}
-.title {
-  position: absolute;
+  margin-top: -24px;
+  width: 74%;
 }
 .icon img {
   width: 46rpx;
   height: 46rpx;
-  float: right;
-  margin-right: 20rpx;
-  margin-top: 4rpx;
+}
+.mod{
+  position: absolute;
+  bottom: 5px;
+  right: 33px;
+}
+.cal{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 </style>

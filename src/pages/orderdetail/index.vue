@@ -2,12 +2,12 @@
  * @Description: 订单详情页面
  * @Author:Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-14 14:55:54
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-22 16:37:13
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
-  <div class="orderdetail">
+  <div class="orderdetail" >
     <div class="state">
       <div v-if="state===0" class="order_state">
         <img src="/static/images/icon/orderdetail/tijiao.png" />已提交
@@ -29,7 +29,7 @@
       <div class="weui-form-preview__hd">
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">服务</div>
-          <div class="weui-form-preview__value_in-hd">{{service}}</div>
+          <div class="weui-form-preview__value_in-hd">{{typename}}</div>
         </div>
       </div>
       <div class="weui-form-preview__bd">
@@ -39,11 +39,11 @@
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">地址</div>
-          <div class="weui-form-preview__value" >{{detail}}</div>
+          <div class="weui-form-preview__value" >{{province+city+detail}}</div>
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">预约时间</div>
-          <div class="weui-form-preview__value">{{price}}</div>
+          <div class="weui-form-preview__value">{{startTime}}</div>
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">用户</div>
@@ -55,15 +55,15 @@
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">下单时间</div>
-          <div class="weui-form-preview__value">{{ordertime}}</div>
+          <div class="weui-form-preview__value">{{orderTime}}</div>
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">交易单号</div>
-          <div class="weui-form-preview__value">{{orderId}}</div>
+          <div class="weui-form-preview__value">{{id}}</div>
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">完成时间</div>
-          <div class="weui-form-preview__value">{{finalytime}}</div>
+          <div class="weui-form-preview__value">{{finalyTime}}</div>
         </div>
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">订单备注</div>
@@ -85,24 +85,44 @@
 export default {
     data(){
         return{
-            state:2,
-            service:String,
-            price:String,
-            detail:String,
-            phone:String,
-            orderId:String,
-            starttime:String,
-            ordertime:String,
-            finalytime:String,
-            comm:String,
-            username:String
+            orderDetail : undefined,
+            state: null,
+            typename: null,
+            price: null,
+            province: null,
+            city: null,
+            detail: null,
+            orderTime: null,
+            id: null,
+            startTime: null,
+            username: null,
+            finalyTime: null,
+            phone: null,
+            comm:null
         }
     },
+    mounted(){
+      this.orderDetail =  this.$store.state.orderDetail;
+      this.state = this.orderDetail.state;
+      this.typename = this.orderDetail.detailtype.typename;
+      this.price = this.orderDetail.price;
+      this.province = this.orderDetail.userDetail.province;
+      this.city = this.orderDetail.userDetail.city;
+      this.detail = this.orderDetail.userDetail.detail;
+      this.orderTime = this.orderDetail.orderTime;
+      this.id = this.orderDetail.id;
+      this.startTime = this.orderDetail.startTime;
+      this.username = this.orderDetail.userDetail.username;
+      this.finalyTime = this.orderDetail.finalyTime;
+      this.phone = this.orderDetail.userDetail.phone;
+      this.comm = this.orderDetail.comm;
+      console.log(this.orderDetail);
+    },
     methods:{
-        swithToOrder:function(){
-            wx.switchTab({
-                url: '../order/main'
-            })
+    swithToOrder:function(){
+      wx.navigateBack({
+        delta: 1
+      });
         }
     }
 }

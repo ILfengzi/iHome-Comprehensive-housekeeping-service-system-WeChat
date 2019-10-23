@@ -2,14 +2,14 @@
   "pages": [
     "pages/reservation/forOffline/main",
     "pages/reservation/forSquare/main",
-    "pages/home/main",
     "pages/reservation/forAmount/main",
-    "pages/reservation/forDuration/main",
-    "pages/serviceDetail/main",
     "pages/index/main",
-    "pages/booking/main",
+    "pages/allorder/main",
     "pages/address/main",
+    "pages/orderdetail/main",
     "pages/evaluate/main",
+    "pages/makeEval/main",
+    "pages/reservation/forDuration/main",
     "pages/mine/user/main",
     "pages/orderPreview/main",
     "pages/orderAddress/main",
@@ -18,9 +18,12 @@
     "pages/payOver/main",
     "pages/orderdetail/main",
     "pages/makeEval/main",
-    "pages/aboutUs/main",
     "pages/order/main",
-    "pages/service/main"
+    "pages/serviceDetail/main",
+    "pages/home/main",
+    "pages/aboutUs/main",
+    "pages/service/main",
+    "pages/booking/main"
   ],
   "tabBar": {
     "color": "#959394",

@@ -2,20 +2,13 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-18 08:26:34
+ * @LastEditTime: 2019-10-22 09:51:47
  * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="makeEval">
-    <!-- <div class="serviceInfo">
-      <img src="/static/images/logo.jpg" alt />
-      <div class="user_detail">
-        <h4>{{evaluate.detailType}}</h4>
-      </div>
-    </div> -->
     <div class="quality">
       <div class="head">您对服务质量满意吗？</div>
-
       <mp-rate @rateClick="qualClick" :isSupportClick="true"></mp-rate>
     </div>
     <div class="attitude">
@@ -33,12 +26,12 @@
           maxlength="150"
           autofocus="true"
           v-bind="changContext"
-          v-model="evaluate.describe"
+          v-model="describe"
         ></textarea>
       </div>
     </div>
     <div class="save">
-      <button form-type="submit" type="primary" size="large">保存</button>
+      <button @click="submited"  type="primary" size="large">保存</button>
     </div>
   </div>
 </template>
@@ -51,24 +44,45 @@ export default {
   },
   data() {
     return {
-      evaluate: {
-        detailType: "日常清洁",
-        quality: Number,
-        attitude: Number,
-        describe: String,
-        time: String
-      }
+        orderId:3,//从前一个跳转页面获取
+        quality: "",
+        attitude: "",
+        describe: "" 
     };
   },
-
   methods: {
     //评分点击事件
     rateClick(index) {
-      this.evaluate.attitude = index;
+      this.attitude = index;
     },
     qualClick(index) {
-      this.evaluate.quality = index;
-    }
+      this.quality = index;
+    },
+  submited:function(){
+    this.$https
+      .request({   
+        url: this.$interfaces.setEvaluate,
+        data: {
+          attitude_valuation:this.attitude,
+          e_describe:this.describe,
+          id:this.orderId, //目前写死，需要动态获取order_id
+          quality_valuation:this.quality,
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        console.log(res);
+        // 成功，刷新页面
+        // this.userAddress = res.addressList;
+        // console.log(this.userAddress);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    },
   }
 };
 </script>

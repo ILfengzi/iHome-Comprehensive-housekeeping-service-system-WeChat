@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-21 20:00:34
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-22 11:21:11
+ * @LastEditors: Wanlin Chen
  */
 export const setIsAuthenticated = ({ commit }, data) => {
   commit("setIsAuthenticated", data);
@@ -38,4 +38,8 @@ export const setOrderForm = ({ commit }, data) => {
 };
 export const setUserAddress = ({ commit }, data) => {
   commit("setUserAddress", data);
+};
+
+export const setOrderDetail = ({ commit },data) => {
+  commit("setOrderDetail",data);
 };

@@ -2,8 +2,13 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 08:44:31
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-21 16:36:02
+ * @LastEditors: Wanlin Chen
+=======
  * @LastEditTime: 2019-10-21 16:36:25
  * @LastEditors: Lin Changkun
+>>>>>>> 1dd352e17287524e81364952c01c3823e18875c4
  -->
 <template>
   <div class="address_info" >

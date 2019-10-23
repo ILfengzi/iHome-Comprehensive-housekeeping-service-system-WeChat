@@ -2,7 +2,7 @@
  * @Description: "我的评价" 评价列表组件
  * @Author: Celine
  * @Date: 2019-10-15 09:33:29
- * @LastEditTime: 2019-10-16 15:41:41
+ * @LastEditTime: 2019-10-22 09:29:30
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -10,29 +10,29 @@
     <div class="weui-form-preview__hd">
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">服务</div>
-        <div class="weui-form-preview__value_in-hd">{{detailType}}</div>
+        <div class="weui-form-preview__value_in-hd">{{evaluateList.detailtype.typename}}</div>
       </div>
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">服务质量评分</div>
         <div class="weui-form-preview__value">
-          <mp-rate :rateValue="quality"  @rateClick="rateClick"></mp-rate>
+          <mp-rate :rateValue="evaluateList.qualityValuation"  @rateClick="rateClick"></mp-rate>
         </div>
       </div>
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">服务态度评分</div>
         <div class="weui-form-preview__value">
-          <mp-rate :rateValue="attitude"   @rateClick="rateClick"></mp-rate>
+          <mp-rate :rateValue="evaluateList.attitudeValuation"   @rateClick="rateClick"></mp-rate>
         </div>
       </div>
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">文字评价</div>
-        <div class="weui-form-preview__value">{{describe}}</div>
+        <div class="weui-form-preview__value">{{evaluateList.eDescribe}}</div>
       </div>
       <div class="weui-form-preview__item">
         <div class="weui-form-preview__label">评价时间</div>
-        <div class="weui-form-preview__value">{{time}}</div>
+        <div class="weui-form-preview__value">{{evaluateList.finallytime}}</div>
       </div>
     </div>
   </div>
@@ -42,11 +42,7 @@
 import mpRate from "mpvue-weui/src/rate";
 export default {
   props: {
-    detailType: String,
-    quality: Number,
-    attitude: Number,
-    describe: String,
-    time: String
+    evaluateList:Object
   },
   components: {
     mpRate

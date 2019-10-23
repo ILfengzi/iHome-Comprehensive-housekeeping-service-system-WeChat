@@ -1,21 +1,26 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 地址页面
+ * @Author: Celine
  * @Date: 2019-10-14 09:03:52
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-22 14:51:59
  * @LastEditors: Lin Changkun
+=======
+ * @LastEditTime: 2019-10-22 15:41:50
+ * @LastEditors: Wanlin Chen
+>>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
 
 <template>
     <div class="addresslist">
-      <div v-for="(item,index) in userAddress" :key="index">
-        <addressCell
-          :userAddress="item"
-          @isDelete="isDelete"
-          @isEdit="isEdit"
-        ></addressCell>
-    </div>
-    <div class="btn">
+       <div v-for="(item,index) in userAddress" :key="index">
+          <addressCell
+            :userAddress="item"
+            @isDelete="isDelete"
+            @isEdit="isEdit"
+          ></addressCell>
+       </div>
+     <div class="btn">
       <button @click="switchToNewAddress" form-type="submit" type="primary">新建</button>
     </div>
   </div>
@@ -85,7 +90,6 @@ export default {
   position: relative;
   padding-bottom: 50px;
 }
-
 .btn {
   position: fixed;
   left: 0px;
