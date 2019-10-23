@@ -2,7 +2,7 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-22 20:50:31
+ * @LastEditTime: 2019-10-23 16:22:54
  * @LastEditors: Wanlin Chen
  -->
 
@@ -35,14 +35,14 @@
             </div>
             <div class="weui-tab__content" :hidden="activeIndex != 2">
               <div v-for="(item,index) in allOrderList" :key="index">
-                <orderCell :allOrderList="item"></orderCell>
+                <orderCell :index="index"  :allOrderList="item"></orderCell>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div :class="{'hide':isHide,'tips':istips}">没有该状态的订单哦！</div>
     </div>
+    <div :class="{'hide':isHide,'tips':istips}">没有该状态的订单哦！</div>
   </div>
 </template>
 
@@ -55,6 +55,8 @@ export default {
       tabs: ["待服务", "服务中", "已完成"],
       activeIndex: 0,
       allOrderList: null,
+      index:Number,
+      order:"",
       state: 2,
       inputValue: "",
       isHide: true,
@@ -67,6 +69,7 @@ export default {
   },
   onShow() {
     console.log("成功加载");
+    this.isHide = true;
     this.$https
       .request({
         url: this.$interfaces.getOrderlistByid,
@@ -86,7 +89,6 @@ export default {
         this.allOrderList = res.iOrderList;
         if (this.allOrderList.length == 0) {
           this.isHide = false;
-          console.log(this.isHide);
         }
       })
       .catch(err => {
@@ -123,6 +125,7 @@ export default {
         .then(res => {
           // 成功，刷新页面
           this.allOrderList = res.iOrderList;
+                  console.log(this.allOrderList);
           if (this.allOrderList.length == 0) {
             this.isHide = false;
             console.log(this.isHide);
@@ -146,12 +149,12 @@ export default {
 .page__bd {
   padding-bottom: 0;
 }
+.weui-navbar{
+  background-color: white;
+}
 .weui-navbar__title {
   display: block;
-}
-.weui-tab__content {
-  padding-top: 10px;
-  /* text-align: center; */
+  
 }
 .tips {
   color: slategrey;
@@ -160,4 +163,5 @@ export default {
 .hide {
   display: none;
 }
+
 </style>

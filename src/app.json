@@ -1,18 +1,13 @@
 {
   "pages": [
+    "pages/payOver/main",
+    "pages/order/main",
     "pages/allorder/main", 
-    "pages/order/main", 
-    "pages/address/main",
-    
-    
+    "pages/address/main", 
     "pages/orderdetail/main",
-    "pages/evaluate/main",
-     
-    "pages/makeEval/main",
-         
+    "pages/evaluate/main",  
+    "pages/makeEval/main", 
     "pages/reservation/forDuration/main",
-    
-    
     "pages/mine/user/main",
     "pages/orderPreview/main",
     "pages/reservation/forSquare/main",
@@ -22,7 +17,7 @@
     "pages/newaddress/main",
     "pages/reservation/forOffline/main",
     "pages/reservation/forAmount/main",
-    "pages/payOver/main",
+    
     "pages/serviceDetail/main",
     "pages/home/main",
     "pages/aboutUs/main",

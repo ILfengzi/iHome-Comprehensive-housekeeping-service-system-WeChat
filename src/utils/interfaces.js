@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-22 17:06:30
+ * @LastEditTime: 2019-10-23 10:02:10
  * @LastEditors: Wanlin Chen
  */
 
@@ -26,7 +26,8 @@ const interfaces = {
   getEvaluate: domain + 'order/evlistByid', //获取评价
   getDefaultAddress: domain + 'user/selectUserDefaultAddress',  //获取用户默认地址接口
   getOrderlistByid: domain + 'order/orderlistByid',//获取订单列表
-  getOrderlistBytypename: domain + 'order/orderBytypename'  //获取模糊查询订单
+  getOrderlistBytypename: domain + 'order/orderBytypename',  //获取模糊查询订单
+  updateOrderState: domain + 'order/updateOrderState' //更新订单状态
 };
 
 module.exports = interfaces;
