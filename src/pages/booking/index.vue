@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-15 10:11:07
+ * @LastEditTime: 2019-10-23 08:38:47
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -88,6 +88,27 @@ export default {
     hideInput() {
       this.inputVal = "";
       this.inputShowed = false;
+
+      // 点击取消，搜索全部刷新页面
+      this.$https
+        .request({
+          url: this.$interfaces.getSearchResults,
+          data: {
+            typename: this.inputVal //输入值
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          console.log(res);
+          // 成功，刷新页面
+          this.searchResults = res.listd;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     clearInput() {
       this.inputVal = "";
@@ -135,7 +156,7 @@ export default {
         .then(res => {
           // 成功，获取到后端传回到服务详情，并将其存到vuex中,给跳转后的页面用
           this.$store.dispatch("setServiceDetail", res.detailtype);
-          console.log('我进来了');
+          console.log("我进来了");
           console.log(this.$store.state.serviceDetail);
           //跳转到服务详情页
           wx.navigateTo({

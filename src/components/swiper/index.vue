@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 轮播图组件（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-07 23:51:06
- * @LastEditTime: 2019-10-08 16:52:25
+ * @LastEditTime: 2019-10-23 17:07:43
  * @LastEditors: Lin Changkun
  -->
 <template>

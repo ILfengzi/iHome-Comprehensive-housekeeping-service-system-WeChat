@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-10-21 23:44:18
+ * @LastEditTime: 2019-10-22 19:37:21
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -55,7 +55,7 @@ export default {
     selectAndBack() {
       // 将vuex中的默认地址更新为选取的地址
       this.$store.dispatch('setUserAddress', this.userAddress);
-      console.log("点击将对象存起，并返回！");
+      console.log("默认地址更新为选取的地址: ");
       console.log(this.$store.state.userAddress);
       // 返回上一级：delta(默认为1) 页面
       wx.navigateBack({

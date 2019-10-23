@@ -1,8 +1,8 @@
 <!--
- * @Description: 服务时长
- * @Author: 
+ * @Description: 服务时长选择器（已完成）
+ * @Author: Lin Changkun
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-19 16:50:28
+ * @LastEditTime: 2019-10-23 17:06:14
  * @LastEditors: Lin Changkun
  -->
 <template>

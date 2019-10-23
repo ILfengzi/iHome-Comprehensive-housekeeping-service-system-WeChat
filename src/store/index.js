@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:18
- * @LastEditTime: 2019-10-21 11:19:18
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-23 09:15:49
+ * @LastEditors: Lin Changkun
  */
 import Vue from "vue";
 import Vuex from "vuex";
@@ -22,7 +22,7 @@ const state = {
   inputVal: "",
   searchResults: null, //搜索结果
   serviceDetail: null,  //服务详情
-  orderForm: null, //下单
+  orderForm: null, //下单详情
   userAddress: null //用户默认地址、选取的下单地址
 };
 

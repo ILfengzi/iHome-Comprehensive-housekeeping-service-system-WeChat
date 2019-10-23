@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-20 10:18:56
+ * @LastEditTime: 2019-10-22 15:27:17
  * @LastEditors: Lin Changkun
  -->
 
@@ -108,7 +108,31 @@ export default {
 
     // 根据服务类型进行跳转到预约界面
     toReservation(servicetpyeId) {
-      // 1：按时间算钱、2：按平方、3:按数量、3:线下定价
+      // 向后端拿默认地址，给下一个页面用
+      this.$https
+        .request({
+          url: this.$interfaces.getDefaultAddress,
+          data: {
+            // userId: this.$store.state.fakeId //⚠️正式用：用户id
+            userId: 1
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          // console.log(res);
+          // 将默认地址存到vuex
+          this.$store.dispatch("setUserAddress", res.iUserDetail);
+          console.log('将默认地址存起：');
+          console.log(this.$store.state.userAddress);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      // 1：按时间算钱、2：按平方、3:按数量、4:线下定价
       console.log("servicetpyeId:", servicetpyeId);
       if (servicetpyeId === 1) {
         wx.navigateTo({
@@ -122,7 +146,7 @@ export default {
         wx.navigateTo({
           url: "../reservation/forAmount/main"
         });
-      } else{
+      } else {
         wx.navigateTo({
           url: "../reservation/forOffline/main"
         });

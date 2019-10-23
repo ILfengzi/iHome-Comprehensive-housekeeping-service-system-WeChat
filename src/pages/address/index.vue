@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 23:55:16
+ * @LastEditTime: 2019-10-22 14:51:59
  * @LastEditors: Lin Changkun
  -->
 
@@ -41,7 +41,7 @@ export default {
         url: this.$interfaces.getUserAddress,
         data: {
           // id: this.$store.state.fakeId //⚠️正式用：用户id
-          id: 1
+          userId: 1
         },
         header: {
           "content-type": "application/json" // 默认值

@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 按数量计费（待测试）
+ * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-21 09:16:08
+ * @LastEditTime: 2019-10-23 17:05:12
  * @LastEditors: Lin Changkun
  -->
 
@@ -27,13 +27,20 @@
             style="margin-right: 10px;vertical-align: middle;width:22px; height: 22px;"
           />
         </div>
-        <div class="weui-cell__bd">选择数量</div>
+        <div class="weui-cell__bd">填写数量</div>
         <div class="inputNumber">
-          <input v-model="inputValue" type="number" placeholder="0" @confirm="confirmHandle" @blur="losefocus"/>
+          <input
+            v-model="inputValue"
+            type="number"
+            placeholder="0"
+            @confirm="confirmHandle"
+            @blur="losefocus"
+          />
           <span>台</span>
         </div>
       </div>
 
+      <div class="showPriceAndRemarks" v-if="showPriceAndRemarks">
         <!-- 估价 -->
         <div class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <div class="weui-cell__hd">
@@ -47,6 +54,7 @@
         </div>
         <!-- 选择备注 -->
         <remarks-picker @click="getChildRemarks"></remarks-picker>
+      </div>
     </div>
     <button type="primary" @click="submitMessage">提交订单</button>
   </div>
@@ -68,14 +76,16 @@ export default {
   data() {
     return {
       // icon: "",
-      inputValue:'',
+      inputValue: "",
+      showPriceAndRemarks: false, //填写数量才会出现金额和备注
       orderForm: {
-        address: "undefined", //⚠️地址
+        duration: undefined, //数量
         time: undefined, //服务时间
+        date: undefined, //给后台的时间
         price: 10, //价格
         remarks: "" //备注
-      }, //订单
-      pickerValueArray: undefined,
+      },
+      // pickerValueArray: undefined,
       deepLength: 2,
       pickerValueArray: [
         {
@@ -84,48 +94,56 @@ export default {
       ]
     };
   },
-
+  mounted() {
+    //向后端传值，拿到可用的服务时间
+    this.$https
+      .request({
+        url: this.$interfaces.getTime,
+        data: {
+          hours: 0,
+          type: 1, //0是钟点工，1为其他员工
+          // serviceId: this.$store.state.serviceDetail.servicetpyeId
+          serviceId: 1
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        // 成功，获取到可用的服务时间
+        console.log("我进来了");
+        console.log(res);
+        this.pickerValueArray = res.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
-    getChildDuration(childDuration) {
-      // 拿到子组件传回来的时长
-      // this.duration = childDuration;
-      this.orderForm.duration = childDuration;
-
-      //向后端传值，拿到可用的服务时间
-      this.$https
-        .request({
-          url: this.$interfaces.getTime,
-          data: {
-            hours: childDuration,
-            type: 1,
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          // 成功，获取到可用的服务时间
-          console.log("我进来了");
-          console.log(res);
-          this.pickerValueArray = res.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
     getChildTime(childTime) {
-      this.orderForm.time = childTime;
-      this.orderForm.price = this.$store.state.searchResults.price;
+      this.orderForm.time = childTime.label;
+      this.orderForm.date = childTime.date;
     },
 
     getChildRemarks(childRemarks) {
       // console.log('备注：', childRemarks);
-      // this.remarks = childRemarks;
       this.orderForm.remarks = childRemarks;
     },
 
+    // 输入完成
+    confirmHandle() {
+      this.orderForm.price =
+        Number(this.$store.state.serviceDetail.price) * Number(this.inputValue);
+      this.orderForm.duration = this.inputValue + '台';
+      this.showPriceAndRemarks = true;
+    },
+    losefocus() {
+      this.orderForm.price =
+        Number(this.$store.state.serviceDetail.price) * Number(this.inputValue);
+      this.orderForm.duration = this.inputValue + '台';
+      this.showPriceAndRemarks = true;
+    },
     submitMessage() {
       // 将订单存到vuex
       this.$store.dispatch("setOrderForm", this.orderForm);
@@ -133,21 +151,15 @@ export default {
       console.log(this.$store.state.orderForm);
 
       // 校验
-      if (this.orderForm.address === undefined) {
+      if (this.orderForm.time === undefined) {
         wx.showToast({
-          title: "请选择地址",
+          title: "请选择上门时间",
           icon: "none",
           duration: 2000
         });
       } else if (this.orderForm.duration === undefined) {
         wx.showToast({
-          title: "请选择服务时长",
-          icon: "none",
-          duration: 2000
-        });
-      } else if (this.orderForm.time === undefined) {
-        wx.showToast({
-          title: "请选择上门时间",
+          title: "请填写数量",
           icon: "none",
           duration: 2000
         });

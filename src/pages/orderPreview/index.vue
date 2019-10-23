@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-20 11:33:16
+ * @LastEditTime: 2019-10-23 15:30:48
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -11,11 +11,11 @@
       <div class="weui-form-preview__hd">
         <div class="weui-form-preview__item">
           <div class="weui-form-preview__label">付款金额</div>
-          <div class="weui-form-preview__value_in-hd">¥ {{orderForm.price}}</div>
+          <div class="weui-form-preview__value_in-hd">¥ {{price}}</div>
         </div>
       </div>
       <div class="weui-form-preview__bd">
-        <div v-for="item in serviceItem" :key="item.key">
+        <div v-for="(item, index) in serviceItem" :key="index">
           <orderPreviewItem :title="item.title" :content="item.content"></orderPreviewItem>
         </div>
       </div>
@@ -42,6 +42,7 @@ export default {
     return {
       // icon60: base64.icon60
       // orderForm: undefined,
+      price: 0,
       serviceItem: [
         {
           key: "1",
@@ -50,7 +51,7 @@ export default {
         },
         {
           key: "2",
-          title: "预约时长",
+          title: "计费规则",
           content: ""
         },
         {
@@ -79,7 +80,7 @@ export default {
           content: ""
         }
       ],
-      orderForm: {
+      order: {
         username: "阿里吧唧",
         address: "广东省-广州市-荔湾区-春田花花幼稚园xxx街道123号", //地址
         phone: "123456789",
@@ -89,21 +90,34 @@ export default {
         remarks:
           "昌坤帅帅，昌坤最帅，昌坤帅帅，昌坤最帅，昌坤帅帅，昌坤最帅，昌坤帅帅，昌坤最帅，昌坤帅帅，昌坤最帅" //备注
       },
-      // 发回后端的数据
-      to:{
-        detailId: 0, //服务类型id
-        addressId: 0,//地址id
-        // pickerValueArray.children.value : "sss", //后端需要的time
-        price: 90, //总价
-        comm: 'dadad', //备注（remarks）
-      }
+     //此order是根据接口需要最终发给后端的订单信息，与前一个页面的orderForm不同
+      // order: {
+      //   comm: "注释",
+      //   date: "2019年10月24日 8:00|2019年10月24日 10:00",
+      //   detailTypeId: 1,
+      //   price: 0,
+      //   userAddressId: 1,
+      //   userId: 1
+      // }
     };
   },
   mounted() {
-    // this.orderForm = this.$store.state.orderForm.price;
-
+    //将台
+    // this.order.price = this.$store.state.orderForm.price;
+    // this.order.date = this.$store.state.orderForm.date;
+    // this.order.comm = this.$store.state.orderForm.remarks;
+    // this.order.detailTypeId = this.$store.state.orderForm.date;
+    // this.order.userAddressId = this.$store.state.orderForm.date;
+    // this.order.userId = this.$store.state.fakeId
     // ⚠️一开始将存起来的orderForm一项一项赋给serviceItem[？].content
-    this.serviceItem[2].content = this.orderForm.duration;
+    this.price = this.$store.state.orderForm.price; //价格
+    this.serviceItem[0].content = this.$store.state.serviceDetail.typename; //服务
+    this.serviceItem[1].content = this.$store.state.orderForm.duration; //计费规则
+    this.serviceItem[2].content = this.$store.state.userAddress.username; //用户名
+    this.serviceItem[3].content = this.$store.state.orderForm.time; //上门时间
+    this.serviceItem[4].content = this.$store.state.userAddress.province+'-'+this.$store.state.userAddress.city+'-'+this.$store.state.userAddress.detail; //地址
+    this.serviceItem[5].content = this.$store.state.userAddress.phone; //联系电话
+    this.serviceItem[6].content = this.$store.state.orderForm.remarks; //备注
   },
 
   methods: {
@@ -111,9 +125,14 @@ export default {
       // ⚠️向后端发送数据
       this.$https
         .request({
-          url: this.$interfaces.sendOrder,
+          url: this.$interfaces.submitOrder,
           data: {
-            orderForm: this.$store.state.orderForm
+            comm: this.$store.state.orderForm.duration + '**' + this.$store.state.orderForm.remarks,
+            date: this.$store.state.orderForm.date,
+            detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
+            price: this.$store.state.orderForm.price,
+            userAddressId: this.$store.state.userAddress.id,
+            userId: this.$store.state.fakeId
           },
           header: {
             "content-type": "application/json" // 默认值

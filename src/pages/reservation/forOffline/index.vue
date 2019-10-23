@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 线下定价（待测试）
+ * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-21 09:16:51
+ * @LastEditTime: 2019-10-23 17:26:53
  * @LastEditors: Lin Changkun
  -->
 
@@ -51,11 +51,12 @@ export default {
       // icon: "",
       inputValue: "",
       orderForm: {
-        address: "undefined", //⚠️地址
+        duration: undefined, //数量
         time: undefined, //服务时间
+        date: undefined, //给后台的时间
         price: 10, //价格
         remarks: "" //备注
-      }, //订单
+      },
       pickerValueArray: undefined,
       deepLength: 2,
       pickerValueArray: [
@@ -66,6 +67,33 @@ export default {
     };
   },
 
+  mounted() {
+    //向后端传值，拿到可用的服务时间
+    this.$https
+      .request({
+        url: this.$interfaces.getTime,
+        data: {
+          hours: 0,
+          type: 1, //0是钟点工，1为其他员工
+          // serviceId: this.$store.state.serviceDetail.servicetpyeId
+          serviceId: 1
+        },
+        header: {
+          "content-type": "application/json" // 默认值
+        },
+        method: "POST"
+      })
+      .then(res => {
+        // 成功，获取到可用的服务时间
+        console.log("我进来了");
+        console.log(res);
+        this.pickerValueArray = res.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+
   methods: {
     confirmHandle() {
       console.log("输入值：", this.inputValue);
@@ -74,38 +102,11 @@ export default {
       console.log("输入值是：", this.inputValue);
     },
 
-    getChildDuration(childDuration) {
-      // 拿到子组件传回来的时长
-      // this.duration = childDuration;
-      this.orderForm.duration = childDuration;
-
-      //向后端传值，拿到可用的服务时间
-      this.$https
-        .request({
-          url: this.$interfaces.getTime,
-          data: {
-            hours: childDuration,
-            type: 1
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          // 成功，获取到可用的服务时间
-          console.log("我进来了");
-          console.log(res);
-          this.pickerValueArray = res.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-
     getChildTime(childTime) {
-      this.orderForm.time = childTime;
-      this.orderForm.price = this.$store.state.searchResults.price;
+      this.orderForm.time = childTime.label;
+      this.orderForm.date = childTime.date;
+      this.orderForm.price = '0.01';
+      this.orderForm.duration = '线下定价';
     },
 
     getChildRemarks(childRemarks) {
@@ -127,13 +128,7 @@ export default {
       console.log(this.$store.state.orderForm);
 
       // 校验
-      if (this.orderForm.address === undefined) {
-        wx.showToast({
-          title: "请选择地址",
-          icon: "none",
-          duration: 2000
-        });
-      } else if (this.orderForm.time === undefined) {
+      if (this.orderForm.time === undefined) {
         wx.showToast({
           title: "请选择上门时间",
           icon: "none",
