@@ -2,8 +2,8 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-23 16:20:13
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-24 20:55:24
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -43,7 +43,7 @@ export default {
   },
   props: {
     allOrderList: Object,
-    index:Number
+    index: Number
   },
   computed: {},
   methods: {
@@ -86,11 +86,12 @@ export default {
             .catch(err => {
               console.log(err);
             });
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
+
     cal() {
       this.$https
         .request({
@@ -116,6 +117,7 @@ export default {
           console.log(err);
         });
     },
+
     switchToDetail() {
       this.$store.dispatch("setOrderDetail", this.allOrderList);
       // console.log("sss");

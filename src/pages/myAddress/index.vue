@@ -1,8 +1,8 @@
 <!--
- * @Description: "订单跳转"过来的我的地址页面
+ * @Description: 我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-24 20:04:46
+ * @LastEditTime: 2019-10-24 20:13:46
  * @LastEditors: Lin Changkun
  -->
 
@@ -44,7 +44,7 @@ export default {
         url: this.$interfaces.getUserAddress,
         data: {
           // id: this.$store.state.fakeId //⚠️正式用：用户id
-          userId: 3
+          userId: 1
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -64,6 +64,7 @@ export default {
   methods: {
     //跳转到新建页面
     goNewaddress() {
+      // 更新vuex中的值
       this.$store.dispatch("setIsNewAddress", true);
       wx.navigateTo({
         url: "../newaddress/main"
@@ -72,8 +73,6 @@ export default {
 
     isDelete(e, index) {
       console.log("删除咯？");
-      console.log(e);
-      console.log(index);
       this.$https
         .request({
           url: this.$interfaces.deleteUserAddress,
@@ -86,18 +85,17 @@ export default {
           method: "POST"
         })
         .then(res => {
-      //成功，再次向后端发起请求，从第index位开始，删除一个元素
-      this.userAddress.splice(index, 1);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+          // 成功，从第x位开始，删除一个元素
+          this.userAddress.splice(index, 1);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
 
     // 编辑地址
     isEdit(e) {
-      console.log("编辑咯？旧地址：");
-      console.log(e);
+      console.log("编辑咯？");
       this.$store.dispatch("setIsNewAddress", false);
       wx.navigateTo({
         url: "../newaddress/main"

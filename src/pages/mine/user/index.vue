@@ -2,7 +2,7 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-21 12:58:19
+ * @LastEditTime: 2019-10-24 19:45:22
  * @LastEditors: Lin Changkun
  -->
 
@@ -13,8 +13,8 @@
       <open-data class="userAvatarUrl" type="userAvatarUrl"></open-data>
       <div class="user_detail">
         <h4>
-          <!-- <open-data type="userNickName"></open-data> -->
-          {{nickName}}
+          <open-data type="userNickName"></open-data>
+          <!-- {{nickName}} -->
         </h4>
         <span>{{country}} {{province}} {{city}}</span>
       </div>
@@ -49,14 +49,14 @@ import mineCell from "../../../components/mineCell/index";
 export default {
   data() {
     return {
-      nickName: "获取中...",
+      // nickName: "获取中...",
       country: "中国",
       province: "广东",
       city: "湛江"
     };
   },
   mounted() {
-    this.nickName = this.$store.state.user.nickName;
+    // this.nickName = this.$store.state.user.nickName;
     this.country = this.$store.state.user.country;
     this.province = this.$store.state.user.province;
     this.city = this.$store.state.user.city;

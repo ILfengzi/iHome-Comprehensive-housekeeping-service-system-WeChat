@@ -2,7 +2,7 @@
  * @Description: 线下定价（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-23 17:26:53
+ * @LastEditTime: 2019-10-23 19:11:20
  * @LastEditors: Lin Changkun
  -->
 
@@ -75,8 +75,8 @@ export default {
         data: {
           hours: 0,
           type: 1, //0是钟点工，1为其他员工
-          // serviceId: this.$store.state.serviceDetail.servicetpyeId
-          serviceId: 1
+          serviceId: this.$store.state.serviceDetail.servicetpyeId
+          // serviceId: 1
         },
         header: {
           "content-type": "application/json" // 默认值

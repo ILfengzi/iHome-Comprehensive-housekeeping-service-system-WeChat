@@ -2,8 +2,8 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-23 16:22:54
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-24 20:54:37
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -49,6 +49,7 @@
 <script>
 import orderCell from "../../components/orderCell/index";
 import mpNavbar from "mpvue-weui/src/navbar";
+
 export default {
   data() {
     return {
