@@ -2,8 +2,8 @@
  * @Description: 
  * @Author:  Lin Changkun
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-22 11:21:49
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-24 11:08:01
+ * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = (state, data) => {
     state.isAuthenticated = data;
@@ -43,4 +43,12 @@ export const setUserAddress = (state, data) => {
 
 export const setOrderDetail = (state,data) =>{
     state.orderDetail = data;
-}
+};
+
+export const setOldUserAddress = (state,data) =>{
+    state.oldUserAddress = data;
+};
+
+export const setIsNewAddress = (state,data) =>{
+    state.isNewAddress = data;
+};

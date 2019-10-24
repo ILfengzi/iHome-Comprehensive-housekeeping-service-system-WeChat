@@ -1,9 +1,10 @@
 /*
  * @Description: 
  * @Author: 
- * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-23 17:56:17
+ * @Date: 2019-10-02 17:20:18
+ * @LastEditTime: 2019-10-24 21:05:02
  * @LastEditors: Wanlin Chen
+>>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  */
 
 import Vue from "vue";
@@ -26,7 +27,9 @@ const state = {
   orderForm: null, //下单详情
   userAddress: null, //用户默认地址、选取的下单地址
   orderForm: null, //下单
-  orderDetail:null //用户订单详情
+  orderDetail:null, //用户订单详情
+  oldUserAddress: null, //用户旧地址，准备编辑的地址
+  isNewAddress: false //是否为新建地址，否为编辑地址
 };
 
 export default new Vuex.Store({

@@ -2,8 +2,13 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-24 17:22:50
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-24 19:45:22
+ * @LastEditors: Lin Changkun
+>>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  -->
 
 <template>
@@ -13,8 +18,8 @@
       <open-data class="userAvatarUrl" type="userAvatarUrl"></open-data>
       <div class="user_detail">
         <h4>
-          <!-- <open-data type="userNickName"></open-data> -->
-          {{nickName}}
+          <open-data type="userNickName"></open-data>
+          <!-- {{nickName}} -->
         </h4>
         <span>{{country}} {{province}} {{city}}</span>
       </div>
@@ -49,18 +54,25 @@ import mineCell from "../../../components/mineCell/index";
 export default {
   data() {
     return {
-      nickName: "获取中...",
+      // nickName: "获取中...",
       country: "中国",
       province: "广东",
       city: "湛江"
     };
   },
   mounted() {
+<<<<<<< HEAD
     /*********测试注释 */
     // this.nickName = this.$store.state.user.nickName;
     // this.country = this.$store.state.user.country;
     // this.province = this.$store.state.user.province;
     // this.city = this.$store.state.user.city;
+=======
+    // this.nickName = this.$store.state.user.nickName;
+    this.country = this.$store.state.user.country;
+    this.province = this.$store.state.user.province;
+    this.city = this.$store.state.user.city;
+>>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
   },
   methods: {
     handleContact() {

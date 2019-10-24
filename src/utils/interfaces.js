@@ -2,8 +2,13 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-24 15:24:28
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-23 23:47:33
+ * @LastEditors: Lin Changkun
+>>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  */
 const domain = "http://10.86.2.14:80/json/"; //局域网通信
 // const domain = "http://www.ilfengzi.club/json/";    //服务器通信
@@ -27,7 +32,9 @@ const interfaces = {
   submitOrder: domain + 'order/addOrder',  //提交订单
   getOrderlistByid: domain + 'order/orderlistByid',//获取订单列表
   updateOrderState: domain + 'order/updateOrderState', //更新订单状态
-  getOrderlistBytypename: domain + 'order/orderBytypename'  //获取模糊查询订单
+  getOrderlistBytypename: domain + 'order/orderBytypename', //获取模糊查询订单
+  deleteUserAddress: domain + 'user/deleteUserAddress',  //删除用户地址接口
+  updateUserAddress: domain + 'user/updateUserAddress',  //编辑用户地址接口
 };
 
 module.exports = interfaces;

@@ -1,51 +1,37 @@
 <!--
- * @Description: 编辑地址页面
+ * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-21 15:30:12
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-24 15:45:31
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="newaddress" enctype="multipart/form-data">
-    <form action="">
+    <form action>
       <div class="form_group">
         <span>用户名：</span>
-        <input
-          name="username"
-          placeholder="请输入您的名字"
-          type="text"
-          v-model="inputName"
-          @focus="inputFocus"
-        />
+        <input name="username" placeholder="请输入您的名字" type="text" v-model="editAddress.username" />
       </div>
       <div class="form_group">
         <span class="title">手机号码：</span>
-        <input
-          name="phone"
-          type="number"
-          placeholder="请输入您的手机号"
-          v-model="inputPhone"
-          @focus="inputFocus"
-        />
+        <input name="phone" type="number" placeholder="请输入您的手机号" v-model="editAddress.phone" />
       </div>
       <div class="form_group">
         <span class="title">所在地区：</span>
         <!-- <input v-model="formaddr.area" class="area"> -->
-        <div :inputArea="inputArea" class="area">{{inputArea}}</div>
-        <img
-          class="btn"
-          src="/static/images/icon/选择展开.png"
-          @click="showMulLinkageTwoPicker"
-        />
-        <mp-citypicker
-          ref="mpCityPicker"
+        <div :inputArea="inputArea" class="area">{{editAddress.province}}{{aa}}{{editAddress.city}}</div>
+        <img class="btn" src="/static/images/icon/选择展开.png" @click="showMulLinkageTwoPicker" />
+        <mp-picker
+          ref="mpPicker"
+          mode="multiLinkageSelector"
           :deepLength="deepLength"
           :pickerValueDefault="pickerValueDefault"
           @onChange="onChange"
-          @onCancel="onCancel"
           @onConfirm="onConfirm"
-        ></mp-citypicker>
+          @onCancel="onCancel"
+          :pickerValueArray="pickerValueArray"
+        ></mp-picker>
       </div>
       <div class="form_group">
         <span class="title">详细地址：</span>
@@ -54,8 +40,7 @@
           placeholder="如道路、门牌号、小区、楼层等信息"
           maxlength="50"
           autofocus="true"
-          v-bind="changContext"
-          v-model="inputDetail"
+          v-model="editAddress.detail"
         ></textarea>
       </div>
       <div class="form_group defaultaddr">
@@ -70,91 +55,271 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import mpButton from "mpvue-weui/src/button";
 import mpSwitch from "mpvue-weui/src/switch";
-import mpCitypicker from "mpvue-weui/src/city-picker";
+import mpPicker from "mpvue-weui/src/picker";
+
 export default {
   components: {
-    mpCitypicker,
     mpSwitch,
-    mpButton
+    mpButton,
+    mpPicker
   },
   data() {
     return {
       mode: "multiLinkageSelector",
-      deepLength: 3,
-      pickerValueDefault: [1, 0],
-      inputName:"",
-      inputPhone:"",
-      inputArea:"",
-      inputDetail:"",
-      inputProvince:"",
-      inputCity:"",
-      inputStatus:0
-      // userAddress: {
-      //   username: "",
-      //   phone: "",
-      //   area: "",
-      //   detail: "",
-      //   default: false
-      // }
+      deepLength: 2,
+      pickerValueDefault: [0, 0],
+      aa: "",
+      pickerValueArray: [
+        {
+          label: "广东省",
+          value: 0,
+          children: [
+            {
+              label: "广州市",
+              value: 1
+            },
+            {
+              label: "深圳市",
+              value: 2
+            },
+            {
+              label: "珠海市",
+              value: 3
+            },
+            {
+              label: "佛山市",
+              value: 4
+            },
+            {
+              label: "湛江市",
+              value: 5
+            },
+            {
+              label: "肇庆市",
+              value: 6
+            },
+            {
+              label: "梅州市",
+              value: 7
+            },
+            {
+              label: "韶关市",
+              value: 8
+            }
+          ]
+        },
+        {
+          label: "上海市",
+          value: 1,
+          children: [
+            {
+              label: "市辖区",
+              value: 1
+            }
+          ]
+        },
+        {
+          label: "河南省",
+          value: 2,
+          children: [
+            {
+              label: "郑州市",
+              value: 1
+            },
+            {
+              label: "开封市",
+              value: 2
+            },
+            {
+              label: "洛阳市",
+              value: 3
+            },
+            {
+              label: "焦作市",
+              value: 4
+            }
+          ]
+        }
+      ],
+      editAddress: {
+        city: "",
+        detail: "",
+        id: "",
+        phone: "",
+        province: "",
+        status: 0,
+        userId: "",
+        username: ""
+      }
     };
   },
+
+  mounted() {
+    //将vuex中的旧地址拿到，如果是新建地址页面跳过来的则为空
+    console.log(this.$store.state.isNewAddress);
+    if (this.$store.state.isNewAddress === true) {
+      console.log("此为新建地址");
+      this.editAddress.city = "";
+      this.editAddress.detail = "";
+      this.editAddress.id = "";
+      this.editAddress.phone = "";
+      this.editAddress.province = "";
+      this.editAddress.userId = "";
+      this.editAddress.username = "";
+      this.aa = "";
+      console.log(this.editAddress.city === "");
+    } else {
+      console.log("此为编辑地址");
+      this.editAddress = this.$store.state.oldUserAddress;
+      this.aa = "-";
+    }
+  },
+
   methods: {
-    submited:function(){
-    this.$https
-      .request({   
-        url: this.$interfaces.setUserAddress,
-        data: {
-          userName:this.inputName,
-          phone:this.inputPhone,
-          userId:3, //目前写死，需要动态获取user_id
-          province:this.inputProvince,
-          city:this.inputCity,
-          detail:this.inputDetail,
-          status:this.inputStatus
-        },
-        header: {
-          "content-type": "application/json" // 默认值
-        },
-        method: "POST"
-      })
-      .then(res => {
-        console.log(res);
-        // 成功，刷新页面
-        // this.userAddress = res.addressList;
-        // console.log(this.userAddress);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    submited() {
+      // 新建地址
+      if (this.$store.state.isNewAddress === true) {
+        // 校验
+        if (this.editAddress.username === "") {
+          wx.showToast({
+            title: "请填写用户姓名",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.phone.length != 11) {
+          wx.showToast({
+            title: "请输入正确的手机号码",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.city === "") {
+          wx.showToast({
+            title: "请选择所在地区",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.detail === "") {
+          wx.showToast({
+            title: "请填写详细的地址",
+            icon: "none",
+            duration: 2000
+          });
+        } else {
+          this.$https
+            .request({
+              url: this.$interfaces.setUserAddress,
+              data: {
+                userName: this.editAddress.username,
+                phone: this.editAddress.phone,
+                // userId: this.$store.$state.fakeId; //⚠️正式请用
+                userId: 3, //测试用
+                province: this.editAddress.province,
+                city: this.editAddress.city,
+                detail: this.editAddress.detail,
+                status: this.editAddress.status //新建0是有效，删除为1无效，默认地址为2
+              },
+              header: {
+                "content-type": "application/json" // 默认值
+              },
+              method: "POST"
+            })
+            .then(res => {
+              console.log(res);
+              // 成功，刷新页面
+              wx.navigateBack({
+                delta: 1 // 回退前 delta(默认为1) 页面
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      } else {
+        // 校验
+        if (this.editAddress.username === "") {
+          wx.showToast({
+            title: "请填写用户姓名",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.phone.length != 11) {
+          wx.showToast({
+            title: "请输入正确的手机号码",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.city === "") {
+          wx.showToast({
+            title: "请选择所在地区",
+            icon: "none",
+            duration: 2000
+          });
+        } else if (this.editAddress.detail === "") {
+          wx.showToast({
+            title: "请填写详细的地址",
+            icon: "none",
+            duration: 2000
+          });
+        } else {
+          // 编辑地址
+          this.$https
+            .request({
+              url: this.$interfaces.updateUserAddress,
+              data: {
+                userName: this.editAddress.username,
+                phone: this.editAddress.phone,
+                id: this.editAddress.id,
+                // userId: this.$store.$state.fakeId; //⚠️正式请用
+                userId: 3, //测试用
+                province: this.editAddress.province,
+                city: this.editAddress.city,
+                detail: this.editAddress.detail,
+                status: this.editAddress.status //新建0是有效，删除为1无效，默认地址为2
+              },
+              header: {
+                "content-type": "application/json" // 默认值
+              },
+              method: "POST"
+            })
+            .then(res => {
+              console.log(res);
+              // 成功，刷新页面
+              wx.navigateBack({
+                delta: 1 // 回退前 delta(默认为1) 页面
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      }
     },
-    swithToaddress: function() {
-      console.log(123);
-      wx.navigateBack({
-        delta: 1 // 回退前 delta(默认为1) 页面
-      });
-    },
-    changContextL: function(e) {},
+
     showMulLinkageTwoPicker() {
-      this.$refs.mpCityPicker.show();
+      this.$refs.mpPicker.show();
     },
+
     onConfirm(e) {
       console.log(e);
-      this.inputArea=e.label;
-      var str=this.inputArea.split("-");
+      // this.inputArea = e.label;
+      let temp = e.label;
+      let str = temp.split("-");
       console.log(str);
-      this.inputProvince = str[0];
-      this.inputCity = str[1];
+      this.editAddress.province = str[0];
+      this.editAddress.city = str[1];
+      this.aa = "-";
     },
+
     switchChange(e) {
-      console.log(e);
-      console.log(typeof(e));
-      if(e==true){
-        console.log("!23");
-        this.inputStatus = 2;
+      if (e == true) {
+        this.editAddress.status = 2;
+      } else {
+        this.editAddress.status = 0;
       }
+      console.log(this.editAddress.status);
     }
   }
 };
@@ -163,9 +328,10 @@ export default {
 <style>
 .newaddress {
   height: 100%;
+  width: 100%;
 }
 
-.form_group {
+.newaddress .form_group {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

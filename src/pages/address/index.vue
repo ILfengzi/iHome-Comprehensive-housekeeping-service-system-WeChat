@@ -1,22 +1,25 @@
 <!--
- * @Description: 地址页面
+ * @Description: "订单跳转"过来的我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-23 17:51:20
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-24 20:04:46
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
-    <div class="addresslist">
-       <div v-for="(item,index) in userAddress" :key="index">
-          <addressCell
-            :userAddress="item"
-            @isDelete="isDelete"
-            @isEdit="isEdit"
-          ></addressCell>
-       </div>
-     <div class="btn">
-      <button @click="switchToNewAddress" form-type="submit" type="primary">新建</button>
+  <div class="addresslist">
+    <!-- <div v-for="(item,index) in userAddress" :key="index"> -->
+    <addressCell
+      v-for="(item,index) in userAddress"
+      :key="index"
+      :index="index"
+      :userAddress="item"
+      @isDelete="isDelete"
+      @isEdit="isEdit"
+    ></addressCell>
+    <!-- </div> -->
+    <div class="btn">
+      <button @click="goNewaddress" form-type="submit" type="primary">新建</button>
     </div>
   </div>
 </template>
@@ -41,7 +44,7 @@ export default {
         url: this.$interfaces.getUserAddress,
         data: {
           // id: this.$store.state.fakeId //⚠️正式用：用户id
-          userId: 1
+          userId: 3
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -59,22 +62,46 @@ export default {
       });
   },
   methods: {
-    switchToNewAddress() {
+    //跳转到新建页面
+    goNewaddress() {
+      this.$store.dispatch("setIsNewAddress", true);
       wx.navigateTo({
         url: "../newaddress/main"
       });
     },
 
-    isDelete(e){
-      if (e === 1) {
-        console.log('删好友！哼～');
-      }
+    isDelete(e, index) {
+      console.log("删除咯？");
+      console.log(e);
+      console.log(index);
+      this.$https
+        .request({
+          url: this.$interfaces.deleteUserAddress,
+          data: {
+            id: e
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+      //成功，再次向后端发起请求，从第index位开始，删除一个元素
+      this.userAddress.splice(index, 1);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     },
 
-    isEdit(e){
-      if (e === 1) {
-        console.log('编辑哦，小哥哥～');
-      }
+    // 编辑地址
+    isEdit(e) {
+      console.log("编辑咯？旧地址：");
+      console.log(e);
+      this.$store.dispatch("setIsNewAddress", false);
+      wx.navigateTo({
+        url: "../newaddress/main"
+      });
     }
   }
 };

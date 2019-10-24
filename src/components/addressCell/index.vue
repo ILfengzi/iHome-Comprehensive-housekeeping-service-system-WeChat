@@ -2,40 +2,21 @@
  * @Description: 地址组件
  * @Author: Celine
  * @Date: 2019-10-18 08:44:31
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-22 19:37:21
+ * @LastEditTime: 2019-10-24 20:14:19
  * @LastEditors: Lin Changkun
-=======
- * @LastEditTime: 2019-10-22 15:41:22
- * @LastEditors: Wanlin Chen
->>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
+ 
 <template>
-  <div class="address_info" >
-    <!-- <div @click="selectAndBack">
-      <div class="user">
-        <span>顾客名：</span>
-        <span class="user">{{userAddress.username}} {{userAddress.phone}}</span>
-      </div>
-      <div class="address">
-        <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
-        <div class="addr">{{userAddress.province}}{{userAddress.city}}{{userAddress.detail}}</div>
-      </div>      
-    </div>
-    <span class="icon">
-      <img class="mod" src="/static/images/icon/修改.png" @click="isEdit" />
-      <img @click="showModal" class="cal" src="/static/images/icon/删除.png" />
-      <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm"></mp-modal>
-    </span> -->
+  <div class="address_info">
     <div class="detail">
       <div class="user">
         <span>顾客名：</span>
         <span class="user">{{userAddress.username}} {{userAddress.phone}}</span>
       </div>
-      <div class="address">
+      <div class="address" @click="selectAndBack">
         <div class="title">地&nbsp;&nbsp;&nbsp;&nbsp;址：</div>
         <div class="addr">{{userAddress.province}}{{userAddress.city}}{{userAddress.detail}}</div>
-      </div>      
+      </div>
     </div>
     <div class="icon">
       <img class="mod" src="/static/images/icon/修改.png" @click="isEdit" />
@@ -51,7 +32,8 @@ import mpButton from "mpvue-weui/src/button";
 import mpModal from "mpvue-weui/src/modal";
 export default {
   props: {
-    userAddress: Object
+    userAddress: Object,
+    index: Number
   },
   components: {
     mpToast,
@@ -62,20 +44,29 @@ export default {
   //   console.log(this.userAddress);
   // },
   methods: {
+
+    // 确认删除地址
     confirm(e) {
-      console.log("dwwdwdwdwdwdw");
+      console.log(this.userAddress);
       // showToast();
-      this.$emit("isDelete", 1);
+      this.$emit("isDelete", this.userAddress.id, this.index);
     },
+
     showModal() {
       this.$refs.mpModal.show();
     },
+
+    // 编辑地址
     isEdit() {
-      this.$emit("isEdit", 1);
+      //将当前地址当作旧地址存到vuex
+      this.$store.dispatch("setOldUserAddress", this.userAddress);
+      this.$emit("isEdit", this.userAddress);
     },
+
+    // 选取地址，并返回
     selectAndBack() {
       // 将vuex中的默认地址更新为选取的地址
-      this.$store.dispatch('setUserAddress', this.userAddress);
+      this.$store.dispatch("setUserAddress", this.userAddress);
       console.log("默认地址更新为选取的地址: ");
       console.log(this.$store.state.userAddress);
       // 返回上一级：delta(默认为1) 页面
@@ -88,19 +79,19 @@ export default {
 </script>
 
 <style>
-.address_info{
+.address_info {
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  padding: 20rpx 20rpx 20rpx 24rpx; 
+  padding: 20rpx 20rpx 20rpx 24rpx;
   margin-bottom: 10px;
-  font-size: 16px;   
+  font-size: 16px;
 }
-.icon{
-  flex:1;
+.icon {
+  flex: 1;
   position: relative;
 }
-.detail{
+.detail {
   flex: 4;
   display: inline-block;
 }
@@ -116,12 +107,12 @@ export default {
   width: 46rpx;
   height: 46rpx;
 }
-.mod{
+.mod {
   position: absolute;
   bottom: 5px;
   right: 33px;
 }
-.cal{
+.cal {
   position: absolute;
   bottom: 5px;
   right: 5px;
