@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-23 17:48:27
+ * @LastEditTime: 2019-10-24 15:24:28
  * @LastEditors: Wanlin Chen
  */
-// const domain = "http://10.86.2.14:80/json/"; //局域网通信
-const domain = "http://www.ilfengzi.club/json/";    //服务器通信
+const domain = "http://10.86.2.14:80/json/"; //局域网通信
+// const domain = "http://www.ilfengzi.club/json/";    //服务器通信
 
 
 const interfaces = {

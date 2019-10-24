@@ -53,7 +53,6 @@
     left: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
-    
 }
 .PoperContent{
     width: 100%;

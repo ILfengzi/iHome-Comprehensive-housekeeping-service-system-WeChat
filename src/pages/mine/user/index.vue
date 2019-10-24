@@ -2,8 +2,8 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-21 12:58:19
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-24 17:22:50
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -56,10 +56,11 @@ export default {
     };
   },
   mounted() {
-    this.nickName = this.$store.state.user.nickName;
-    this.country = this.$store.state.user.country;
-    this.province = this.$store.state.user.province;
-    this.city = this.$store.state.user.city;
+    /*********测试注释 */
+    // this.nickName = this.$store.state.user.nickName;
+    // this.country = this.$store.state.user.country;
+    // this.province = this.$store.state.user.province;
+    // this.city = this.$store.state.user.city;
   },
   methods: {
     handleContact() {

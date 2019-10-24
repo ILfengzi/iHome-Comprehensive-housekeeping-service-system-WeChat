@@ -2,7 +2,7 @@
  * @Description: 全部订单页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-22 21:08:21
+ * @LastEditTime: 2019-10-24 16:50:12
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -18,25 +18,24 @@
       @confirm="confirm"
     ></mp-searchbar>
     <div v-for="(item,index) in allOrderList" :key="index">
-      <orderCell :allOrderList="item"></orderCell>
+      <myOrderCell :allOrderList="item"></myOrderCell>
     </div>
     <div :class="{'hide':isHide,'tips':istips}">您目前尚未有订单哦！</div>
   </div>
 </template>
 
 <script>
-import orderCell from "../../components/orderCell/index";
+import myOrderCell from "../../components/myOrderCell/index";
 import mpSearchbar from "mpvue-weui/src/searchbar";
 export default {
   components: {
     mpSearchbar,
-    orderCell
+    myOrderCell
   },
   data() {
     return {
       temp: 2, //用户类型 1为员工 2为客户
       allOrderList: null,
-      inputValue: "",
       state: 7,
       inputValue: "",
       isHide: true,
@@ -59,9 +58,9 @@ export default {
         method: "POST"
       })
       .then(res => {
-        console.log(res);
         // 成功，刷新页面
         this.allOrderList = res.iOrderList;
+        console.log(this.allOrderList);
         if (this.allOrderList.length == 0) {
           this.isHide = false;
           console.log(this.isHide);

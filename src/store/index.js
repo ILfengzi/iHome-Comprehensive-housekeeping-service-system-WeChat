@@ -1,15 +1,11 @@
 /*
  * @Description: 
  * @Author: 
- * @Date: 2019-10-02 17:20:18
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-23 09:15:49
- * @LastEditors: Lin Changkun
-=======
- * @LastEditTime: 2019-10-22 11:21:57
+ * @Date: 2019-10-09 11:02:29
+ * @LastEditTime: 2019-10-23 17:56:17
  * @LastEditors: Wanlin Chen
->>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  */
+
 import Vue from "vue";
 import Vuex from "vuex";
 import * as getters from "./getters";
@@ -27,14 +23,10 @@ const state = {
   inputVal: "",
   searchResults: null, //搜索结果
   serviceDetail: null,  //服务详情
-<<<<<<< HEAD
   orderForm: null, //下单详情
-  userAddress: null //用户默认地址、选取的下单地址
-=======
-  orderForm: null, //下单
   userAddress: null, //用户默认地址、选取的下单地址
+  orderForm: null, //下单
   orderDetail:null //用户订单详情
->>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
 };
 
 export default new Vuex.Store({
