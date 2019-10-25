@@ -2,8 +2,8 @@
  * @Description: "我的"员工页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-21 09:52:24
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-25 09:10:46
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div>
@@ -35,7 +35,7 @@
         <mineCell icon="/static/images/icon/mine/tool.png" title="我的工具" ></mineCell>
     </div>
     <div class="order_info">
-        <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们" ></mineCell>
+        <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们"></mineCell>
     </div>
   </div>
 </template>
@@ -46,11 +46,10 @@ export default {
     data(){
 
     },
-    methods:{
-
-    },
     components:{
         mineCell
+    },
+    methods:{
     }
 }
 </script>

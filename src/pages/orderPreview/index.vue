@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-23 15:30:48
+ * @LastEditTime: 2019-10-24 23:38:09
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -122,7 +122,7 @@ export default {
 
   methods: {
     toPay() {
-      // ⚠️向后端发送数据
+      // 向后端发送数据
       this.$https
         .request({
           url: this.$interfaces.submitOrder,
