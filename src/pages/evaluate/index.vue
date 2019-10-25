@@ -46,8 +46,11 @@ export default {
       .request({   
         url: this.$interfaces.getEvaluate,
         data: {
+          // temp: this.$store.state.position,//注意!!正式用
+          // userid: this.$store.state.fakeId, //注意!!正式用
           userid: 3, //输入值
-          temp:2 //用户类型 1为员工，2为普通用户
+          
+          temp:4 //用户类型 1为员工，4为普通用户
         },
         header: {
           "content-type": "application/json" // 默认值

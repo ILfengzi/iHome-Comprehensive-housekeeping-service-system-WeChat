@@ -2,7 +2,7 @@
  * @Description: 全部订单页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-24 16:50:12
+ * @LastEditTime: 2019-10-25 15:13:24
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -71,6 +71,9 @@ export default {
       });
   },
   methods: {
+    focus(){
+      console.log("focus");
+    },
     swithToOrder: function() {
       console.log(123);
       wx.navigateBack({
@@ -78,6 +81,7 @@ export default {
       });
     },
     blur(){
+      console.log("失去焦点");
       this.isHide = true;
       this.$https
       .request({
@@ -106,6 +110,8 @@ export default {
       });
     },
     confirm() {
+      console.log("输入完成");
+      console.log(this.inputValue);
       this.isHide = true;
       this.$https
         .request({
