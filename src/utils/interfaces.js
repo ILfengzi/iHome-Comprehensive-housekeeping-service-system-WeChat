@@ -3,7 +3,7 @@
  * @Author: 
  * @Date: 2019-10-03 00:07:05
 <<<<<<< HEAD
- * @LastEditTime: 2019-10-24 15:24:28
+ * @LastEditTime: 2019-10-25 19:47:38
  * @LastEditors: Wanlin Chen
 =======
  * @LastEditTime: 2019-10-23 23:47:33
@@ -35,6 +35,10 @@ const interfaces = {
   getOrderlistBytypename: domain + 'order/orderBytypename', //获取模糊查询订单
   deleteUserAddress: domain + 'user/deleteUserAddress',  //删除用户地址接口
   updateUserAddress: domain + 'user/updateUserAddress',  //编辑用户地址接口
+  getTool: domain + 'tool/gettool',//员工领取工具
+  returnTool: domain + 'tool/returntool',//员工归还工具
+  damTool: domain + 'tool/damtool',//损坏工具
+  seeTool: domain + 'tool/seetool'//员工查看工具
 };
 
 module.exports = interfaces;

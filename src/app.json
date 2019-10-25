@@ -1,25 +1,23 @@
 {
   "pages": [
-    "pages/order/main",
-    "pages/address/main",
-    "pages/staffCheck/main",
     "pages/myTool/main",
+    "pages/me/main",
+    "pages/order/main",
+     
+    "pages/allorder/main",
+    "pages/staffCheck/main",  
+    "pages/address/main",
     "pages/orderPreview/main",
     "pages/serviceDetail/main",
-    "pages/payOver/main", 
-    
-    
+    "pages/payOver/main",
     "pages/home/main",
     "pages/reservation/forSquare/main",
-    "pages/index/main",
-    "pages/allorder/main",
+    "pages/login/main",
     "pages/orderdetail/main",
     "pages/evaluate/main",
     "pages/makeEval/main",
     "pages/reservation/forDuration/main",
-    "pages/mine/user/main",
     "pages/myAddress/main",
-    "pages/mine/staff/main",
     "pages/newaddress/main",
     "pages/reservation/forOffline/main",
     "pages/reservation/forAmount/main",
@@ -43,7 +41,7 @@
       "iconPath": "static/tabs/order.png",
       "selectedIconPath": "static/tabs/order_s.png"
     }, {
-      "pagePath": "pages/mine/user/main",
+      "pagePath": "pages/me/main",
       "text": "我",
       "iconPath": "static/tabs/mine.png",
       "selectedIconPath": "static/tabs/mine_s.png"

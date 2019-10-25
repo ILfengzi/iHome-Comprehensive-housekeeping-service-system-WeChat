@@ -2,7 +2,7 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-25 09:09:54
+ * @LastEditTime: 2019-10-25 15:33:50
  * @LastEditors: Wanlin Chen
  -->
 
@@ -24,21 +24,23 @@
           </div>
           <div class="weui-tab__panel">
             <div class="weui-tab__content" :hidden="activeIndex != 0">
-              <!-- <div v-for="(item,index) in allOrderList" :key="index">
-                <orderCell :allOrderList="item"></orderCell>
-              </div> -->
               <orderCell
                 v-for="(item,index) in allOrderList"
-                :key = "index"
+                :key="index"
                 :index ="index"
-                :allOrderList = "item"
-                @isDelete = "isDelete"
+                :allOrderList ="item"
+                @isDelete ="isDelete"
+                @isComplete ="isComplete"
               ></orderCell>
             </div>
             <div class="weui-tab__content" :hidden="activeIndex != 1">
-              <div v-for="(item,index) in allOrderList" :key="index">
-                <orderCell :allOrderList="item"></orderCell>
-              </div>
+              <orderCell
+                v-for="(item,index) in allOrderList"
+                :key ="index"
+                :index ="index"
+                :allOrderList ="item"
+                @isComplete ="isComplete"
+              ></orderCell>
             </div>
             <div class="weui-tab__content" :hidden="activeIndex != 2">
               <div v-for="(item,index) in allOrderList" :key="index">
@@ -128,7 +130,7 @@ export default {
         .then(res => {
           // 成功，刷新页面
           this.allOrderList = res.iOrderList;
-                  console.log(this.allOrderList);
+          console.log(this.allOrderList);
           if (this.allOrderList.length == 0) {
             this.isHide = false;
             console.log(this.isHide);
@@ -145,7 +147,7 @@ export default {
         .request({
           url: this.$interfaces.updateOrderState,
           data: {
-            userid: e
+            orderid: e
           },
           header: {
             "content-type": "application/json" // 默认值
@@ -155,11 +157,40 @@ export default {
         .then(res => {
       //成功，再次向后端发起请求，从第index位开始，删除一个元素
         this.allOrderList.splice(index, 1);
+        if (this.allOrderList.length == 0) {
+            this.isHide = false;
+            console.log(this.isHide);
+          }
       })
       .catch(err => {
         console.log(err);
       });
-    }
+    },
+    isComplete(e,index){
+      console.log("确认完成订单");
+      this.$https
+        .request({
+          url: this.$interfaces.updateOrderState,
+          data: {
+            orderid: e
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+      //成功，再次向后端发起请求，从第index位开始，删除一个元素
+        this.allOrderList.splice(index, 1);
+        if (this.allOrderList.length == 0) {
+          this.isHide = false;
+          console.log(this.isHide);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    },
   }
 };
 </script>
