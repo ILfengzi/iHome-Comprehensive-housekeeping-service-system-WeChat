@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-25 08:29:22
+ * @LastEditTime: 2019-10-25 17:12:01
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -109,13 +109,41 @@ export default {
       inputVal: "", //输入值
       grids: [
         { src: "http://47.100.139.184:8080/xinju.png", name: "新居", index: 7 },
-        { src: "http://47.100.139.184:8080/caboli.png", name: "擦玻璃", index: 2 },
-        { src: "http://47.100.139.184:8080/baojie.png", name: "日常保洁", index: 3 },
-        { src: "http://47.100.139.184:8080/zuofan.png", name: "做饭", index: 4 },
-        { src: "http://47.100.139.184:8080/jiesong.png", name: "接送", index: 5 },
-        { src: "http://47.100.139.184:8080/ktwx.png", name: "空调维修", index: 1 },
-        { src: "http://47.100.139.184:8080/matong.png", name: "通马桶", index: 6 },
-        { src: "http://47.100.139.184:8080/all.png", name: "全部服务", index: 8 }
+        {
+          src: "http://47.100.139.184:8080/caboli.png",
+          name: "擦玻璃",
+          index: 2
+        },
+        {
+          src: "http://47.100.139.184:8080/baojie.png",
+          name: "日常保洁",
+          index: 3
+        },
+        {
+          src: "http://47.100.139.184:8080/zuofan.png",
+          name: "做饭",
+          index: 4
+        },
+        {
+          src: "http://47.100.139.184:8080/jiesong.png",
+          name: "接送",
+          index: 5
+        },
+        {
+          src: "http://47.100.139.184:8080/ktwx.png",
+          name: "空调维修",
+          index: 1
+        },
+        {
+          src: "http://47.100.139.184:8080/matong.png",
+          name: "通马桶",
+          index: 6
+        },
+        {
+          src: "http://47.100.139.184:8080/all.png",
+          name: "全部服务",
+          index: 8
+        }
       ],
       service: [
         {
@@ -155,6 +183,27 @@ export default {
         }
       ]
     };
+  },
+
+  onShow() {
+    /**
+     * 检验是否登录过期
+     */
+    // const _this = this;
+    wx.checkSession({
+      success: res => {
+        //session_key 未过期，并且在本生命周期一直有效
+        console.log("session_key 未过期");
+      },
+      fail: err => {
+        //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
+        // session_key 已经失效，需要重新执行登录流程
+        console.log("session_key 已经过期，跳转到index登录页面");
+        wx.reLaunch({
+          url: "../login/main"
+        });
+      }
+    });
   },
   methods: {
     showInput() {

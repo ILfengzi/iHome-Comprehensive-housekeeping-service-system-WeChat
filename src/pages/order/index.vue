@@ -2,8 +2,8 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-24 20:54:37
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-25 09:09:54
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -24,9 +24,16 @@
           </div>
           <div class="weui-tab__panel">
             <div class="weui-tab__content" :hidden="activeIndex != 0">
-              <div v-for="(item,index) in allOrderList" :key="index">
+              <!-- <div v-for="(item,index) in allOrderList" :key="index">
                 <orderCell :allOrderList="item"></orderCell>
-              </div>
+              </div> -->
+              <orderCell
+                v-for="(item,index) in allOrderList"
+                :key = "index"
+                :index ="index"
+                :allOrderList = "item"
+                @isDelete = "isDelete"
+              ></orderCell>
             </div>
             <div class="weui-tab__content" :hidden="activeIndex != 1">
               <div v-for="(item,index) in allOrderList" :key="index">
@@ -56,12 +63,9 @@ export default {
       tabs: ["待服务", "服务中", "已完成"],
       activeIndex: 0,
       allOrderList: null,
-      index:Number,
-      order:"",
-      state: 2,
-      inputValue: "",
-      isHide: true,
-      istips: true
+      state: 2,//首页展示状态初始化
+      isHide: true, //提示是否存在
+      istips: true //提示的状态绑定
     };
   },
   components: {
@@ -100,9 +104,7 @@ export default {
     tabClick(e) {
       this.isHide = true;
       console.log(e);
-      // if (this.inputValue == "") {
       this.activeIndex = Number(e.currentTarget.id);
-      // console.log(typeof(this.activeIndex));
       if (this.activeIndex === 0) {
         this.state = 2;
       } else if (this.activeIndex === 1) {
@@ -136,6 +138,27 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    isDelete(e,index){
+      console.log("取消订单");
+      this.$https
+        .request({
+          url: this.$interfaces.updateOrderState,
+          data: {
+            userid: e
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+      //成功，再次向后端发起请求，从第index位开始，删除一个元素
+        this.allOrderList.splice(index, 1);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     }
   }
 };

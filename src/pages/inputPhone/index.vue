@@ -2,39 +2,172 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-25 09:00:00
- * @LastEditTime: 2019-10-25 09:01:40
+ * @LastEditTime: 2019-10-25 15:42:28
  * @LastEditors: Lin Changkun
  -->
 <template>
-    <div :class="['weui-demo-dialog', istrue ? 'weui-demo-dialog_show' : '']">
-  <div class="weui-mask" @click="closeDialog"></div>
-  <div class="weui-half-screen-dialog" catchtouchmove>
-    <div class="weui-half-screen-dialog__hd">
-      <div class="weui-half-screen-dialog__hd__side">
-        <div @click="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</div>
+  <div>
+    <button class="show-btn" @tap="showDialogBtn">弹窗</button>
+    <!--弹窗-->
+    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModal"></div>
+    <div class="modal-dialog" v-if="showModal">
+      <div class="modal-title">请输入您的手机号码：</div>
+      <div class="modal-content">
+        <div class="modal-input">
+          <input
+            placeholder-class="input-holder"
+            type="number"
+            maxlength="11"
+            class="input"
+            v-model="phoneNumber"
+            placeholder="请输入数量"
+          />
+        </div>
       </div>
-      <div class="weui-half-screen-dialog__hd__main">
-        <text class="weui-half-screen-dialog__title">标题</text>
-        <text class="weui-half-screen-dialog__subtitle">标题</text>
+      <div class="modal-footer">
+        <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
+        <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
       </div>
-      <div class="weui-half-screen-dialog__hd__side">
-        <div class="weui-icon-btn weui-icon-btn_more">更多</div>
-      </div>
-    </div>
-    <div class="weui-half-screen-dialog__bd">
-      <div class="weui-half-screen-dialog__desc">辅助描述内容，可根据实际需要安排</div>
-      <div class="weui-half-screen-dialog__tips">辅助提示内容，可根据实际需要安排</div>
-    </div>
-    <div class="weui-half-screen-dialog__ft">
-      <button type="default" class="weui-btn">辅助操作</button>
-      <button type="primary" class="weui-btn">主操作</button>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-    
-}
+  data() {
+    return {
+      showModal: false,
+      phoneNumber: ""
+    };
+  },
+
+  methods: {
+    onLoad() {},
+    /**
+     * 弹窗
+     */
+    showDialogBtn() {
+      this.showModal = true;
+    },
+    /**
+     * 弹出框蒙层截断touchmove事件
+     */
+    preventTouchMove() {},
+    /**
+     * 对话框取消按钮点击事件
+     */
+    onCancel() {
+      this.showModal = false;
+    },
+    /**
+     * 对话框确认按钮点击事件
+     */
+    onConfirm() {
+      //输入完成
+      console.log("输入完成");
+      this.isPoneAvailable(this.phoneNumber);
+    },
+
+    isPoneAvailable(phone) {
+      var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+      if (!myreg.test(phone)) {
+        wx.showToast({
+          title: "请输入正确的手机号码",
+          icon: "none",
+          duration: 2000
+        });
+      } else {
+        this.showModal = false;
+      }
+    }
+  }
+};
 </script>
+
+<style scoped>
+.show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #0bbd14;
+  text-align: center;
+}
+</style>

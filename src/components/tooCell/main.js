@@ -1,9 +1,8 @@
 /*
- * @Description: 
- * @Author: 
- * @Date: 2019-10-05 00:25:37
- * @LastEditTime: 2019-10-05 00:25:37
- * @LastEditors: Lin Changkun
+ * @Author: Wanlin Chen 
+ * @Date: 2019-10-08 08:18:38 
+ * @Last Modified by: Wanlin Chen
+ * @Last Modified time: 2019-10-10 09:15:41
  */
 import Vue from 'vue'
 import App from './index'

@@ -2,7 +2,7 @@
  * @Description: 线下定价（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-23 19:11:20
+ * @LastEditTime: 2019-10-25 16:05:48
  * @LastEditors: Lin Changkun
  -->
 
@@ -118,7 +118,7 @@ export default {
     // 拨打电话
     callPhone() {
       wx.makePhoneCall({
-        phoneNumber: "13202610508" //仅为示例，并非真实的电话号码
+        phoneNumber: "13202019516" //仅为示例，并非真实的电话号码
       });
     },
     submitMessage() {

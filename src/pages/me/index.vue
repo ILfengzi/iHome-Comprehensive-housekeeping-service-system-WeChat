@@ -1,13 +1,12 @@
 <!--
- * @Description: “我的” -- 用户
- * @Author: Wanlin Chen
+ * @Description: "我的"页面
+ * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-24 19:45:22
+ * @LastEditTime: 2019-10-25 16:08:10
  * @LastEditors: Lin Changkun
  -->
-
 <template>
-  <div class="mine">
+  <div>
     <div class="user_info">
       <!-- 用户信息 -->
       <open-data class="userAvatarUrl" type="userAvatarUrl"></open-data>
@@ -19,25 +18,46 @@
         <span>{{country}} {{province}} {{city}}</span>
       </div>
     </div>
-    <div class="order_info">
-      <mineCell
-        @click="swithToallOrder"
-        icon="/static/images/icon/mine/我的订单.png"
-        title="我的订单"
-        :text="3"
-      ></mineCell>
-      <mineCell @click="swithToaddress" icon="/static/images/icon/mine/地址.png" title="我的地址"></mineCell>
-      <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价"></mineCell>
-    </div>
-    <!-- <div class="order_info">
-        <mineCell icon="/static/images/icon/mine/联系客服.png" title="联系客服" ></mineCell>
-        
-    </div>-->
 
+    <!-- 员工工作信息 -->
+    <div class="work_info" v-if="position === 1">
+      <div class="work_detail">
+        <h4>总订单</h4>
+        <span>12</span>
+      </div>
+      <div class="work_detail">
+        <h4>总工时</h4>
+        <span>12</span>
+      </div>
+      <div class="work_detail">
+        <h4>本月工时</h4>
+        <span>12</span>
+      </div>
+    </div>
+
+    <div class="order_info">
+      <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单"></mineCell>
+      <!-- 普通用户 -->
+      <mineCell
+        v-if="position === 4"
+        @click="swithToaddress"
+        icon="/static/images/icon/mine/地址.png"
+        title="我的地址"
+      ></mineCell>
+      <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价"></mineCell>
+      <!-- 员工 -->
+      <mineCell
+        v-if="position === 1"
+        @click="swithToTool"
+        icon="/static/images/icon/mine/tool.png"
+        title="我的工具"
+      ></mineCell>
+    </div>
     <div class="order_info">
       <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们"></mineCell>
     </div>
-    <div class="contact">
+    <!-- 普通用户 -->
+    <div v-if="position === 4" class="contact">
       <img src="/static/images/dianhua.png" />
       <span @click="handleContact">联系客服</span>
     </div>
@@ -45,42 +65,50 @@
 </template>
 
 <script>
-import mineCell from "../../../components/mineCell/index";
+import mineCell from "../../components/mineCell/index";
 export default {
   data() {
     return {
-      // nickName: "获取中...",
+      nickName: "获取中...",
       country: "中国",
       province: "广东",
-      city: "湛江"
+      city: "湛江",
+      position: 1 //1为员工，4为普通用户
     };
   },
   mounted() {
+    /*********测试注释 */
     // this.nickName = this.$store.state.user.nickName;
-    this.country = this.$store.state.user.country;
-    this.province = this.$store.state.user.province;
-    this.city = this.$store.state.user.city;
+    // this.country = this.$store.state.user.country;
+    // this.province = this.$store.state.user.province;
+    // this.city = this.$store.state.user.city;
+    // this.position = this.$store.state.user.position;
   },
   methods: {
     handleContact() {
       wx.makePhoneCall({
-        phoneNumber: "13202610508" //仅为示例，并非真实的电话号码
+        phoneNumber: "13202019516" //仅为示例，并非真实的电话号码
       });
     },
     swithToallOrder() {
       console.log(123);
       wx.navigateTo({
-        url: "../../allorder/main"
+        url: "../allorder/main"
       });
     },
     swithToEvaluate() {
       wx.navigateTo({
-        url: "../../evaluate/main"
+        url: "../evaluate/main"
+      });
+    },
+    swithToTool() {
+      wx.navigateTo({
+        url: "../myTool/main"
       });
     },
     swithToaddress() {
       wx.navigateTo({
-        url: "../../address/main"
+        url: "../address/main"
       });
     }
   },
@@ -133,7 +161,6 @@ export default {
   color: #aaa;
   font-size: 14px;
 }
-
 .order_info {
   margin-top: 16px;
 }
@@ -141,7 +168,7 @@ export default {
 .contact {
   background-color: rgb(233, 227, 227);
   position: absolute;
-  top: 70%;
+  top: 72%;
   left: 5%;
   height: 90rpx;
   width: 90%;

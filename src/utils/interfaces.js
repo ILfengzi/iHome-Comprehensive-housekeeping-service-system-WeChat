@@ -1,12 +1,12 @@
 /*
- * @Description: 
- * @Author: 
+ * @Description: 请求接口
+ * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-23 23:47:33
+ * @LastEditTime: 2019-10-25 19:04:29
  * @LastEditors: Lin Changkun
  */
-// const domain = "http://10.86.2.14:80/json/"; //局域网通信
-const domain = "http://www.ilfengzi.club/json/";    //服务器通信
+const domain = "http://10.86.2.14:80/json/"; //局域网通信
+// const domain = "http://www.ilfengzi.club/json/";    //服务器通信
 
 
 const interfaces = {
@@ -30,6 +30,7 @@ const interfaces = {
   getOrderlistBytypename: domain + 'order/orderBytypename', //获取模糊查询订单
   deleteUserAddress: domain + 'user/deleteUserAddress',  //删除用户地址接口
   updateUserAddress: domain + 'user/updateUserAddress',  //编辑用户地址接口
+  sendPhoneNumber: domain + '',  //向后端发送手机号
 };
 
 module.exports = interfaces;

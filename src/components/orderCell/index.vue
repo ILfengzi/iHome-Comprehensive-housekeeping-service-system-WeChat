@@ -2,8 +2,8 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-24 20:55:24
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-25 09:09:05
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -22,8 +22,8 @@
     </div>
     <div class="btns">
       <button @click="cal" :class="{'hide':allOrderList.state!==2,'btn':true}">取消订单</button>
-      <!-- <mp-modal ref="mpModal" :title="title" :content="content" :showCancel="true" @confirm="confirm" @cancel="cancel"></!-->
-      <button @click="confirm" :class="{'hide':allOrderList.state!==3,'btn':true}">确认完成</button>
+      <mp-modal ref="mpModal" title="提示" content="确定取消该订单？" :showCancel="true" @confirm="confirm" @cancel="cancel"></mp-modal>
+      <button @click="complete" :class="{'hide':allOrderList.state!==3,'btn':true}">确认完成</button>
     </div>
   </div>
 </template>
@@ -31,13 +31,6 @@
 <script>
 import mpModal from "mpvue-weui/src/modal";
 export default {
-  data() {
-    return {
-      content: "请确认取消订单",
-      title: "提示",
-      typename: ""
-    };
-  },
   components: {
     mpModal
   },
@@ -47,7 +40,11 @@ export default {
   },
   computed: {},
   methods: {
-    confirm() {
+    confirm(e){
+      console.log(this.allOrderList);
+      this.$emit("isDelete",this.allOrderList.id,this.index);
+    },
+    complete() {
       this.$https
         .request({
           url: this.$interfaces.updateOrderState,
@@ -93,29 +90,7 @@ export default {
     },
 
     cal() {
-      this.$https
-        .request({
-          url: this.$interfaces.updateOrderState,
-          data: {
-            orderid: this.allOrderList.id
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          // 成功，刷新页面
-          this.allOrderList = res.iOrderList;
-          console.log(this.allOrderList);
-          if (this.allOrderList.length == 0) {
-            this.isHide = false;
-            console.log(this.isHide);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$refs.mpModal.show();
     },
 
     switchToDetail() {
