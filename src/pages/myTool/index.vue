@@ -2,7 +2,7 @@
  * @Description: "我的工具"界面
  * @Author: Celine
  * @Date: 2019-10-24 15:04:16
- * @LastEditTime: 2019-10-25 20:17:32
+ * @LastEditTime: 2019-10-25 20:50:42
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -85,6 +85,7 @@ export default {
       .request({
         url: this.$interfaces.seeTool,
         data: {
+          // userid: this.$store.state.fakeId, //注意!!正式用
           userid: 1, //输入值
           state: this.state
         },
@@ -210,6 +211,7 @@ export default {
       .request({
         url: this.$interfaces.seeTool,
         data: {
+          // userid: this.$store.state.fakeId, //注意!!正式用
           userid: 1, //输入值
           state: this.state
         },
