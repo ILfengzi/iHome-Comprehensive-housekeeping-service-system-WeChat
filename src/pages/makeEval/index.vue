@@ -2,8 +2,8 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-22 09:51:47
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-25 08:19:34
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="makeEval">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="save">
-      <button @click="submited"  type="primary" size="large">保存</button>
+      <button @click="submited"  type="primary" size="large">提交</button>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-24 15:45:31
+ * @LastEditTime: 2019-10-25 15:56:33
  * @LastEditors: Lin Changkun
  -->
 
@@ -180,6 +180,7 @@ export default {
 
   methods: {
     submited() {
+      let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
       // 新建地址
       if (this.$store.state.isNewAddress === true) {
         // 校验
@@ -189,7 +190,7 @@ export default {
             icon: "none",
             duration: 2000
           });
-        } else if (this.editAddress.phone.length != 11) {
+        } else if (!myreg.test(this.editAddress.phone)) {
           wx.showToast({
             title: "请输入正确的手机号码",
             icon: "none",
@@ -245,7 +246,7 @@ export default {
             icon: "none",
             duration: 2000
           });
-        } else if (this.editAddress.phone.length != 11) {
+        } else if (!myreg.test(this.editAddress.phone)) {
           wx.showToast({
             title: "请输入正确的手机号码",
             icon: "none",

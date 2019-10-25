@@ -1,14 +1,17 @@
 /*
- * @Description: 
- * @Author: 
+ * @Description: 请求接口
+ * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
+<<<<<<< HEAD
 <<<<<<< HEAD
  * @LastEditTime: 2019-10-25 19:47:38
  * @LastEditors: Wanlin Chen
 =======
  * @LastEditTime: 2019-10-23 23:47:33
+=======
+ * @LastEditTime: 2019-10-25 19:04:29
+>>>>>>> 3d58cfccccccdeca7864276433d8acde6bb72f22
  * @LastEditors: Lin Changkun
->>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  */
 const domain = "http://10.86.2.14:80/json/"; //局域网通信
 // const domain = "http://www.ilfengzi.club/json/";    //服务器通信
@@ -38,7 +41,8 @@ const interfaces = {
   getTool: domain + 'tool/gettool',//员工领取工具
   returnTool: domain + 'tool/returntool',//员工归还工具
   damTool: domain + 'tool/damtool',//损坏工具
-  seeTool: domain + 'tool/seetool'//员工查看工具
+  seeTool: domain + 'tool/seetool',//员工查看工具
+  sendPhoneNumber: domain + '',  //向后端发送手机号
 };
 
 module.exports = interfaces;

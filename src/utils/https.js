@@ -1,8 +1,8 @@
 /*
  * @Description: 封装专门用于请求的文件
- * @Author: 
+ * @Author: Lin Changkun
  * @Date: 2019-10-04 16:49:00
- * @LastEditTime: 2019-10-10 11:43:40
+ * @LastEditTime: 2019-10-25 19:02:43
  * @LastEditors: Lin Changkun
  */
 const https = {
@@ -36,7 +36,7 @@ const https = {
 
           //成功则返回数据
           resolve(res.data);
-        //   console.log(res.data);
+          // console.log(res.data);
         },
         fail(err) {
           // wx.hideLoading();
