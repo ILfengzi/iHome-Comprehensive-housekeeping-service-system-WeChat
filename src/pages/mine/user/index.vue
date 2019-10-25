@@ -2,13 +2,8 @@
  * @Description: “我的” -- 用户
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-24 17:22:50
+ * @LastEditTime: 2019-10-24 21:12:43
  * @LastEditors: Wanlin Chen
-=======
- * @LastEditTime: 2019-10-24 19:45:22
- * @LastEditors: Lin Changkun
->>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  -->
 
 <template>
@@ -61,18 +56,12 @@ export default {
     };
   },
   mounted() {
-<<<<<<< HEAD
+
     /*********测试注释 */
     // this.nickName = this.$store.state.user.nickName;
     // this.country = this.$store.state.user.country;
     // this.province = this.$store.state.user.province;
     // this.city = this.$store.state.user.city;
-=======
-    // this.nickName = this.$store.state.user.nickName;
-    this.country = this.$store.state.user.country;
-    this.province = this.$store.state.user.province;
-    this.city = this.$store.state.user.city;
->>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
   },
   methods: {
     handleContact() {

@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/order/main",
+    "pages/address/main",
     "pages/staffCheck/main",
     "pages/myTool/main",
     "pages/orderPreview/main",
     "pages/serviceDetail/main",
     "pages/payOver/main", 
-    "pages/order/main",
-    "pages/address/main",
+    
+    
     "pages/home/main",
     "pages/reservation/forSquare/main",
     "pages/index/main",
