@@ -2,7 +2,7 @@
  * @Description: 请求接口
  * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-25 19:04:29
+ * @LastEditTime: 2019-10-25 19:52:51
  * @LastEditors: Lin Changkun
  */
 const domain = "http://10.86.2.14:80/json/"; //局域网通信

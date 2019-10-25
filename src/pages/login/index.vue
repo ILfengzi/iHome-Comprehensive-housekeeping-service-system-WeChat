@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-25 19:09:42
+ * @LastEditTime: 2019-10-25 20:26:48
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -44,9 +44,9 @@
 export default {
   data() {
     return {
-      js_code: "",
+      js_code: '',
       showModal: false,
-      phoneNumber: ""
+      phoneNumber: ''
     };
   },
 

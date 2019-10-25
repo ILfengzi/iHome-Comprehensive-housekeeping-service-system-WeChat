@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/home/main",
+    "pages/me/main",
     "pages/login/main",
     "pages/address/main",
     "pages/inputPhone/main",
-    "pages/me/main",
     "pages/orderPreview/main",
     "pages/makeEval/main",
     "pages/order/main",
