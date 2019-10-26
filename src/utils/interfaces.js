@@ -2,8 +2,8 @@
  * @Description: 请求接口
  * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-25 20:48:05
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-26 17:54:26
+ * @LastEditors: Lin Changkun
  */
 const domain = "http://10.86.2.14:80/json/"; //局域网通信
 // const domain = "http://www.ilfengzi.club/json/";    //服务器通信
@@ -35,6 +35,7 @@ const interfaces = {
   damTool: domain + 'tool/damtool',//损坏工具
   seeTool: domain + 'tool/seetool',//员工查看工具
   sendPhoneNumber: domain + '',  //向后端发送手机号
+  getOrderCountAndMoney: domain + 'order/staffnews', //获取员工订单数和提成
 };
 
 module.exports = interfaces;

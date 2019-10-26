@@ -2,8 +2,13 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-26 10:48:16
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-26 17:54:04
+ * @LastEditors: Lin Changkun
+>>>>>>> 8e71d84f207d0bdc31f13ac80f3632fcec0ee9d2
  -->
 <template>
   <div>
@@ -23,15 +28,15 @@
     <div class="work_info" v-if="position === 1">
       <div class="work_detail">
         <h4>总订单</h4>
-        <span>12</span>
+        <span>{{count}}</span>
       </div>
       <div class="work_detail">
-        <h4>总工时</h4>
-        <span>12</span>
+        <h4>本月订单</h4>
+        <span>{{monthcount}}</span>
       </div>
       <div class="work_detail">
-        <h4>本月工时</h4>
-        <span>12</span>
+        <h4>本月提成</h4>
+        <span>{{sum}}</span>
       </div>
     </div>
 
@@ -73,7 +78,10 @@ export default {
       country: "中国",
       province: "广东",
       city: "湛江",
-      position: 1 //1为员工，4为普通用户
+      position: 1, //1为员工，4为普通用户
+      count: 0,
+      sum: 0,
+      monthcount: 0
     };
   },
   mounted() {
@@ -83,6 +91,30 @@ export default {
     // this.province = this.$store.state.user.province;
     // this.city = this.$store.state.user.city;
     // this.position = this.$store.state.user.position;
+    //如果是员工，则请求数据
+    if (this.position === 1) {
+      this.$https
+        .request({
+          url: this.$interfaces.getOrderCountAndMoney,
+          data: {
+            // staffid: this.$store.state.fakeId, //⚠️正式用
+            staffid: 1, //⚠️正式用
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          console.log(res);
+          this.count = res.map.count;
+          this.sum = res.map.sum;
+          this.monthcount = res.map.monthcount;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   },
   methods: {
     handleContact() {
