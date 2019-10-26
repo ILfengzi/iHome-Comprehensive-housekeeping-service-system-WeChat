@@ -2,13 +2,14 @@
  * @Description: “关于我们”界面
  * @Author: Celine
  * @Date: 2019-10-15 17:28:28
- * @LastEditTime: 2019-10-26 21:07:26
+ * @LastEditTime: 2019-10-26 21:20:57
  * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="aboutUs">
+    <div class="title">我是一个不知道干嘛的可怜小页面～</div>
     <div class="tips">让Ihome小姐姐为您放首歌吧～</div>
-    <audio :poster="poster" :name="name" :author="author" :src="src" id="myAudio" controls loop></audio>
+    <audio class="audio" :poster="poster" :name="name" :author="author" :src="src" id="myAudio" controls loop="true"></audio>
   </div>
 </template>
 
@@ -34,8 +35,15 @@ export default {
 </script>
 
 <style>
+.audio{
+  margin: 0 0 0 100rpx;
+}
+.title{
+  text-align: center;
+}
 .tips {
   color: slategrey;
-  margin: 300rpx 0 0 250rpx;
+  text-align: center;
+  margin: 150rpx 0 50rpx auto;
 }
 </style>

@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/aboutUs/main",
-    "pages/test/main",
     "pages/me/main",
+    "pages/test/main",
     "pages/service/main",
     "pages/myAddress/main",
     "pages/orderdetail/main",
