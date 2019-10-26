@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-25 09:21:45
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 11:17:42
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="page">
@@ -31,10 +31,10 @@
             <img @click="maskClick" src="/static/images/icon/cancel.png" />
             <div class="title">请输入支付密码</div>
             <div class="detail">付款给ihome</div>
-            <div class="price">金额</div>
+            <div class="price">¥ {{price}}</div>
             <div class="pwipt">
               <input
-                type="password"
+                type="number"
                 @input="judgePassword"
                 v-model="password"
                 autofocus
@@ -339,8 +339,9 @@ export default {
   width: 20px;
   height: 20px;
   float: left;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: 22rpx;
+  margin-left: 22rpx;
+
 }
 .forPop {
   width: 60%;
@@ -361,12 +362,19 @@ export default {
   margin-bottom: 10px;
 }
 .detail {
-  margin-bottom: 10px;
+  margin-bottom: 12rpx;
+  margin-left: 24px;
+  margin-top: -8px;
+
 }
 .price {
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 10px;
+  border-bottom: 2rpx solid #ccc;
+  margin: 0 20rpx 32rpx 20rpx;
+  padding-bottom: 18rpx;
+
+
 }
 .pwipt {
   font-size: 0;

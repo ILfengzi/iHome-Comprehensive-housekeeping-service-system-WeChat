@@ -2,8 +2,8 @@
  * @Description: 按平方计费（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-23 19:11:31
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 11:41:59
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -195,11 +195,12 @@ export default {
   vertical-align: middle;
   box-sizing: border-box;
   height: 33px;
+  text-align: center;
 }
 .inputNumber span {
   display: table-cell;
   width: 1%;
-  background-color: gray;
+  background-color:#ccc;
   white-space: nowrap;
   padding: 5px 10px;
 }

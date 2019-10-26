@@ -2,8 +2,8 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-25 08:19:34
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 12:12:36
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="makeEval">
@@ -101,7 +101,7 @@ export default {
   padding: 10px;
 }
 .weui-rate {
-  margin-left: 100px;
+  margin-left: 85px;
 }
 .head {
   font-weight: bold;

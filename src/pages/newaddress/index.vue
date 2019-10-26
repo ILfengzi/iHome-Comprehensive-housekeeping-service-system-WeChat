@@ -2,8 +2,8 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-25 15:56:33
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 11:30:44
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -336,7 +336,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 5px 0 0 10px;
+  margin: 5px  10px;
   line-height: 95rpx;
   border-bottom: 1px solid #f4f4f4;
   background-color: #fff;
