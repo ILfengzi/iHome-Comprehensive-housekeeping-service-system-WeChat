@@ -2,7 +2,7 @@
  * @Description: 全部订单页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-25 15:13:24
+ * @LastEditTime: 2019-10-26 10:05:37
  * @LastEditors: Wanlin Chen
  -->
 <template>
@@ -34,7 +34,6 @@ export default {
   },
   data() {
     return {
-      temp: 2, //用户类型 1为员工 2为客户
       allOrderList: null,
       state: 7,
       inputValue: "",
@@ -48,6 +47,8 @@ export default {
       .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
+          // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+          // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用      
           userid: 1, //输入值
           temp: 2, //用户类型 1为员工，2为普通用户
           state: this.state
@@ -87,6 +88,8 @@ export default {
       .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
+          // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+          // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
           userid: 1, //输入值
           temp: 2, //用户类型 1为员工，2为普通用户
           state: this.state
@@ -117,6 +120,8 @@ export default {
         .request({
           url: this.$interfaces.getOrderlistBytypename,
           data: {
+            // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+            // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
             userid: 1, //输入值
             temp: 2, //用户类型 1为员工，2为普通用户
             state: this.state,

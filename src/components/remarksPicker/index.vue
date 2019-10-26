@@ -2,8 +2,8 @@
  * @Description: 备注
  * @Author: 
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-21 08:45:53
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 11:48:37
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="remarksPicker">
@@ -71,10 +71,14 @@ export default {
     align-self: center;
     margin-left: 10rpx;
     margin-right: 20rpx;
+    margin-top: -12rpx;
+
 }
 
 .searchItem input {
     flex: 1;
     font-size: 34rpx;
+    padding-bottom: 20rpx;
+
 }
 </style>

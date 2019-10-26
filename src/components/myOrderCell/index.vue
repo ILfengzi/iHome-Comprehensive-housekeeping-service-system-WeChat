@@ -2,7 +2,7 @@
  * @Description: "我的"订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-25 15:01:05
+ * @LastEditTime: 2019-10-26 09:31:31
  * @LastEditors: Wanlin Chen
  -->
 
@@ -65,6 +65,9 @@ export default {
   /* margin-bottom: 10px; */
   background-color: white;
   margin-bottom: 10rpx;
+}
+.weui-form-preview{
+  padding-bottom: 16rpx;
 }
 .weui-form-preview__value {
   color: black;

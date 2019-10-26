@@ -2,8 +2,8 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-25 16:08:10
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-26 10:48:16
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div>
@@ -54,7 +54,7 @@
       ></mineCell>
     </div>
     <div class="order_info">
-      <mineCell icon="/static/images/icon/mine/用户协议.png" title="关于我们"></mineCell>
+      <mineCell @click="swithToAboutUs" icon="/static/images/icon/mine/用户协议.png" title="关于我们"></mineCell>
     </div>
     <!-- 普通用户 -->
     <div v-if="position === 4" class="contact">
@@ -89,6 +89,11 @@ export default {
       wx.makePhoneCall({
         phoneNumber: "13202019516" //仅为示例，并非真实的电话号码
       });
+    },
+    swithToAboutUs(){
+      wx.navigateTo({
+        url: "../aboutUs/main"
+      });      
     },
     swithToallOrder() {
       console.log(123);
