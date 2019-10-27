@@ -2,11 +2,11 @@
  * @Description: 请求接口
  * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-26 17:54:26
+ * @LastEditTime: 2019-10-27 15:52:38
  * @LastEditors: Lin Changkun
  */
-const domain = "http://10.86.2.14:80/json/"; //局域网通信
-// const domain = "http://www.ilfengzi.club/json/";    //服务器通信
+// const domain = "http://10.86.2.14:80/json/"; //局域网通信
+const domain = "http://www.ilfengzi.club/json/";    //服务器通信
 
 
 const interfaces = {

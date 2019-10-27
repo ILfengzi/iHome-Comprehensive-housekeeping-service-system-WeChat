@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-25 20:26:48
+ * @LastEditTime: 2019-10-27 15:59:22
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -98,7 +98,7 @@ export default {
           console.log("存起来了，好开森～", this.$store.state.position);
           console.log(this.$store.state.fakeId);
 
-          if (res.havePhone) {
+          if (res.map.havephone === 'false') {
             // 弹手机号输入框
             this.showDialogBtn();
           }

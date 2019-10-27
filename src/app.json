@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/main",
     "pages/aboutUs/main",
     "pages/me/main",
     "pages/test/main",
@@ -11,8 +12,7 @@
     "pages/reservation/forDuration/main",
     "pages/reservation/forOffline/main",
     "pages/reservation/forSquare/main",
-    "pages/reservation/forAmount/main",  
-    "pages/home/main",
+    "pages/reservation/forAmount/main",
     "pages/myTool/main",
     "pages/order/main", 
     "pages/serviceDetail/main",
