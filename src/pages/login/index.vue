@@ -17,8 +17,8 @@
     </div>
 
     <!-- 获取手机号模态框 -->
-    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModal"></div>
-    <div class="modal-dialog" v-if="showModal">
+    <div class="modal-mask" catchtouchmove="preventTouchMove">
+    <div class="modal-dialog">
       <div class="modal-title">请输入您的手机号码：</div>
       <div class="modal-content">
         <div class="modal-input">
@@ -36,6 +36,7 @@
         <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
         <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -100,14 +101,17 @@ export default {
 
           if (res.map.havephone === 'false') {
             // 弹手机号输入框
+            console.log("凯峰吃屎");
             this.showDialogBtn();
+          }else{
+            console.log("凯峰不吃屎");
           }
           //根据角色不同，优先跳到到页面不同
-          if (res.map.existence == 4) {
-            this.goToHome();
-          } else {
-            this.goToOrder();
-          }
+          // if (res.map.existence == 4) {
+          //   this.goToHome();
+          // } else {
+          //   this.goToOrder();
+          // }
         })
         .catch(err => {
           console.log(err);
@@ -134,6 +138,8 @@ export default {
      */
     showDialogBtn() {
       this.showModal = true;
+      console.log("进入了showDialogBtn() ");
+      console.log(this.showModal);
     },
     /**
      * 弹出框蒙层截断touchmove事件
