@@ -1,14 +1,9 @@
 <!--
  * @Description: "服务详情"页面
- * @Author: 
+ * @Author: Wanlin Chen
  * @Date: 2019-10-15 17:02:36
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-22 15:27:17
+ * @LastEditTime: 2019-10-27 21:11:21
  * @LastEditors: Lin Changkun
-=======
- * @LastEditTime: 2019-10-22 09:40:13
- * @LastEditors: Wanlin Chen
->>>>>>> 60ba5c6fccefb64d1c1be2d1033d2d3157a8b73b
  -->
 
  <template>
@@ -111,50 +106,61 @@ export default {
       this.$refs.CustomPopupRef.maskClick();
     },
 
+    /**
+     * 员工不能下单
+     */
     // 根据服务类型进行跳转到预约界面
     toReservation(servicetpyeId) {
-      // 向后端拿默认地址，给下一个页面用
-      this.$https
-        .request({
-          url: this.$interfaces.getDefaultAddress,
-          data: {
-            // userId: this.$store.state.fakeId //⚠️正式用：用户id
-            userId: 1
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          // console.log(res);
-          // 将默认地址存到vuex
-          this.$store.dispatch("setUserAddress", res.iUserDetail);
-          console.log('将默认地址存起：');
-          console.log(this.$store.state.userAddress);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-
-      // 1：按时间算钱、2：按平方、3:按数量、4:线下定价
-      console.log("servicetpyeId:", servicetpyeId);
-      if (servicetpyeId === 1) {
-        wx.navigateTo({
-          url: "../reservation/forDuration/main"
-        });
-      } else if (servicetpyeId === 2) {
-        wx.navigateTo({
-          url: "../reservation/forSquare/main"
-        });
-      } else if (servicetpyeId === 3) {
-        wx.navigateTo({
-          url: "../reservation/forAmount/main"
+      if (this.$store.state.position === 1) {
+        wx.showToast({
+          title: "员工不能下单哦～",
+          icon: "none",
+          duration: 2000
         });
       } else {
-        wx.navigateTo({
-          url: "../reservation/forOffline/main"
-        });
+        // 向后端拿默认地址，给下一个页面用
+        this.$https
+          .request({
+            url: this.$interfaces.getDefaultAddress,
+            data: {
+              userId: this.$store.state.fakeId //正式用：用户id
+              // userId: 1
+            },
+            header: {
+              "content-type": "application/json" // 默认值
+            },
+            method: "POST"
+          })
+          .then(res => {
+            // console.log(res);
+            // 将默认地址存到vuex
+            this.$store.dispatch("setUserAddress", res.iUserDetail);
+            console.log("将默认地址存起：");
+            console.log(this.$store.state.userAddress);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+
+        // 1：按时间算钱、2：按平方、3:按数量、4:线下定价
+        console.log("servicetpyeId:", servicetpyeId);
+        if (servicetpyeId === 1) {
+          wx.navigateTo({
+            url: "../reservation/forDuration/main"
+          });
+        } else if (servicetpyeId === 2) {
+          wx.navigateTo({
+            url: "../reservation/forSquare/main"
+          });
+        } else if (servicetpyeId === 3) {
+          wx.navigateTo({
+            url: "../reservation/forAmount/main"
+          });
+        } else {
+          wx.navigateTo({
+            url: "../reservation/forOffline/main"
+          });
+        }
       }
     }
   }

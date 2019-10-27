@@ -2,8 +2,8 @@
  * @Description: "我的工具"界面
  * @Author: Celine
  * @Date: 2019-10-24 15:04:16
- * @LastEditTime: 2019-10-25 20:50:42
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-27 22:29:55
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="tool">
@@ -85,8 +85,8 @@ export default {
       .request({
         url: this.$interfaces.seeTool,
         data: {
-          // userid: this.$store.state.fakeId, //注意!!正式用
-          userid: 1, //输入值
+          userid: this.$store.state.fakeId, //注意!!！！！正式用
+          // userid: 1, //输入值
           state: this.state
         },
         header: {
@@ -211,8 +211,8 @@ export default {
       .request({
         url: this.$interfaces.seeTool,
         data: {
-          // userid: this.$store.state.fakeId, //注意!!正式用
-          userid: 1, //输入值
+          userid: this.$store.state.fakeId, //注意!！！！!正式用
+          // userid: 1, //输入值
           state: this.state
         },
         header: {

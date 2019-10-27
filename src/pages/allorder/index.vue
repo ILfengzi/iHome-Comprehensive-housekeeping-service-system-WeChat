@@ -2,8 +2,8 @@
  * @Description: 全部订单页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-26 10:05:37
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-27 22:13:30
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="allorder">
@@ -47,10 +47,10 @@ export default {
       .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
-          // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
-          // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用      
-          userid: 1, //输入值
-          temp: 2, //用户类型 1为员工，2为普通用户
+          temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+          userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用      
+          // userid: 1, //输入值
+          // temp: 2, //用户类型 1为员工，2为普通用户
           state: this.state
         },
         header: {
@@ -88,10 +88,10 @@ export default {
       .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
-          // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
-          // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
-          userid: 1, //输入值
-          temp: 2, //用户类型 1为员工，2为普通用户
+          temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+          userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
+          // userid: 1, //输入值
+          // temp: 2, //用户类型 1为员工，2为普通用户
           state: this.state
         },
         header: {
@@ -120,10 +120,10 @@ export default {
         .request({
           url: this.$interfaces.getOrderlistBytypename,
           data: {
-            // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
-            // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
-            userid: 1, //输入值
-            temp: 2, //用户类型 1为员工，2为普通用户
+            temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+            userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
+            // userid: 1, //输入值
+            // temp: 2, //用户类型 1为员工，2为普通用户
             state: this.state,
             typename: this.inputValue
           },

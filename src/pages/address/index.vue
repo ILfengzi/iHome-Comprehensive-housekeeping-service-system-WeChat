@@ -2,7 +2,7 @@
  * @Description: "订单跳转"过来的我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-24 20:04:46
+ * @LastEditTime: 2019-10-27 22:11:03
  * @LastEditors: Lin Changkun
  -->
 
@@ -43,8 +43,8 @@ export default {
       .request({
         url: this.$interfaces.getUserAddress,
         data: {
-          // id: this.$store.state.fakeId //⚠️正式用：用户id
-          userId: 3
+          userId: this.$store.state.fakeId //正式用：用户id
+          // userId: 3
         },
         header: {
           "content-type": "application/json" // 默认值

@@ -1,9 +1,9 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 支付预览
+ * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-26 11:17:42
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-27 22:08:11
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="page">
@@ -165,14 +165,14 @@ export default {
     // this.order.userAddressId = this.$store.state.orderForm.date;
     // this.order.userId = this.$store.state.fakeId
     // ⚠️一开始将存起来的orderForm一项一项赋给serviceItem[？].content
-    // this.price = this.$store.state.orderForm.price; //价格
-    // this.serviceItem[0].content = this.$store.state.serviceDetail.typename; //服务
-    // this.serviceItem[1].content = this.$store.state.orderForm.duration; //计费规则
-    // this.serviceItem[2].content = this.$store.state.userAddress.username; //用户名
-    // this.serviceItem[3].content = this.$store.state.orderForm.time; //上门时间
-    // this.serviceItem[4].content = this.$store.state.userAddress.province+'-'+this.$store.state.userAddress.city+'-'+this.$store.state.userAddress.detail; //地址
-    // this.serviceItem[5].content = this.$store.state.userAddress.phone; //联系电话
-    // this.serviceItem[6].content = this.$store.state.orderForm.remarks; //备注
+    this.price = this.$store.state.orderForm.price; //价格
+    this.serviceItem[0].content = this.$store.state.serviceDetail.typename; //服务
+    this.serviceItem[1].content = this.$store.state.orderForm.duration; //计费规则
+    this.serviceItem[2].content = this.$store.state.userAddress.username; //用户名
+    this.serviceItem[3].content = this.$store.state.orderForm.time; //上门时间
+    this.serviceItem[4].content = this.$store.state.userAddress.province+'-'+this.$store.state.userAddress.city+'-'+this.$store.state.userAddress.detail; //地址
+    this.serviceItem[5].content = this.$store.state.userAddress.phone; //联系电话
+    this.serviceItem[6].content = this.$store.state.orderForm.remarks; //备注
   },
 
   methods: {
@@ -185,48 +185,48 @@ export default {
       this.showCustomPopup = true;
       this.block = true;
       this.showRegister = true;
-      // // ⚠️向后端发送数据
-      // this.$https
-      //   .request({
-      //     url: this.$interfaces.submitOrder,
-      //     data: {
-      //       comm: this.$store.state.orderForm.duration + '**' + this.$store.state.orderForm.remarks,
-      //       date: this.$store.state.orderForm.date,
-      //       detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
-      //       price: this.$store.state.orderForm.price,
-      //       userAddressId: this.$store.state.userAddress.id,
-      //       userId: this.$store.state.fakeId
-      //     },
-      //     header: {
-      //       "content-type": "application/json" // 默认值
-      //     },
-      //     method: "POST"
-      //   })
-      //   .then(res => {
-      //     console.log("支付成功！");
+      // ⚠️向后端发送数据
+      this.$https
+        .request({
+          url: this.$interfaces.submitOrder,
+          data: {
+            comm: this.$store.state.orderForm.duration + '**' + this.$store.state.orderForm.remarks,
+            date: this.$store.state.orderForm.date,
+            detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
+            price: this.$store.state.orderForm.price,
+            userAddressId: this.$store.state.userAddress.id,
+            userId: this.$store.state.fakeId
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          console.log("支付成功！");
 
-      //     // let p = this.$store.state.position;
-      //     let p = 4;
-      //     // 4为普通用户：跳转到首页，员工跳转到订单页面
-      //     if (p === 4) {
-      //       wx.reLaunch({
-      //         url: "../home/main"
-      //       });
-      //     } else {
-      //       wx.reLaunch({
-      //         url: "../order/main"
-      //       });
-      //     }
-      //     // 弹消息框
-      //     wx.showToast({
-      //       title: "跳转至支付页面",
-      //       icon: "success",
-      //       duration: 2000
-      //     });
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+          // let p = this.$store.state.position;
+          // let p = 4;
+          // // 4为普通用户：跳转到首页，员工跳转到订单页面
+          // if (p === 4) {
+          //   wx.reLaunch({
+          //     url: "../home/main"
+          //   });
+          // } else {
+          //   wx.reLaunch({
+          //     url: "../order/main"
+          //   });
+          // }
+          // // 弹消息框
+          // wx.showToast({
+          //   title: "跳转至支付页面",
+          //   icon: "success",
+          //   duration: 2000
+          // });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     /*******支付密码框********/
     //关闭密码输入清空输入

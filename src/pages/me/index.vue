@@ -2,13 +2,8 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-26 10:48:16
- * @LastEditors: Wanlin Chen
-=======
- * @LastEditTime: 2019-10-26 17:54:04
+ * @LastEditTime: 2019-10-27 21:29:52
  * @LastEditors: Lin Changkun
->>>>>>> 8e71d84f207d0bdc31f13ac80f3632fcec0ee9d2
  -->
 <template>
   <div>

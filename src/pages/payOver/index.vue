@@ -2,7 +2,7 @@
  * @Description: 支付完成页
  * @Author: Wanlin Chen
  * @Date: 2019-10-20 11:58:49
- * @LastEditTime: 2019-10-23 19:24:42
+ * @LastEditTime: 2019-10-27 22:09:43
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -37,19 +37,19 @@ export default {
   },
   methods: {
     payOver() {
-      if (this.position === 1) {
+      // if (this.position === 1) {
         wx.switchTab({
           url: "../home/main",
           success() {},
           fail() {}
         });
-      } else {
-        wx.switchTab({
-          url: "../order/main",
-          success() {},
-          fail() {}
-        });
-      }
+      // } else {
+      //   wx.switchTab({
+      //     url: "../order/main",
+      //     success() {},
+      //     fail() {}
+      //   });
+      // }
     }
   }
 };

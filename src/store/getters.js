@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:11
- * @LastEditTime: 2019-10-24 11:07:36
+ * @LastEditTime: 2019-10-27 17:53:47
  * @LastEditors: Lin Changkun
  */
 export const isAuthenticated = state => state.isAuthenticated;
@@ -17,3 +17,4 @@ export const userAddress = state => state.userAddress;
 export const orderDetail = state => state.orderDetail;
 export const oldUserAddress = state => state.oldUserAddress;
 export const isNewAddress = state => state.isNewAddress;
+export const showModel = state => state.showModel;

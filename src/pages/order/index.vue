@@ -2,8 +2,8 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-25 20:55:30
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-27 22:31:33
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -81,10 +81,10 @@ export default {
       .request({
         url: this.$interfaces.getOrderlistByid,
         data: {
-          // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
-          // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
-          userid: 1, //输入值
-          temp: 2, //用户类型 1为员工，2为普通用户
+          temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+          userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
+          // userid: 1, //输入值
+          // temp: 2, //用户类型 1为员工，2为普通用户
           state: this.state
         },
         header: {
@@ -120,10 +120,10 @@ export default {
         .request({
           url: this.$interfaces.getOrderlistByid,
           data: {
-            // temp: this.$store.state.position,//注意!!!!!!!!!!正式用
-            // userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
-            userid: 1, //输入值
-            temp: 2, //用户类型 1为员工，2为普通用户
+            temp: this.$store.state.position,//注意!!!!!!!!!!正式用
+            userid: this.$store.state.fakeId, //注意!!!!!!!!!!!!正式用
+            // userid: 1, //输入值
+            // temp: 2, //用户类型 1为员工，2为普通用户
             state: this.state
           },
           header: {

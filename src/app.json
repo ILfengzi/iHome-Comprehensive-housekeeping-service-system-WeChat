@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/home/main",
+    "pages/me/main",
     "pages/test/main",
     "pages/aboutUs/main",
-    "pages/me/main",
     "pages/service/main",
     "pages/myAddress/main",
     "pages/orderdetail/main",

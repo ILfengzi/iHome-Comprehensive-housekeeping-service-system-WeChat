@@ -1,8 +1,8 @@
 <!--
- * @Description: 首页
- * @Author: 
+ * @Description: 搜索结果页
+ * @Author: Lin Changkun
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-23 08:38:47
+ * @LastEditTime: 2019-10-27 22:14:17
  * @LastEditors: Lin Changkun
  -->
 <template>

@@ -1,8 +1,8 @@
 <!--
- * @Description: 
- * @Author: 
+ * @Description: 登录页面
+ * @Author: Lin Changkun
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-27 17:12:22
+ * @LastEditTime: 2019-10-27 21:08:32
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -16,28 +16,6 @@
       </div>
     </div>
 
-    <!-- 获取手机号模态框 -->
-    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModal">
-    <div class="modal-dialog" v-if="showModal">
-      <div class="modal-title">请输入您的手机号码：</div>
-      <div class="modal-content">
-        <div class="modal-input">
-          <input
-            placeholder-class="input-holder"
-            type="number"
-            maxlength="11"
-            class="input"
-            v-model="phoneNumber"
-            placeholder="请输入数量"
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
-        <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
-      </div>
-    </div>
-    </div>
   </div>
 </template>
 
@@ -46,8 +24,6 @@ export default {
   data() {
     return {
       js_code: '',
-      showModal: false,
-      phoneNumber: ''
     };
   },
 
@@ -96,22 +72,21 @@ export default {
           // 成功，则将后端返回的position（1为员工，4为普通用户）和非openid的用户id存储到vuex中
           this.$store.dispatch("setPosition", res.map.existence);
           this.$store.dispatch("setFakeId", res.map.userid);
+          this.$store.dispatch("setShowModel", res.map.havephone);
           console.log("存起来了，好开森～", this.$store.state.position);
           console.log(this.$store.state.fakeId);
+          // console.log("showModal",this.$store.state.showModel);
+          
+          // if (res.map.havephone === 'false') {
+          //   // 弹手机号输入框
+          //   this.showDialogBtn();
+          // }
 
-          if (res.map.havephone === 'false') {
-            // 弹手机号输入框
-            console.log('凯疯丢你嗨');
-            this.showDialogBtn();
-          }else{
           //根据角色不同，优先跳到到页面不同
-          if (this.$store.state.position == 4) {
+          if (this.$store.state.position === 4) {
             this.goToHome();
           } else {
             this.goToOrder();
-          }
-            console.log('凯疯sidsidsidjisdjjsi');
-            console.log(res.map.havephone);
           }
         })
         .catch(err => {
@@ -122,7 +97,9 @@ export default {
     goToHome() {
       wx.switchTab({
         url: "../home/main",
-        success() {},
+        success() {
+          console.log('成功跳转到home');
+        },
         fail() {}
       });
     },
@@ -134,72 +111,7 @@ export default {
         fail() {}
       });
     },
-    /**
-     * 弹窗
-     */
-    showDialogBtn() {
-      this.showModal = true;
-      console.log("进入了showDialogBtn() ");
-      console.log(this.showModal);
-    },
-    /**
-     * 弹出框蒙层截断touchmove事件
-     */
-    preventTouchMove() {},
-    /**
-     * 对话框取消按钮点击事件
-     */
-    onCancel() {
-      
-      this.showModal = false;
-                //根据角色不同，优先跳到到页面不同
-          if (this.$store.state.position == 4) {
-            this.goToHome();
-          } else {
-            this.goToOrder();
-          }
-    },
-    /**
-     * 对话框确认按钮点击事件
-     */
-    onConfirm() {
-      //输入完成
-      console.log("输入完成");
-      //校验手机号码
-      this.isPoneAvailable(this.phoneNumber);
-    },
-
-    isPoneAvailable(phone) {
-      let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
-      if (!myreg.test(phone)) {
-        wx.showToast({
-          title: "请输入正确的手机号码",
-          icon: "none",
-          duration: 2000
-        });
-      } else {
-      //向后端发送数据
-      this.$https
-        .request({
-          url: this.$interfaces.sendPhoneNumber,
-          data: {
-            fakeId: this.$store.state.fakeId, // 用户id
-            phoneNumber: this.phoneNumber // 手机号
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          console.log(res);
-        this.showModal = false;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      }
-    }
+ 
   }
 };
 </script>
@@ -238,89 +150,5 @@ export default {
   width: 62%;
   background-color: #009eef;
   color: white;
-}
-
-
-
-.modal-mask {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.5;
-  overflow: hidden;
-  z-index: 9000;
-  color: #fff;
-}
-
-.modal-dialog {
-  width: 540rpx;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  left: 0;
-  z-index: 9999;
-  background: #f9f9f9;
-  margin: -180rpx 105rpx;
-  border-radius: 36rpx;
-}
-
-.modal-title {
-  padding-top: 50rpx;
-  font-size: 36rpx;
-  color: #030303;
-  text-align: center;
-}
-
-.modal-content {
-  padding: 50rpx 32rpx;
-}
-
-.modal-input {
-  display: flex;
-  background: #fff;
-  border: 2rpx solid #ddd;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-}
-
-
-.input {
-  width: 100%;
-  height: 82rpx;
-  font-size: 28rpx;
-  line-height: 28rpx;
-  padding: 0 20rpx;
-  box-sizing: border-box;
-  color: #333;
-}
-
-input-holder {
-  color: #666;
-  font-size: 28rpx;
-}
-
-.modal-footer {
-  display: flex;
-  flex-direction: row;
-  height: 86rpx;
-  border-top: 1px solid #dedede;
-  font-size: 34rpx;
-  line-height: 86rpx;
-}
-
-.btn-cancel {
-  width: 50%;
-  color: #666;
-  text-align: center;
-  border-right: 1px solid #dedede;
-}
-
-.btn-confirm {
-  width: 50%;
-  color: #20e230;
-  text-align: center;
 }
 </style>

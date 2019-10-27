@@ -2,8 +2,8 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-26 11:30:44
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-27 22:30:42
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -215,8 +215,8 @@ export default {
               data: {
                 userName: this.editAddress.username,
                 phone: this.editAddress.phone,
-                // userId: this.$store.$state.fakeId; //⚠️正式请用
-                userId: 3, //测试用
+                userId: this.$store.$state.fakeId, //正式请用
+                // userId: 3, //测试用
                 province: this.editAddress.province,
                 city: this.editAddress.city,
                 detail: this.editAddress.detail,

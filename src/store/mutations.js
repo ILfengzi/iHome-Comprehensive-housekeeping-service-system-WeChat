@@ -2,7 +2,7 @@
  * @Description: 
  * @Author:  Lin Changkun
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-24 11:08:01
+ * @LastEditTime: 2019-10-27 17:55:59
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = (state, data) => {
@@ -51,4 +51,8 @@ export const setOldUserAddress = (state,data) =>{
 
 export const setIsNewAddress = (state,data) =>{
     state.isNewAddress = data;
+};
+
+export const setShowModel = (state,data) =>{
+    state.showModel = data;
 };
