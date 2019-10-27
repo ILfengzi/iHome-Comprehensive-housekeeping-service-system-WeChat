@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-27 15:59:22
+ * @LastEditTime: 2019-10-27 17:12:22
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -17,8 +17,8 @@
     </div>
 
     <!-- 获取手机号模态框 -->
-    <div class="modal-mask" catchtouchmove="preventTouchMove">
-    <div class="modal-dialog">
+    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModal">
+    <div class="modal-dialog" v-if="showModal">
       <div class="modal-title">请输入您的手机号码：</div>
       <div class="modal-content">
         <div class="modal-input">
@@ -101,17 +101,18 @@ export default {
 
           if (res.map.havephone === 'false') {
             // 弹手机号输入框
-            console.log("凯峰吃屎");
+            console.log('凯疯丢你嗨');
             this.showDialogBtn();
           }else{
-            console.log("凯峰不吃屎");
-          }
           //根据角色不同，优先跳到到页面不同
-          // if (res.map.existence == 4) {
-          //   this.goToHome();
-          // } else {
-          //   this.goToOrder();
-          // }
+          if (this.$store.state.position == 4) {
+            this.goToHome();
+          } else {
+            this.goToOrder();
+          }
+            console.log('凯疯sidsidsidjisdjjsi');
+            console.log(res.map.havephone);
+          }
         })
         .catch(err => {
           console.log(err);
@@ -149,7 +150,14 @@ export default {
      * 对话框取消按钮点击事件
      */
     onCancel() {
-      this.hideModal();
+      
+      this.showModal = false;
+                //根据角色不同，优先跳到到页面不同
+          if (this.$store.state.position == 4) {
+            this.goToHome();
+          } else {
+            this.goToOrder();
+          }
     },
     /**
      * 对话框确认按钮点击事件
@@ -159,7 +167,17 @@ export default {
       console.log("输入完成");
       //校验手机号码
       this.isPoneAvailable(this.phoneNumber);
+    },
 
+    isPoneAvailable(phone) {
+      let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+      if (!myreg.test(phone)) {
+        wx.showToast({
+          title: "请输入正确的手机号码",
+          icon: "none",
+          duration: 2000
+        });
+      } else {
       //向后端发送数据
       this.$https
         .request({
@@ -175,22 +193,11 @@ export default {
         })
         .then(res => {
           console.log(res);
+        this.showModal = false;
         })
         .catch(err => {
           console.log(err);
         });
-    },
-
-    isPoneAvailable(phone) {
-      let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
-      if (!myreg.test(phone)) {
-        wx.showToast({
-          title: "请输入正确的手机号码",
-          icon: "none",
-          duration: 2000
-        });
-      } else {
-        this.showModal = false;
       }
     }
   }
@@ -231,5 +238,89 @@ export default {
   width: 62%;
   background-color: #009eef;
   color: white;
+}
+
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #20e230;
+  text-align: center;
 }
 </style>
