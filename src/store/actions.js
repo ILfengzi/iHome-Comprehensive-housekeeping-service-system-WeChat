@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-27 17:57:01
+ * @LastEditTime: 2019-10-28 09:46:09
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = ({ commit }, data) => {
@@ -55,4 +55,8 @@ export const setIsNewAddress = ({ commit },data) => {
 
 export const setShowModel = ({ commit },data) => {
   commit("setShowModel",data);
+};
+
+export const setOrderId = ({ commit },data) => {
+  commit("setOrderId",data);
 };

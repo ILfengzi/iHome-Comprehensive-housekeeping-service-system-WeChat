@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-28 08:42:28
+ * @LastEditTime: 2019-10-28 08:54:06
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -366,7 +366,7 @@ export default {
           })
           .then(res => {
             console.log(res);
-            this.showModel = false;
+            this.onCancel();
           })
           .catch(err => {
             console.log(err);

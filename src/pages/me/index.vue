@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-27 21:29:52
+ * @LastEditTime: 2019-10-28 09:26:49
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -81,19 +81,19 @@ export default {
   },
   mounted() {
     /*********测试注释 */
-    // this.nickName = this.$store.state.user.nickName;
-    // this.country = this.$store.state.user.country;
-    // this.province = this.$store.state.user.province;
-    // this.city = this.$store.state.user.city;
-    // this.position = this.$store.state.user.position;
+    this.nickName = this.$store.state.user.nickName;
+    this.country = this.$store.state.user.country;
+    this.province = this.$store.state.user.province;
+    this.city = this.$store.state.user.city;
+    this.position = this.$store.state.user.position;
     //如果是员工，则请求数据
     if (this.position === 1) {
       this.$https
         .request({
           url: this.$interfaces.getOrderCountAndMoney,
           data: {
-            // staffid: this.$store.state.fakeId, //⚠️正式用
-            staffid: 1, //⚠️正式用
+            staffid: this.$store.state.fakeId, //正式用
+            // staffid: 1, //测试用
           },
           header: {
             "content-type": "application/json" // 默认值

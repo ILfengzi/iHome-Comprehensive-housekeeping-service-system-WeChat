@@ -2,8 +2,8 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-26 12:12:36
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-28 09:48:47
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="makeEval">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="save">
-      <button @click="submited"  type="primary" size="large">提交</button>
+      <button @click="submited" type="primary" size="large">提交</button>
     </div>
   </div>
 </template>
@@ -44,10 +44,10 @@ export default {
   },
   data() {
     return {
-        orderId:3,//从前一个跳转页面获取
-        quality: "",
-        attitude: "",
-        describe: "" 
+      orderId: 3, //从前一个跳转页面获取
+      quality: "",
+      attitude: "",
+      describe: ""
     };
   },
   methods: {
@@ -58,31 +58,31 @@ export default {
     qualClick(index) {
       this.quality = index;
     },
-  submited:function(){
-    this.$https
-      .request({   
-        url: this.$interfaces.setEvaluate,
-        data: {
-          attitude_valuation:this.attitude,
-          e_describe:this.describe,
-          id:this.orderId, //目前写死，需要动态获取order_id
-          quality_valuation:this.quality,
-        },
-        header: {
-          "content-type": "application/json" // 默认值
-        },
-        method: "POST"
-      })
-      .then(res => {
-        console.log(res);
-        // 成功，刷新页面
-        // this.userAddress = res.addressList;
-        // console.log(this.userAddress);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    },
+    submited: function() {
+      this.$https
+        .request({
+          url: this.$interfaces.setEvaluate,
+          data: {
+            attitude_valuation: this.attitude,
+            e_describe: this.describe,
+            id: this.$store.state.orderId,
+            quality_valuation: this.quality
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          console.log(res);
+          // 成功，刷新页面
+          // this.userAddress = res.addressList;
+          // console.log(this.userAddress);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
@@ -110,7 +110,7 @@ export default {
 }
 .inp {
   border-top: 1px solid #f4f4f4;
-  height:60px;
+  height: 60px;
 }
 textarea {
   height: 120rpx;

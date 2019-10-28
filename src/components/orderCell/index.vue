@@ -2,8 +2,8 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-25 15:49:47
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-28 09:47:15
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -22,9 +22,24 @@
     </div>
     <div class="btns">
       <button @click="cal" :class="{'hide':allOrderList.state!==2,'btn':true}">取消订单</button>
-      <mp-modal ref="mpModal1" title="提示" content="确定取消该订单？" :showCancel="true" @confirm="confirm" @cancel="cancel"></mp-modal>
+      <mp-modal
+        ref="mpModal1"
+        title="提示"
+        content="确定取消该订单？"
+        :showCancel="true"
+        @confirm="confirm"
+        @cancel="cancel"
+      ></mp-modal>
       <button @click="com" :class="{'hide':allOrderList.state!==3,'btn':true}">确认完成</button>
-      <mp-modal ref="mpModal2" title="提示" content="确定完成订单？" :showCancel="true" @confirm="complete" @cancel="cancel"></mp-modal>
+      <mp-modal
+        ref="mpModal2"
+        title="提示"
+        content="确定完成订单？"
+        :showCancel="true"
+        @confirm="complete"
+        @cancel="cancel"
+      ></mp-modal>
+      <button @click="makeEval" :class="{'hide':allOrderList.state!==4,'btn':true}">订单评价</button>
     </div>
   </div>
 </template>
@@ -37,19 +52,28 @@ export default {
   },
   props: {
     allOrderList: Object,
-    index: Number
+    index: Number,
+    orderId: Number
   },
   computed: {},
   methods: {
-    confirm(e){
+    makeEval() {
+      this.$store.dispatch("setOrderId", this.orderId);
+      console.log('成功存起了orderId：', this.$store.state.orderId);
+      wx.navigateTo({
+        url: "../../pages/makeEval"
+      });
+    },
+
+    confirm(e) {
       console.log(this.allOrderList);
-      this.$emit("isDelete",this.allOrderList.id,this.index);
+      this.$emit("isDelete", this.allOrderList.id, this.index);
     },
     complete(e) {
       console.log(this.allOrderList);
-      this.$emit("isComplete",this.allOrderList.id,this.index);
+      this.$emit("isComplete", this.allOrderList.id, this.index);
     },
-    com(){
+    com() {
       this.$refs.mpModal2.show();
     },
     cal() {

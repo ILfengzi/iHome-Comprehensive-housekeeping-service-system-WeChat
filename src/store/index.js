@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 
  * @Date: 2019-10-02 17:20:18
- * @LastEditTime: 2019-10-27 19:40:05
+ * @LastEditTime: 2019-10-28 09:43:54
  * @LastEditors: Lin Changkun
 >>>>>>> 1173efcf14f536199568ddcc9a4f489512d197d5
  */
@@ -31,6 +31,7 @@ const state = {
   oldUserAddress: null, //用户旧地址，准备编辑的地址
   isNewAddress: false, //是否为新建地址，否为编辑地址
   showModel: "",  //是否弹出输入手机号的模态框
+  orderId: "",  //订单id
 };
 
 export default new Vuex.Store({

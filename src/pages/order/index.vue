@@ -2,7 +2,7 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-27 22:31:33
+ * @LastEditTime: 2019-10-28 09:47:23
  * @LastEditors: Lin Changkun
  -->
 
@@ -44,7 +44,7 @@
             </div>
             <div class="weui-tab__content" :hidden="activeIndex != 2">
               <div v-for="(item,index) in allOrderList" :key="index">
-                <orderCell :index="index"  :allOrderList="item"></orderCell>
+                <orderCell :orderId="item.id"  :allOrderList="item"></orderCell>
               </div>
             </div>
           </div>
