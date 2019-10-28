@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-28 09:26:49
+ * @LastEditTime: 2019-10-28 15:55:25
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -73,7 +73,7 @@ export default {
       country: "中国",
       province: "广东",
       city: "湛江",
-      position: 1, //1为员工，4为普通用户
+      position: 4, //1为员工，4为普通用户
       count: 0,
       sum: 0,
       monthcount: 0
@@ -81,11 +81,11 @@ export default {
   },
   mounted() {
     /*********测试注释 */
-    this.nickName = this.$store.state.user.nickName;
+    // this.nickName = this.$store.state.user.nickName;
     this.country = this.$store.state.user.country;
     this.province = this.$store.state.user.province;
     this.city = this.$store.state.user.city;
-    this.position = this.$store.state.user.position;
+    this.position = this.$store.state.position;
     //如果是员工，则请求数据
     if (this.position === 1) {
       this.$https

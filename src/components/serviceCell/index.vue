@@ -2,7 +2,7 @@
  * @Description: 服务小项（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-10 16:40:27
- * @LastEditTime: 2019-10-23 17:07:14
+ * @LastEditTime: 2019-10-28 19:24:11
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -50,13 +50,13 @@ export default {
   width: 60%;
 }
 .cell_text h4 {
-  margin-top: 5px;
+  /* margin-top: 2px; */
   /* height: 60px; */
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 .cell_text h6 {

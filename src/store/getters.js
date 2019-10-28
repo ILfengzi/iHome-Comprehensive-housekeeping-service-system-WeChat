@@ -1,8 +1,8 @@
 /*
  * @Description: 
- * @Author: 
+ * @Author: Lin Changkun
  * @Date: 2019-10-02 17:20:11
- * @LastEditTime: 2019-10-28 09:44:12
+ * @LastEditTime: 2019-10-28 10:59:59
  * @LastEditors: Lin Changkun
  */
 export const isAuthenticated = state => state.isAuthenticated;

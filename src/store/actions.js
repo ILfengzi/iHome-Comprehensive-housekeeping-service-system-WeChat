@@ -1,8 +1,8 @@
 /*
  * @Description: 
- * @Author: 
+ * @Author: Lin Changkun
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-28 09:46:09
+ * @LastEditTime: 2019-10-28 11:00:12
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = ({ commit }, data) => {

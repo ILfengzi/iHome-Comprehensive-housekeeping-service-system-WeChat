@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: Lin Changkun
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-27 21:08:32
+ * @LastEditTime: 2019-10-28 17:34:34
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -58,7 +58,7 @@ export default {
         .request({
           url: this.$interfaces.getOpenid,
           data: {
-            userInfo: this.$store.state.user, //用户信息
+            // userInfo: this.$store.state.user, //用户信息
             getcode: this.js_code //wx.login登录获取的code值
           },
           header: {

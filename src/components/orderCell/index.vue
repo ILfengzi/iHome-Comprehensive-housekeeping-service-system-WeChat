@@ -2,7 +2,7 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-28 09:47:15
+ * @LastEditTime: 2019-10-28 15:18:50
  * @LastEditors: Lin Changkun
  -->
 
@@ -61,7 +61,7 @@ export default {
       this.$store.dispatch("setOrderId", this.orderId);
       console.log('成功存起了orderId：', this.$store.state.orderId);
       wx.navigateTo({
-        url: "../../pages/makeEval"
+        url: "../../pages/makeEval/main"
       });
     },
 

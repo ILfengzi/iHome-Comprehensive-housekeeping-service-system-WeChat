@@ -2,7 +2,7 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-27 22:08:11
+ * @LastEditTime: 2019-10-28 18:20:28
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -94,43 +94,43 @@ export default {
       show5: false,
       show6: false,
       /********** */
-      price: 0,
+      price: 0.01,
       block: false,
       showRegister: false,
       showCustomPopup: false,
       serviceItem: [
         {
-          key: "1",
+          key: "0",
           title: "服务",
           content: "日常清洁"
         },
         {
-          key: "2",
+          key: "1",
           title: "计费规则",
           content: ""
         },
         {
-          key: "3",
+          key: "2",
           title: "用户名",
           content: ""
         },
         {
-          key: "4",
+          key: "3",
           title: "上门时间",
           content: ""
         },
         {
-          key: "5",
+          key: "4",
           title: "地址",
           content: ""
         },
         {
-          key: "6",
+          key: "5",
           title: "联系电话",
           content: ""
         },
         {
-          key: "7",
+          key: "6",
           title: "备注",
           content: ""
         }
@@ -170,7 +170,12 @@ export default {
     this.serviceItem[1].content = this.$store.state.orderForm.duration; //计费规则
     this.serviceItem[2].content = this.$store.state.userAddress.username; //用户名
     this.serviceItem[3].content = this.$store.state.orderForm.time; //上门时间
-    this.serviceItem[4].content = this.$store.state.userAddress.province+'-'+this.$store.state.userAddress.city+'-'+this.$store.state.userAddress.detail; //地址
+    this.serviceItem[4].content =
+      this.$store.state.userAddress.province +
+      "-" +
+      this.$store.state.userAddress.city +
+      "-" +
+      this.$store.state.userAddress.detail; //地址
     this.serviceItem[5].content = this.$store.state.userAddress.phone; //联系电话
     this.serviceItem[6].content = this.$store.state.orderForm.remarks; //备注
   },
@@ -185,14 +190,32 @@ export default {
       this.showCustomPopup = true;
       this.block = true;
       this.showRegister = true;
-      // ⚠️向后端发送数据
+    },
+    /*******支付密码框********/
+    //关闭密码输入清空输入
+    closePop: function() {
+      this.password = "";
+      this.judgePassword();
+    },
+
+    //校验密码
+    surePassword: function() {
+      // 调用密码校验接口
+
+      // 校验完成，向后端发送订单数据
       this.$https
         .request({
           url: this.$interfaces.submitOrder,
           data: {
-            comm: this.$store.state.orderForm.duration + '**' + this.$store.state.orderForm.remarks,
+            comm:
+              this.$store.state.orderForm.duration +
+              "**" +
+              this.$store.state.orderForm.remarks,
             date: this.$store.state.orderForm.date,
-            detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
+            // detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
+            // date: this.$store.state.orderForm.time,
+            detailTypeId: this.$store.state.serviceDetail.iServiceItemList[0]
+              .detailtypeId,
             price: this.$store.state.orderForm.price,
             userAddressId: this.$store.state.userAddress.id,
             userId: this.$store.state.fakeId
@@ -203,40 +226,32 @@ export default {
           method: "POST"
         })
         .then(res => {
-          console.log("支付成功！");
+          console.log("提交订单成功！凯丰直播迎风驰翔");
+          console.log(
+            "comm:",
+            this.$store.state.orderForm.duration +
+              "**" +
+              this.$store.state.orderForm.remarks
+          );
+          console.log("date", this.$store.state.orderForm.date);
+          console.log(
+            this.$store.state.serviceDetail.iServiceItemList[0].detailtypeId
+          );
+          console.log("price", this.$store.state.orderForm.price);
+          console.log("userAddressId", this.$store.state.userAddress.id);
+          console.log("userId", this.$store.state.fakeId);
+          console.log("userAddress:", this.$store.state.userAddress);
 
-          // let p = this.$store.state.position;
-          // let p = 4;
-          // // 4为普通用户：跳转到首页，员工跳转到订单页面
-          // if (p === 4) {
-          //   wx.reLaunch({
-          //     url: "../home/main"
-          //   });
-          // } else {
-          //   wx.reLaunch({
-          //     url: "../order/main"
-          //   });
-          // }
-          // // 弹消息框
-          // wx.showToast({
-          //   title: "跳转至支付页面",
-          //   icon: "success",
-          //   duration: 2000
-          // });
+          //  清除缓存
+          this.$store.dispatch("setOrderForm", null);
+          this.$store.dispatch("setUserAddress", null);
         })
         .catch(err => {
+          console.log("提交订单失败（不关我事～），失败信息：");
           console.log(err);
         });
-    },
-    /*******支付密码框********/
-    //关闭密码输入清空输入
-    closePop: function() {
-      this.password = "";
-      this.judgePassword();
-    },
-    //校验密码
-    surePassword: function() {
-      // 调用密码校验接口
+
+      //跳转到支付完成页面
       wx.navigateTo({
         url: "../payOver/main"
       });
@@ -341,7 +356,6 @@ export default {
   float: left;
   margin-top: 22rpx;
   margin-left: 22rpx;
-
 }
 .forPop {
   width: 60%;
@@ -365,7 +379,6 @@ export default {
   margin-bottom: 12rpx;
   margin-left: 24px;
   margin-top: -8px;
-
 }
 .price {
   font-size: 36px;
@@ -373,8 +386,6 @@ export default {
   border-bottom: 2rpx solid #ccc;
   margin: 0 20rpx 32rpx 20rpx;
   padding-bottom: 18rpx;
-
-
 }
 .pwipt {
   font-size: 0;

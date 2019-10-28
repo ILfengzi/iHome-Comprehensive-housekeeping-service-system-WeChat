@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-28 08:54:06
+ * @LastEditTime: 2019-10-28 18:01:36
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -80,27 +80,26 @@
     </div>
 
     <!-- 获取手机号模态框 -->
-    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModel">
-    </div>
-      <div class="modal-dialog" v-if="showModel">
-        <div class="modal-title">申请获取您的手机号码：</div>
-        <div class="modal-content">
-          <div class="modal-input">
-            <input
-              placeholder-class="input-holder"
-              type="number"
-              maxlength="11"
-              class="input"
-              v-model="phoneNumber"
-              placeholder="请输入您的手机号码"
-            />
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
-          <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
+    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModel"></div>
+    <div class="modal-dialog" v-if="showModel">
+      <div class="modal-title">申请获取您的手机号码：</div>
+      <div class="modal-content">
+        <div class="modal-input">
+          <input
+            placeholder-class="input-holder"
+            type="number"
+            maxlength="11"
+            class="input"
+            v-model="phoneNumber"
+            placeholder="请输入您的手机号码"
+          />
         </div>
       </div>
+      <div class="modal-footer">
+        <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
+        <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
+      </div>
+    </div>
   </scroll-view>
 </template>
 
@@ -117,6 +116,7 @@ export default {
   },
   data() {
     return {
+      // js_code: "",
       showModel: undefined, //是否展示模态框
       phoneNumber: "", //输入的手机号码
       images: [
@@ -215,28 +215,72 @@ export default {
      * 检验是否登录过期
      */
     // const _this = this;
-    wx.checkSession({
-      success: res => {
-        //session_key 未过期，并且在本生命周期一直有效
-        console.log("session_key 未过期");
-      },
-      fail: err => {
-        //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
-        // session_key 已经失效，需要重新执行登录流程
-        console.log("session_key 已经过期，跳转到index登录页面");
-        wx.reLaunch({
-          url: "../login/main"
-        });
-      }
-    });
-
-    console.log("showModel@@@@", this.$store.state.showModel);
-    if (this.$store.state.showModel == "false") {
-      this.showDialogBtn();
-    }
+    // wx.checkSession({
+    //   success: res => {
+    //     //session_key 未过期，并且在本生命周期一直有效
+    //     console.log("session_key 未过期");
+    //     this.getRole();
+    //   },
+    //   fail: err => {
+    //     //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
+    //     // session_key 已经失效，需要重新执行登录流程
+    //     console.log("session_key 已经过期，跳转到index登录页面");
+    //     this.getRole();
+    //   }
+    // });
+    // console.log("showModel@@@@", this.$store.state.showModel);
+    // if (this.$store.state.showModel == "false") {
+    //   this.showDialogBtn();
+    // }
+    this.getRole();
   },
 
   methods: {
+    getRole() {
+      console.log("#######################");
+      // console.log(this.js_code);
+      // console.log(this.$store.state.user);
+      //微信登录
+      wx.login({
+        success: res => {
+          // this.js_code = res.code;
+          this.$https
+            .request({
+              url: this.$interfaces.getOpenid,
+              data: {
+                // userInfo: this.$store.state.user, //用户信息
+                // getcode: this.js_code //wx.login登录获取的code值
+                getcode: res.code
+              },
+              header: {
+                "content-type": "application/json" // 默认值
+              },
+              method: "POST"
+            })
+            .then(res => {
+              console.log("ddasdasdasdasdadasdasdas");
+              console.log(res);
+              // 成功，则将后端返回的position（1为员工，4为普通用户）和非openid的用户id存储到vuex中
+              this.$store.dispatch("setPosition", res.map.existence);
+              this.$store.dispatch("setFakeId", res.map.userid);
+              // this.$store.dispatch("setShowModel", res.map.havephone);
+              console.log(
+                "position存起来了，好开森～",
+                this.$store.state.position
+              );
+              console.log(this.$store.state.fakeId);
+              // console.log("showModal",this.$store.state.showModel);
+              if (res.map.havephone == "false") {
+                this.showDialogBtn();
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      });
+    },
+
     showInput() {
       this.inputShowed = true;
     },

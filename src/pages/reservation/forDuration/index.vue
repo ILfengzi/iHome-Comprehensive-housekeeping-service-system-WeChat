@@ -2,7 +2,7 @@
  * @Description: 按时长计费（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-23 17:03:31
+ * @LastEditTime: 2019-10-28 17:12:06
  * @LastEditors: Lin Changkun
  -->
 
@@ -79,7 +79,13 @@ export default {
       ]
     };
   },
-
+  // mounted() {
+  //   this.orderForm.duration = "";
+  //   this.orderForm.time = "";
+  //   this.orderForm.date = "";
+  //   this.orderForm.price = "";
+  //   this.orderForm.remarks = "";
+  // },
   methods: {
     getChildDuration(childDuration) {
       // 拿到子组件传回来的时长
@@ -107,7 +113,7 @@ export default {
           this.orderForm.price =
             Number(this.$store.state.serviceDetail.price) *
             Number(childDuration);
-          this.orderForm.duration = childDuration + '小时';
+          this.orderForm.duration = childDuration + "小时";
         })
         .catch(err => {
           console.log(err);
@@ -118,7 +124,7 @@ export default {
       // console.log('时间:', childTime);
       this.showPriceAndRemarks = true;
       this.orderForm.time = childTime.label;
-      this.orderForm.date = childTime.date;
+      this.orderForm.date = childTime.value[1];
       // this.orderForm.price = this.$store.state.searchResults.price;
     },
 

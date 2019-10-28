@@ -2,7 +2,7 @@
  * @Description: "订单跳转"过来的我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-27 22:11:03
+ * @LastEditTime: 2019-10-28 10:01:36
  * @LastEditors: Lin Changkun
  -->
 
@@ -86,7 +86,7 @@ export default {
           method: "POST"
         })
         .then(res => {
-      //成功，再次向后端发起请求，从第index位开始，删除一个元素
+      //成功，从第index位开始，删除一个元素
       this.userAddress.splice(index, 1);
       })
       .catch(err => {

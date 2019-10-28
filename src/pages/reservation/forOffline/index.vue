@@ -2,7 +2,7 @@
  * @Description: 线下定价（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-25 16:05:48
+ * @LastEditTime: 2019-10-28 10:32:34
  * @LastEditors: Lin Changkun
  -->
 
@@ -54,7 +54,7 @@ export default {
         duration: undefined, //数量
         time: undefined, //服务时间
         date: undefined, //给后台的时间
-        price: 10, //价格
+        price: 0.01, //价格
         remarks: "" //备注
       },
       pickerValueArray: undefined,

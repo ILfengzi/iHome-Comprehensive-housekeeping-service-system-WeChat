@@ -2,12 +2,12 @@
  * @Description: 地址选择器（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-17 10:16:43
- * @LastEditTime: 2019-10-23 17:05:51
+ * @LastEditTime: 2019-10-28 10:16:04
  * @LastEditors: Lin Changkun
  -->
 <template>
-  <div class="addressPicker">
-    <div class="weui-cell weui-cell_access" hover-class="weui-cell_active" @click="goMyAddress">
+  <div class="addressPicker" @click="goMyAddress">
+    <div class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <div class="weui-cell__hd">
         <img
           src="/static/images/dingwei.png"
