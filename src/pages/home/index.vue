@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-27 20:52:13
+ * @LastEditTime: 2019-10-28 08:42:28
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -356,8 +356,8 @@ export default {
           .request({
             url: this.$interfaces.sendPhoneNumber,
             data: {
-              fakeId: this.$store.state.fakeId, // 用户id
-              phoneNumber: this.phoneNumber // 手机号
+              userid: this.$store.state.fakeId, // 用户id
+              phone: this.phoneNumber // 手机号
             },
             header: {
               "content-type": "application/json" // 默认值

@@ -2,7 +2,7 @@
  * @Description: 请求接口
  * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
- * @LastEditTime: 2019-10-27 15:52:38
+ * @LastEditTime: 2019-10-28 08:41:43
  * @LastEditors: Lin Changkun
  */
 // const domain = "http://10.86.2.14:80/json/"; //局域网通信
@@ -34,7 +34,7 @@ const interfaces = {
   returnTool: domain + 'tool/returntool',//员工归还工具
   damTool: domain + 'tool/damtool',//损坏工具
   seeTool: domain + 'tool/seetool',//员工查看工具
-  sendPhoneNumber: domain + '',  //向后端发送手机号
+  sendPhoneNumber: domain + 'updateOrderState',  //向后端发送手机号
   getOrderCountAndMoney: domain + 'order/staffnews', //获取员工订单数和提成
 };
 
