@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: Lin Changkun
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-30 14:49:00
+ * @LastEditTime: 2019-10-30 17:28:47
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -20,12 +20,18 @@
 
 <script>
 export default {
-  // data() {
-  //   return {
-  //     js_code: ""
-  //   };
-  // },
-
+  data() {
+    return {
+      js_code: ""
+    };
+  },
+  mounted() {
+    wx.login({
+      success: res => {
+        this.js_code = res.code;
+      }
+    });
+  },
   methods: {
     onGotUserInfo(e) {
       //判断授权是否成功
@@ -37,11 +43,34 @@ export default {
         this.$store.dispatch("setUser", e.mp.detail.userInfo);
         // this.userInfo = e.mp.detail.userInfo;
         // this.getRole(); //获取角色
-        wx.switchTab({
-          url: "../home/main"
-        });
+
+        this.$https
+          .request({
+            url: this.$interfaces.getOpenid,
+            data: {
+              // userInfo: this.$store.state.user, //用户信息
+              // getcode: this.js_code //wx.login登录获取的code值
+              js_code: this.js_code,
+              userInfo: e.mp.detail.userInfo
+            },
+            header: {
+              "content-type": "application/json" // 默认值
+            },
+            method: "POST"
+          })
+          .then(res => {
+            console.log("成功向后端发送用户公开信息");
+            console.log(res);
+            // 路由跳转
+            wx.switchTab({
+              url: "../home/main"
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
-    },
+    }
 
     //正式请使用，先把getOpenid（）干掉
     /*getRole() {

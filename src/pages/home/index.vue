@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-30 14:49:17
+ * @LastEditTime: 2019-10-30 18:04:38
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -248,7 +248,7 @@ export default {
           // this.js_code = res.code;
           this.$https
             .request({
-              url: this.$interfaces.getOpenid,
+              url: this.$interfaces.sendCode,
               data: {
                 // userInfo: this.$store.state.user, //用户信息
                 // getcode: this.js_code //wx.login登录获取的code值
@@ -265,6 +265,8 @@ export default {
               // 成功，则将后端返回的position（1为员工，4为普通用户）和非openid的用户id存储到vuex中
               this.$store.dispatch("setPosition", res.map.existence);
               this.$store.dispatch("setFakeId", res.map.userid);
+              // ⚠️将用户信息存起
+              this.$store.dispatch("setUser", res.map.user);
               // this.$store.dispatch("setShowModel", res.map.havephone);
               console.log(
                 "position存起来了，好开森～",

@@ -2,7 +2,7 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-28 23:59:20
+ * @LastEditTime: 2019-10-30 17:31:19
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -39,7 +39,6 @@
                 v-model="password"
                 autofocus
                 maxlength="6"
-                @confirm="complete"
               />
               <div class="border-right">
                 <span v-if="show1"></span>
@@ -202,7 +201,61 @@ export default {
     //校验密码
     surePassword: function() {
       // 调用密码校验接口
+
+      // 校验完成，向后端发送订单数据
+      this.$https
+        .request({
+          url: this.$interfaces.submitOrder,
+          data: {
+            comm:
+              this.$store.state.orderForm.duration +
+              "**" +
+              this.$store.state.orderForm.remarks,
+            date: this.$store.state.orderForm.date,
+            // detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
+            // date: this.$store.state.orderForm.time,
+            detailTypeId: this.$store.state.serviceDetail.iServiceItemList[0]
+              .detailtypeId,
+            price: this.$store.state.orderForm.price,
+            userAddressId: this.$store.state.userAddress.id,
+            userId: this.$store.state.fakeId
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+          console.log("提交订单成功！凯丰直播迎风驰翔");
+          console.log(
+            "comm:",
+            this.$store.state.orderForm.duration +
+              "**" +
+              this.$store.state.orderForm.remarks
+          );
+          console.log("date", this.$store.state.orderForm.date);
+          console.log(
+            this.$store.state.serviceDetail.iServiceItemList[0].detailtypeId
+          );
+          console.log("price", this.$store.state.orderForm.price);
+          console.log("userAddressId", this.$store.state.userAddress.id);
+          console.log("userId", this.$store.state.fakeId);
+          console.log("userAddress:", this.$store.state.userAddress);
+
+          //跳转到支付完成页面
+          wx.navigateTo({
+            url: "../payOver/main"
+          });
+          //  清除缓存
+          // this.$store.dispatch("setOrderForm", null);
+          // this.$store.dispatch("setUserAddress", null);
+        })
+        .catch(err => {
+          console.log("提交订单失败（不关我事～），失败信息：");
+          console.log(err);
+        });
     },
+
     // 密码输入样式
     judgePassword: function() {
       if (this.password.length == 0) {
@@ -261,64 +314,8 @@ export default {
         this.show5 = true;
         this.show6 = true;
         // 接口校验密码
-        // this.surePassword();
-        this.complete();
+        this.surePassword();
       }
-    },
-
-    complete() {
-      // 校验完成，向后端发送订单数据
-      this.$https
-        .request({
-          url: this.$interfaces.submitOrder,
-          data: {
-            comm:
-              this.$store.state.orderForm.duration +
-              "**" +
-              this.$store.state.orderForm.remarks,
-            date: this.$store.state.orderForm.date,
-            // detailTypeId: this.$store.state.serviceDetail.iServiceItemList.id,
-            // date: this.$store.state.orderForm.time,
-            detailTypeId: this.$store.state.serviceDetail.iServiceItemList[0]
-              .detailtypeId,
-            price: this.$store.state.orderForm.price,
-            userAddressId: this.$store.state.userAddress.id,
-            userId: this.$store.state.fakeId
-          },
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          method: "POST"
-        })
-        .then(res => {
-          console.log("提交订单成功！凯丰直播迎风驰翔");
-          console.log(
-            "comm:",
-            this.$store.state.orderForm.duration +
-              "**" +
-              this.$store.state.orderForm.remarks
-          );
-          console.log("date", this.$store.state.orderForm.date);
-          console.log(
-            this.$store.state.serviceDetail.iServiceItemList[0].detailtypeId
-          );
-          console.log("price", this.$store.state.orderForm.price);
-          console.log("userAddressId", this.$store.state.userAddress.id);
-          console.log("userId", this.$store.state.fakeId);
-          console.log("userAddress:", this.$store.state.userAddress);
-
-          //跳转到支付完成页面
-          wx.navigateTo({
-            url: "../payOver/main"
-          });
-          //  清除缓存
-          // this.$store.dispatch("setOrderForm", null);
-          // this.$store.dispatch("setUserAddress", null);
-        })
-        .catch(err => {
-          console.log("提交订单失败（不关我事～），失败信息：");
-          console.log(err);
-        });
     }
   }
 };
