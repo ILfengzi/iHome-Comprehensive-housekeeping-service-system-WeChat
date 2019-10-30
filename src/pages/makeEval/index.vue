@@ -2,7 +2,7 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-28 09:48:47
+ * @LastEditTime: 2019-10-30 10:09:22
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -14,7 +14,7 @@
     <div class="attitude">
       <div class="head">您对服务人员满意吗？</div>
       <div class="att_Eval">
-        <mp-rate @rateClick="attClick" :isSupportClick="true"></mp-rate>
+        <mp-rate @rateClick="attitudeClick" :isSupportClick="true"></mp-rate>
       </div>
     </div>
 
@@ -50,9 +50,10 @@ export default {
       describe: ""
     };
   },
+
   methods: {
     //评分点击事件
-    rateClick(index) {
+    attitudeClick(index) {
       this.attitude = index;
     },
     qualClick(index) {
@@ -64,7 +65,7 @@ export default {
           url: this.$interfaces.setEvaluate,
           data: {
             attitude_valuation: this.attitude,
-            e_describe: this.describe,
+            describe: this.describe,
             id: this.$store.state.orderId,
             quality_valuation: this.quality
           },
@@ -75,9 +76,13 @@ export default {
         })
         .then(res => {
           console.log(res);
-          // 成功，刷新页面
-          // this.userAddress = res.addressList;
-          // console.log(this.userAddress);
+          // 成功，返回上一层
+          wx.navigateBack({
+            delta: 1
+          });
+          // 告诉上一层要干掉这一个订单的评价按钮
+          const eventChannel = this.$mp.page.getOpenerEventChannel();
+          eventChannel.emit("makeEvalOver", { data: "true" });
         })
         .catch(err => {
           console.log(err);

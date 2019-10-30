@@ -2,7 +2,7 @@
  * @Description: 登录页面
  * @Author: Lin Changkun
  * @Date: 2019-09-30 17:36:59
- * @LastEditTime: 2019-10-28 17:34:34
+ * @LastEditTime: 2019-10-30 14:49:00
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -15,25 +15,16 @@
         <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="onGotUserInfo">微信登录</button>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      js_code: '',
-    };
-  },
-
-  onShow() {
-    wx.login({
-      success: res => {
-        this.js_code = res.code;
-      }
-    });
-  },
+  // data() {
+  //   return {
+  //     js_code: ""
+  //   };
+  // },
 
   methods: {
     onGotUserInfo(e) {
@@ -45,12 +36,15 @@ export default {
         this.$store.dispatch("setIsAuthenticated", true);
         this.$store.dispatch("setUser", e.mp.detail.userInfo);
         // this.userInfo = e.mp.detail.userInfo;
-        this.getRole(); //获取角色
+        // this.getRole(); //获取角色
+        wx.switchTab({
+          url: "../home/main"
+        });
       }
     },
 
     //正式请使用，先把getOpenid（）干掉
-    getRole() {
+    /*getRole() {
       console.log("#######################");
       console.log(this.js_code);
       console.log(this.$store.state.user);
@@ -76,7 +70,7 @@ export default {
           console.log("存起来了，好开森～", this.$store.state.position);
           console.log(this.$store.state.fakeId);
           // console.log("showModal",this.$store.state.showModel);
-          
+
           // if (res.map.havephone === 'false') {
           //   // 弹手机号输入框
           //   this.showDialogBtn();
@@ -98,7 +92,7 @@ export default {
       wx.switchTab({
         url: "../home/main",
         success() {
-          console.log('成功跳转到home');
+          console.log("成功跳转到home");
         },
         fail() {}
       });
@@ -110,8 +104,7 @@ export default {
         success() {},
         fail() {}
       });
-    },
- 
+    }*/
   }
 };
 </script>

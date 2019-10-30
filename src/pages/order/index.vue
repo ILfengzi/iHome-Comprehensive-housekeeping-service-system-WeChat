@@ -2,7 +2,7 @@
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-28 09:47:23
+ * @LastEditTime: 2019-10-30 11:23:23
  * @LastEditors: Lin Changkun
  -->
 
@@ -149,9 +149,9 @@ export default {
       console.log("取消订单");
       this.$https
         .request({
-          url: this.$interfaces.updateOrderState,
+          url: this.$interfaces.cancelOrder,
           data: {
-            orderid: e
+            id: e
           },
           header: {
             "content-type": "application/json" // 默认值

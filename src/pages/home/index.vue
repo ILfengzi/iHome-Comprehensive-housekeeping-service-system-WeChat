@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-28 18:01:36
+ * @LastEditTime: 2019-10-30 14:49:17
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -215,24 +215,26 @@ export default {
      * 检验是否登录过期
      */
     // const _this = this;
-    // wx.checkSession({
-    //   success: res => {
-    //     //session_key 未过期，并且在本生命周期一直有效
-    //     console.log("session_key 未过期");
-    //     this.getRole();
-    //   },
-    //   fail: err => {
-    //     //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
-    //     // session_key 已经失效，需要重新执行登录流程
-    //     console.log("session_key 已经过期，跳转到index登录页面");
-    //     this.getRole();
-    //   }
-    // });
+    wx.checkSession({
+      success: res => {
+        //session_key 未过期，并且在本生命周期一直有效
+        console.log("session_key 未过期");
+        this.getRole();
+      },
+      fail: err => {
+        //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
+        // session_key 已经失效，需要重新执行登录流程
+        console.log("session_key 已经过期，跳转到index登录页面");
+        wx.redirectTo({
+          url: "../login/main"
+        });
+      }
+    });
     // console.log("showModel@@@@", this.$store.state.showModel);
     // if (this.$store.state.showModel == "false") {
     //   this.showDialogBtn();
     // }
-    this.getRole();
+    // this.getRole();
   },
 
   methods: {

@@ -2,7 +2,7 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-28 15:18:50
+ * @LastEditTime: 2019-10-30 11:57:52
  * @LastEditors: Lin Changkun
  -->
 
@@ -39,7 +39,7 @@
         @confirm="complete"
         @cancel="cancel"
       ></mp-modal>
-      <button @click="makeEval" :class="{'hide':allOrderList.state!==4,'btn':true}">订单评价</button>
+      <button v-if="hide" @click="makeEval" :class="{'hide':allOrderList.state!==4,'btn':true}">订单评价</button>
     </div>
   </div>
 </template>
@@ -47,6 +47,11 @@
 <script>
 import mpModal from "mpvue-weui/src/modal";
 export default {
+  data() {
+    return {
+      hide: true
+    };
+  },
   components: {
     mpModal
   },
@@ -59,9 +64,23 @@ export default {
   methods: {
     makeEval() {
       this.$store.dispatch("setOrderId", this.orderId);
-      console.log('成功存起了orderId：', this.$store.state.orderId);
+      console.log("成功存起了orderId：", this.$store.state.orderId);
+      /**
+       * 路由跳转，有事件
+       */
       wx.navigateTo({
-        url: "../../pages/makeEval/main"
+        url: "../../pages/makeEval/main",
+        events: {
+          // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+          //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
+          makeEvalOver: isDelete => {
+            if (isDelete.data === "true") {
+              console.log("isDelete:", isDelete.data);
+              // 干掉“订单评价”的button
+              this.hide = false;
+            }
+          }
+        }
       });
     },
 
@@ -107,6 +126,13 @@ export default {
 /* .btns{
   padding:0;
 } */
+.hide2 {
+  display: none;
+  color: red;
+}
+.hide {
+  display: none;
+}
 .btn {
   width: 25%;
   font-size: 15px;
