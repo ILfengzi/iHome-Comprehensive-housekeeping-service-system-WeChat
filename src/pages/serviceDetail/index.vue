@@ -2,7 +2,7 @@
  * @Description: "服务详情"页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-27 21:11:21
+ * @LastEditTime: 2019-10-29 08:25:07
  * @LastEditors: Lin Changkun
  -->
 
@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="btn">
-      <button type="primary" @click="toReservation(servicetpyeId)">预约</button>
+      <button type="primary" @click="toReservation(typeId)">预约</button>
     </div>
   </div>
 </template>
@@ -85,7 +85,7 @@ export default {
       // content: '',
       // standard: '',
       comm: "",
-      servicetpyeId: "" //服务类型
+      typeId: "" //服务类型
     };
   },
   mounted() {
@@ -95,7 +95,7 @@ export default {
     this.price = this.$store.state.serviceDetail.chargeType;
     this.iServiceItemList = this.$store.state.serviceDetail.iServiceItemList;
     this.comm = this.$store.state.serviceDetail.comm;
-    this.servicetpyeId = this.$store.state.serviceDetail.servicetpyeId;
+    this.typeId = this.$store.state.serviceDetail.typeId;
     // console.log('@@@@@@@@@@@@',this.iServiceItemList);
   },
   methods: {
@@ -110,7 +110,7 @@ export default {
      * 员工不能下单
      */
     // 根据服务类型进行跳转到预约界面
-    toReservation(servicetpyeId) {
+    toReservation(typeId) {
       if (this.$store.state.position === 1) {
         wx.showToast({
           title: "员工不能下单哦～",
@@ -143,16 +143,16 @@ export default {
           });
 
         // 1：按时间算钱、2：按平方、3:按数量、4:线下定价
-        console.log("servicetpyeId:", servicetpyeId);
-        if (servicetpyeId === 1) {
+        console.log("typeId:", typeId);
+        if (typeId === 1) {
           wx.navigateTo({
             url: "../reservation/forDuration/main"
           });
-        } else if (servicetpyeId === 2) {
+        } else if (typeId === 2) {
           wx.navigateTo({
             url: "../reservation/forSquare/main"
           });
-        } else if (servicetpyeId === 3) {
+        } else if (typeId === 3) {
           wx.navigateTo({
             url: "../reservation/forAmount/main"
           });

@@ -2,7 +2,7 @@
  * @Description: 线下定价（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-28 10:32:34
+ * @LastEditTime: 2019-10-29 09:31:50
  * @LastEditors: Lin Changkun
  -->
 
@@ -104,7 +104,7 @@ export default {
 
     getChildTime(childTime) {
       this.orderForm.time = childTime.label;
-      this.orderForm.date = childTime.date;
+      this.orderForm.date = childTime.value[1];
       this.orderForm.price = '0.01';
       this.orderForm.duration = '线下定价';
     },

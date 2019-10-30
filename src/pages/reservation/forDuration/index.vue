@@ -2,7 +2,7 @@
  * @Description: 按时长计费（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-28 17:12:06
+ * @LastEditTime: 2019-10-28 23:48:48
  * @LastEditors: Lin Changkun
  -->
 
@@ -154,6 +154,10 @@ export default {
           duration: 2000
         });
       } else {
+        //⚠️完成后收起
+        this.showTimePicker = false;
+        this.showPriceAndRemarks = false;
+
         // 订单预览，路由跳转
         wx.navigateTo({
           url: "../../orderPreview/main"

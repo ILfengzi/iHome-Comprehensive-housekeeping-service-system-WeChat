@@ -2,8 +2,8 @@
  * @Description: 按平方计费（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-26 11:41:59
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-10-29 09:32:15
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -123,7 +123,7 @@ export default {
   methods: {
     getChildTime(childTime) {
       this.orderForm.time = childTime.label;
-      this.orderForm.date = childTime.date;
+      this.orderForm.date = childTime.value[1];
     },
 
     getChildRemarks(childRemarks) {

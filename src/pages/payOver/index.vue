@@ -2,7 +2,7 @@
  * @Description: 支付完成页
  * @Author: Wanlin Chen
  * @Date: 2019-10-20 11:58:49
- * @LastEditTime: 2019-10-27 22:09:43
+ * @LastEditTime: 2019-10-28 23:24:45
  * @LastEditors: Lin Changkun
  -->
 <template>
