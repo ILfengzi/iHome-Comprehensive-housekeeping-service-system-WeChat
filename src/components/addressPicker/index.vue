@@ -2,7 +2,7 @@
  * @Description: 地址选择器（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-17 10:16:43
- * @LastEditTime: 2019-10-28 10:16:04
+ * @LastEditTime: 2019-10-31 09:58:12
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       tips: "我的地址",
-      // userAddress: {},
       aa: "-"
     };
   },
@@ -51,11 +50,6 @@ export default {
   // watch:{
   //   $store.state.userAddress: function(newVal,oldVal){
   //   }
-  // },
-
-  // mounted() {
-  //   //将页面显示的地址为默认地址，或者是点击本组件选取的地址
-  //   this.userAddress = this.$store.state.userAddress;
   // },
 
   methods: {

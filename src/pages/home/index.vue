@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-30 18:04:38
+ * @LastEditTime: 2019-10-31 08:57:29
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -267,6 +267,7 @@ export default {
               this.$store.dispatch("setFakeId", res.map.userid);
               // ⚠️将用户信息存起
               this.$store.dispatch("setUser", res.map.user);
+              console.log("存起的用户信息：", this.$store.state.user);
               // this.$store.dispatch("setShowModel", res.map.havephone);
               console.log(
                 "position存起来了，好开森～",

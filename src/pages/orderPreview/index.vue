@@ -2,7 +2,7 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-30 17:31:19
+ * @LastEditTime: 2019-10-31 14:44:57
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -244,7 +244,18 @@ export default {
 
           //跳转到支付完成页面
           wx.navigateTo({
-            url: "../payOver/main"
+            url: "../payOver/main",
+            success: res => {
+              this.password = "";
+              this.show1 = false;
+              this.show2 = false;
+              this.show3 = false;
+              this.show4 = false;
+              this.show5 = false;
+              this.show6 = false;
+              this.showRegister = false;
+              this.showCustomPopup = false;
+            }
           });
           //  清除缓存
           // this.$store.dispatch("setOrderForm", null);

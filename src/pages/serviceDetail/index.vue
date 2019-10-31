@@ -2,7 +2,7 @@
  * @Description: "服务详情"页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-15 17:02:36
- * @LastEditTime: 2019-10-29 08:25:07
+ * @LastEditTime: 2019-10-31 10:59:23
  * @LastEditors: Lin Changkun
  -->
 
@@ -85,7 +85,17 @@ export default {
       // content: '',
       // standard: '',
       comm: "",
-      typeId: "" //服务类型
+      typeId: "", //服务类型
+      userAddress: {
+        city: "",
+        detail: "",
+        id: "",
+        phone: "",
+        province: "",
+        status: "",
+        userId: "",
+        username: ""
+      }
     };
   },
   mounted() {
@@ -133,10 +143,24 @@ export default {
           })
           .then(res => {
             // console.log(res);
+            if (res.code === 1) {          
+            this.userAddress.city = " ";
+            this.userAddress.detail = " ";
+            this.userAddress.id = " ";
+            this.userAddress.phone = " ";
+            this.userAddress.province = " ";
+            this.userAddress.status = " ";
+            this.userAddress.userId = " ";
+            this.userAddress.username = "请选择";
+
+            // 将空的默认地址存到vuex
+            this.$store.dispatch("setUserAddress", this.userAddress);
+            } else {
             // 将默认地址存到vuex
             this.$store.dispatch("setUserAddress", res.iUserDetail);
             console.log("将默认地址存起：");
             console.log(this.$store.state.userAddress);
+            }
           })
           .catch(err => {
             console.log(err);

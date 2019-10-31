@@ -2,7 +2,7 @@
  * @Description: 按平方计费（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-29 09:32:15
+ * @LastEditTime: 2019-10-31 11:46:37
  * @LastEditors: Lin Changkun
  -->
 
@@ -166,7 +166,12 @@ export default {
       } else {
         // 订单预览，路由跳转
         wx.navigateTo({
-          url: "../../orderPreview/main"
+          url: "../../orderPreview/main",
+          success: res => {
+            //尝试清除缓存，并收起
+            this.inputValue = " ";
+            this.showPriceAndRemarks = false;
+          }
         });
       }
     }
