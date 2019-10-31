@@ -2,8 +2,8 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-30 17:31:19
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 11:38:02
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="page">
@@ -156,7 +156,10 @@ export default {
       // }
     };
   },
+  created(){
+  },
   mounted() {
+    
     //将台
     // this.order.price = this.$store.state.orderForm.price;
     // this.order.date = this.$store.state.orderForm.date;
@@ -165,6 +168,15 @@ export default {
     // this.order.userAddressId = this.$store.state.orderForm.date;
     // this.order.userId = this.$store.state.fakeId
     // ⚠️一开始将存起来的orderForm一项一项赋给serviceItem[？].content
+    // this.password = "";
+    // this.show1 = false;
+    // this.show2 = false;
+    // this.show3 = false;
+    // this.show4 = false;
+    // this.show5 = false;
+    // this.show6 = false;
+    // this.showCustomPopup = false;
+    // this.showRegister = false;
     this.price = this.$store.state.orderForm.price; //价格
     this.serviceItem[0].content = this.$store.state.serviceDetail.typename; //服务
     this.serviceItem[1].content = this.$store.state.orderForm.duration; //计费规则
@@ -195,7 +207,8 @@ export default {
     //关闭密码输入清空输入
     closePop: function() {
       this.password = "";
-      this.judgePassword();
+      this.showCustomPopup = false;
+      // this.judgePassword();
     },
 
     //校验密码
@@ -241,11 +254,23 @@ export default {
           console.log("userAddressId", this.$store.state.userAddress.id);
           console.log("userId", this.$store.state.fakeId);
           console.log("userAddress:", this.$store.state.userAddress);
-
+          
           //跳转到支付完成页面
           wx.navigateTo({
-            url: "../payOver/main"
+            url: "../payOver/main",
+            success:res => {
+              this.password = "";
+              this.show1 = false;
+              this.show2 = false;
+              this.show3 = false;
+              this.show4 = false;
+              this.show5 = false;
+              this.show6 = false;
+              this.showCustomPopup = false;
+              this.showRegister = false;                  
+            }
           });
+   
           //  清除缓存
           // this.$store.dispatch("setOrderForm", null);
           // this.$store.dispatch("setUserAddress", null);
@@ -258,6 +283,8 @@ export default {
 
     // 密码输入样式
     judgePassword: function() {
+      console.log("密码");
+      console.log(this.password);
       if (this.password.length == 0) {
         this.show1 = false;
         this.show2 = false;

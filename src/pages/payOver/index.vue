@@ -2,8 +2,8 @@
  * @Description: 支付完成页
  * @Author: Wanlin Chen
  * @Date: 2019-10-20 11:58:49
- * @LastEditTime: 2019-10-28 23:24:45
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 09:12:39
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="payOver">
@@ -27,13 +27,11 @@
 export default {
   data() {
     return {
-      price: 0.01,
-      position: 1 //1为员工，4为普通用户
+      price: 0.01
     };
   },
   mounted() {
     this.price = this.$store.state.orderForm.price;
-    this.position = this.$store.state.position;
   },
   methods: {
     payOver() {
