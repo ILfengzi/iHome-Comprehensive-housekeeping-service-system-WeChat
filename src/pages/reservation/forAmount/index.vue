@@ -2,7 +2,7 @@
  * @Description: 按数量计费（待测试）
  * @Author: Lin Changkun
  * @Date: 2019-10-20 10:27:33
- * @LastEditTime: 2019-10-29 09:31:37
+ * @LastEditTime: 2019-10-31 11:43:37
  * @LastEditors: Lin Changkun
  -->
 
@@ -10,7 +10,7 @@
   <div class="reservation">
     <!-- 带跳转带列表项 -->
     <div class="weui-cells weui-cells_after-title">
-      <!-- 选择地点 -->
+      <!-- 选择地址 -->
       <address-picker></address-picker>
       <!-- 选择日期 -->
       <time-picker
@@ -94,6 +94,7 @@ export default {
       ]
     };
   },
+
   mounted() {
     //向后端传值，拿到可用的服务时间
     this.$https
@@ -120,6 +121,7 @@ export default {
         console.log(err);
       });
   },
+
   methods: {
     getChildTime(childTime) {
       this.orderForm.time = childTime.label;
@@ -135,13 +137,13 @@ export default {
     confirmHandle() {
       this.orderForm.price =
         Number(this.$store.state.serviceDetail.price) * Number(this.inputValue);
-      this.orderForm.duration = this.inputValue + '台';
+      this.orderForm.duration = this.inputValue + "台";
       this.showPriceAndRemarks = true;
     },
     losefocus() {
       this.orderForm.price =
         Number(this.$store.state.serviceDetail.price) * Number(this.inputValue);
-      this.orderForm.duration = this.inputValue + '台';
+      this.orderForm.duration = this.inputValue + "台";
       this.showPriceAndRemarks = true;
     },
     submitMessage() {
@@ -166,7 +168,12 @@ export default {
       } else {
         // 订单预览，路由跳转
         wx.navigateTo({
-          url: "../../orderPreview/main"
+          url: "../../orderPreview/main",
+          success: res => {
+            //尝试清除缓存，并收起
+            this.inputValue = " ";
+            this.showPriceAndRemarks = false;
+          }
         });
       }
     }
@@ -200,7 +207,7 @@ export default {
 .inputNumber span {
   display: table-cell;
   width: 1%;
-  background-color:#ccc;
+  background-color: #ccc;
   white-space: nowrap;
   padding: 5px 10px;
 }

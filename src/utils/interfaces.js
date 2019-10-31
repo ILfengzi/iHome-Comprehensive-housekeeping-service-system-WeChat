@@ -2,8 +2,13 @@
  * @Description: 请求接口
  * @Author: Lin Changkun
  * @Date: 2019-10-03 00:07:05
+<<<<<<< HEAD
  * @LastEditTime: 2019-10-31 08:51:29
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-31 09:09:23
+ * @LastEditors: Lin Changkun
+>>>>>>> ad9da26c485397a28b53160a8e640ea601491dd1
  */
 // const domain = "http://10.86.2.14:80/json/"; //局域网通信
 const domain = "http://www.ilfengzi.club/json/";    //服务器通信

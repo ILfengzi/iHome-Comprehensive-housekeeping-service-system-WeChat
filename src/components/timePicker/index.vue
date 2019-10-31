@@ -2,7 +2,7 @@
  * @Description: 选择日期时间弹出联动框（已完成）
  * @Author: Lin Changkun
  * @Date: 2019-10-16 11:09:02
- * @LastEditTime: 2019-10-23 17:06:34
+ * @LastEditTime: 2019-10-31 10:42:09
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -44,11 +44,15 @@ export default {
   },
   props:{
     pickerValueArray: Object,
-    deepLength: String
+    deepLength: String,
   },
+
+  // 初始化，尝试清除缓存
   mounted(){
-    console.log()
+    this.title = "上门时间";
+    this.tips = "选择时间";
   },
+  
   data() {
     return {
       title: "上门时间",
@@ -56,6 +60,7 @@ export default {
       pickerValueDefault: [1, 0],
     };
   },
+  
   methods: {
     showMulLinkageTwoPicker() {
       this.$refs.mpPicker.show();

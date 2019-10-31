@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-28 15:55:25
+ * @LastEditTime: 2019-10-31 08:53:10
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -70,9 +70,9 @@ export default {
   data() {
     return {
       nickName: "获取中...",
-      country: "中国",
-      province: "广东",
-      city: "湛江",
+      country: '',
+      province: '',
+      city: '',
       position: 4, //1为员工，4为普通用户
       count: 0,
       sum: 0,

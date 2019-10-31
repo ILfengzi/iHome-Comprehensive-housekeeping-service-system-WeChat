@@ -2,8 +2,13 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
- * @LastEditTime: 2019-10-31 11:38:02
+<<<<<<< HEAD
+ * @LastEditTime: 2019-10-31 14:57:36
  * @LastEditors: Wanlin Chen
+=======
+ * @LastEditTime: 2019-10-31 14:44:57
+ * @LastEditors: Lin Changkun
+>>>>>>> ad9da26c485397a28b53160a8e640ea601491dd1
  -->
 <template>
   <div class="page">
@@ -258,7 +263,7 @@ export default {
           //跳转到支付完成页面
           wx.navigateTo({
             url: "../payOver/main",
-            success:res => {
+            success: res => {
               this.password = "";
               this.show1 = false;
               this.show2 = false;
@@ -266,8 +271,8 @@ export default {
               this.show4 = false;
               this.show5 = false;
               this.show6 = false;
+              this.showRegister = false;
               this.showCustomPopup = false;
-              this.showRegister = false;                  
             }
           });
    
