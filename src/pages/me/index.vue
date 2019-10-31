@@ -2,8 +2,8 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-31 08:53:10
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 16:44:44
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div>
@@ -36,15 +36,15 @@
     </div>
 
     <div class="order_info">
-      <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/我的订单.png" title="我的订单"></mineCell>
+      <mineCell @click="swithToallOrder" icon="/static/images/icon/mine/myOrder.png" title="我的订单"></mineCell>
       <!-- 普通用户 -->
       <mineCell
         v-if="position === 4"
         @click="swithToaddress"
-        icon="/static/images/icon/mine/地址.png"
+        icon="/static/images/icon/mine/address.png"
         title="我的地址"
       ></mineCell>
-      <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/评价.png" title="我的评价"></mineCell>
+      <mineCell @click="swithToEvaluate" icon="/static/images/icon/mine/Eval.png" title="我的评价"></mineCell>
       <!-- 员工 -->
       <mineCell
         v-if="position === 1"
@@ -54,7 +54,7 @@
       ></mineCell>
     </div>
     <div class="order_info">
-      <mineCell @click="swithToAboutUs" icon="/static/images/icon/mine/用户协议.png" title="关于我们"></mineCell>
+      <mineCell @click="swithToAboutUs" icon="/static/images/icon/mine/user.png" title="关于我们"></mineCell>
     </div>
     <!-- 普通用户 -->
     <div v-if="position === 4" class="contact">

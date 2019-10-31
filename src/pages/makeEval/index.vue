@@ -2,19 +2,19 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-30 10:09:22
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 20:45:46
+ * @LastEditors: Wanlin Chen
  -->
 <template>
   <div class="makeEval">
     <div class="quality">
       <div class="head">您对服务质量满意吗？</div>
-      <mp-rate @rateClick="qualClick" :isSupportClick="true"></mp-rate>
+      <mp-rate :rateValue="rateValue" @rateClick="qualClick" :isSupportClick="true"></mp-rate>
     </div>
     <div class="attitude">
       <div class="head">您对服务人员满意吗？</div>
       <div class="att_Eval">
-        <mp-rate @rateClick="attitudeClick" :isSupportClick="true"></mp-rate>
+        <mp-rate :rateValue="rateValue" @rateClick="attitudeClick" :isSupportClick="true"></mp-rate>
       </div>
     </div>
 
@@ -45,12 +45,12 @@ export default {
   data() {
     return {
       orderId: 3, //从前一个跳转页面获取
-      quality: "",
-      attitude: "",
-      describe: ""
+      quality: 0,
+      attitude: 0,
+      describe: "",
+      rateValue:0
     };
   },
-
   methods: {
     //评分点击事件
     attitudeClick(index) {
@@ -78,7 +78,12 @@ export default {
           console.log(res);
           // 成功，返回上一层
           wx.navigateBack({
-            delta: 1
+            delta: 1,
+            success: res=> {
+              console.log("初始化");
+                this.rateValue=0;
+                this.describe="";
+            }   
           });
           // 告诉上一层要干掉这一个订单的评价按钮
           const eventChannel = this.$mp.page.getOpenerEventChannel();

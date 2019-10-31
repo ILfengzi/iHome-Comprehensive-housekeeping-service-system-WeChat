@@ -2,7 +2,7 @@
  * @Description: 订单详情页面
  * @Author:Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-22 16:37:13
+ * @LastEditTime: 2019-10-31 17:16:31
  * @LastEditors: Wanlin Chen
  -->
 
@@ -21,7 +21,7 @@
       <div v-else-if="state===3" class="order_state">
         <img src="/static/images/icon/orderdetail/fuwuservice3.png" />服务中
       </div>
-      <div v-else-if="state===4" class="order_state">
+      <div v-else-if="state===4||state===6" class="order_state">
         <img src="/static/images/icon/orderdetail/yiwancheng.png" />已完成
       </div>
   </div>

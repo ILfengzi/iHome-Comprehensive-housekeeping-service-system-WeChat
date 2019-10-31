@@ -1,9 +1,9 @@
-<!--
+ <!--
  * @Description: 订单列表界面
  * @Author: Wanlin Chen
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-10-30 11:23:23
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 16:22:53
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -139,7 +139,6 @@ export default {
             this.isHide = false;
             console.log(this.isHide);
           }
-          
         })
         .catch(err => {
           console.log(err);

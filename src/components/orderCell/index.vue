@@ -2,8 +2,8 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-30 11:57:52
- * @LastEditors: Lin Changkun
+ * @LastEditTime: 2019-10-31 21:17:00
+ * @LastEditors: Wanlin Chen
  -->
 
 <template>
@@ -39,7 +39,7 @@
         @confirm="complete"
         @cancel="cancel"
       ></mp-modal>
-      <button v-if="hide" @click="makeEval" :class="{'hide':allOrderList.state!==4,'btn':true}">订单评价</button>
+      <button v-if="position!==1" @click="makeEval" :class="{'hide':allOrderList.state!==4,'btn':true}">订单评价</button>
     </div>
   </div>
 </template>
@@ -49,7 +49,8 @@ import mpModal from "mpvue-weui/src/modal";
 export default {
   data() {
     return {
-      hide: true
+      hide: true,
+      position : Number
     };
   },
   components: {
@@ -59,6 +60,9 @@ export default {
     allOrderList: Object,
     index: Number,
     orderId: Number
+  },
+  mounted(){
+    this.position = this.$store.state.position;
   },
   computed: {},
   methods: {
