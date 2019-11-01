@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Lin Changkun
  * @Date: 2019-10-02 17:19:07
- * @LastEditTime: 2019-10-28 11:00:12
+ * @LastEditTime: 2019-11-01 17:48:35
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = ({ commit }, data) => {
@@ -59,4 +59,8 @@ export const setShowModel = ({ commit },data) => {
 
 export const setOrderId = ({ commit },data) => {
   commit("setOrderId",data);
+};
+
+export const setHavePhone = ({ commit },data) => {
+  commit("setHavePhone",data);
 };

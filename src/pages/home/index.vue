@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-10-31 08:57:29
+ * @LastEditTime: 2019-11-01 18:06:41
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <!-- 获取手机号模态框 -->
+    <!-- //获取手机号模态框
     <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModel"></div>
     <div class="modal-dialog" v-if="showModel">
       <div class="modal-title">申请获取您的手机号码：</div>
@@ -99,7 +99,7 @@
         <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
         <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
       </div>
-    </div>
+    </div> -->
   </scroll-view>
 </template>
 
@@ -225,9 +225,10 @@ export default {
         //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
         // session_key 已经失效，需要重新执行登录流程
         console.log("session_key 已经过期，跳转到index登录页面");
-        wx.redirectTo({
-          url: "../login/main"
-        });
+        // wx.redirectTo({
+        //   url: "../login/main"
+        // });
+        this.getRole();
       }
     });
     // console.log("showModel@@@@", this.$store.state.showModel);
@@ -265,19 +266,16 @@ export default {
               // 成功，则将后端返回的position（1为员工，4为普通用户）和非openid的用户id存储到vuex中
               this.$store.dispatch("setPosition", res.map.existence);
               this.$store.dispatch("setFakeId", res.map.userid);
-              // ⚠️将用户信息存起
-              this.$store.dispatch("setUser", res.map.user);
-              console.log("存起的用户信息：", this.$store.state.user);
-              // this.$store.dispatch("setShowModel", res.map.havephone);
-              console.log(
-                "position存起来了，好开森～",
-                this.$store.state.position
-              );
-              console.log(this.$store.state.fakeId);
+              // 将用户信息存起
+              // this.$store.dispatch("setUser", res.map.user);
+              // console.log("存起的用户信息：", this.$store.state.user);
+              this.$store.dispatch("setHavePhone", res.map.havephone);
+              console.log("position:", this.$store.state.position);
+              console.log("fakeId:",this.$store.state.fakeId);
               // console.log("showModal",this.$store.state.showModel);
-              if (res.map.havephone == "false") {
-                this.showDialogBtn();
-              }
+              // if (res.map.havephone == "false") {
+              //   this.showDialogBtn();
+              // }
             })
             .catch(err => {
               console.log(err);
@@ -366,62 +364,62 @@ export default {
       }
     },
 
-    /**
-     * 以下是模态框处理事件
-     */
-    //弹窗
-    showDialogBtn() {
-      this.showModel = true;
-      console.log("我进来了哦！！！！");
-      console.log(this.showModel);
-    },
-    //弹出框蒙层截断touchmove事件
-    preventTouchMove() {},
+    // /**
+    //  * 以下是模态框处理事件
+    //  */
+    // //弹窗
+    // showDialogBtn() {
+    //   this.showModel = true;
+    //   console.log("我进来了哦！！！！");
+    //   console.log(this.showModel);
+    // },
+    // //弹出框蒙层截断touchmove事件
+    // preventTouchMove() {},
 
-    // 对话框取消按钮点击事件
-    onCancel() {
-      this.showModel = false;
-    },
+    // // 对话框取消按钮点击事件
+    // onCancel() {
+    //   this.showModel = false;
+    // },
 
-    // 对话框确认按钮点击事件
-    onConfirm() {
-      //输入完成
-      console.log("输入完成");
-      //校验手机号码
-      this.isPoneAvailable(this.phoneNumber);
-    },
+    // // 对话框确认按钮点击事件
+    // onConfirm() {
+    //   //输入完成
+    //   console.log("输入完成");
+    //   //校验手机号码
+    //   this.isPoneAvailable(this.phoneNumber);
+    // },
 
-    isPoneAvailable(phone) {
-      let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
-      if (!myreg.test(phone)) {
-        wx.showToast({
-          title: "请输入正确的手机号码",
-          icon: "none",
-          duration: 2000
-        });
-      } else {
-        //向后端发送数据
-        this.$https
-          .request({
-            url: this.$interfaces.sendPhoneNumber,
-            data: {
-              userid: this.$store.state.fakeId, // 用户id
-              phone: this.phoneNumber // 手机号
-            },
-            header: {
-              "content-type": "application/json" // 默认值
-            },
-            method: "POST"
-          })
-          .then(res => {
-            console.log(res);
-            this.onCancel();
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      }
-    }
+    // isPoneAvailable(phone) {
+    //   let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    //   if (!myreg.test(phone)) {
+    //     wx.showToast({
+    //       title: "请输入正确的手机号码",
+    //       icon: "none",
+    //       duration: 2000
+    //     });
+    //   } else {
+    //     //向后端发送数据
+    //     this.$https
+    //       .request({
+    //         url: this.$interfaces.sendPhoneNumber,
+    //         data: {
+    //           userid: this.$store.state.fakeId, // 用户id
+    //           phone: this.phoneNumber // 手机号
+    //         },
+    //         header: {
+    //           "content-type": "application/json" // 默认值
+    //         },
+    //         method: "POST"
+    //       })
+    //       .then(res => {
+    //         console.log(res);
+    //         this.onCancel();
+    //       })
+    //       .catch(err => {
+    //         console.log(err);
+    //       });
+    //   }
+    // }
   },
   computed: {}
 };
@@ -460,7 +458,7 @@ export default {
   border: 1px solid #ebeef5;*/
 }
 
-/* 模态框格式 */
+/* //模态框格式
 .modal-mask {
   width: 100%;
   height: 100%;
@@ -531,5 +529,5 @@ input-holder {
   width: 50%;
   color: #0ebb1d;
   text-align: center;
-}
+} */
 </style>

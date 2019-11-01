@@ -2,7 +2,7 @@
  * @Description: 
  * @Author:  Lin Changkun
  * @Date: 2019-10-02 17:19:49
- * @LastEditTime: 2019-10-28 09:45:08
+ * @LastEditTime: 2019-11-01 17:48:15
  * @LastEditors: Lin Changkun
  */
 export const setIsAuthenticated = (state, data) => {
@@ -59,4 +59,8 @@ export const setShowModel = (state, data) => {
 
 export const setOrderId = (state, data) => {
   state.orderId = data;
+};
+
+export const setHavePhone = (state, data) => {
+  state.havePhone = data;
 };
