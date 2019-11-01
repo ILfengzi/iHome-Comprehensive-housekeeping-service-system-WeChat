@@ -2,8 +2,8 @@
  * @Description: 订单列表的组件
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-31 21:17:00
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-11-01 08:22:25
+ * @LastEditors: Lin Changkun
  -->
 
 <template>
@@ -74,17 +74,17 @@ export default {
        */
       wx.navigateTo({
         url: "../../pages/makeEval/main",
-        events: {
-          // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-          //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
-          makeEvalOver: isDelete => {
-            if (isDelete.data === "true") {
-              console.log("isDelete:", isDelete.data);
-              // 干掉“订单评价”的button
-              this.hide = false;
-            }
-          }
-        }
+        // events: {
+        //   // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        //   //使用箭头函数可解决this的作用域问题，箭头函数的this就是外部的this
+        //   makeEvalOver: isDelete => {
+        //     if (isDelete.data === "true") {
+        //       console.log("isDelete:", isDelete.data);
+        //       // 干掉“订单评价”的button
+        //       this.hide = false;
+        //     }
+        //   }
+        // }
       });
     },
 

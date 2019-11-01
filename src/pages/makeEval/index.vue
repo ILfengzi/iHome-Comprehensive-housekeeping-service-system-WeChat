@@ -2,19 +2,19 @@
  * @Description: 填写评价页面
  * @Author: Celine
  * @Date: 2019-10-15 17:59:13
- * @LastEditTime: 2019-10-31 20:45:46
- * @LastEditors: Wanlin Chen
+ * @LastEditTime: 2019-11-01 08:53:22
+ * @LastEditors: Lin Changkun
  -->
 <template>
   <div class="makeEval">
     <div class="quality">
       <div class="head">您对服务质量满意吗？</div>
-      <mp-rate :rateValue="rateValue" @rateClick="qualClick" :isSupportClick="true"></mp-rate>
+      <mp-rate @rateClick="qualClick" :isSupportClick="true"></mp-rate>
     </div>
     <div class="attitude">
       <div class="head">您对服务人员满意吗？</div>
       <div class="att_Eval">
-        <mp-rate :rateValue="rateValue" @rateClick="attitudeClick" :isSupportClick="true"></mp-rate>
+        <mp-rate @rateClick="attitudeClick" :isSupportClick="true"></mp-rate>
       </div>
     </div>
 
@@ -48,26 +48,42 @@ export default {
       quality: 0,
       attitude: 0,
       describe: "",
-      rateValue:0
+      // makeEval: {
+      //   rateValue1: 0,
+      //   rateValue2: 0
+      // }
     };
   },
+  // // 采用计算属性来让组件进行刷新
+  // computed: {
+  //   makeEval: function() {
+  //     // `this` 指向 vm 实例
+  //     return this.makeEval;
+  //   }
+  // },
+
   methods: {
     //评分点击事件
     attitudeClick(index) {
+      console.log("shenqi:", index);
       this.attitude = index;
+      // this.rateValue2 = index;
     },
     qualClick(index) {
       this.quality = index;
+      // this.rateValue1 = index;
     },
-    submited: function() {
+    submited() {
       this.$https
         .request({
           url: this.$interfaces.setEvaluate,
           data: {
             attitude_valuation: this.attitude,
+            // attitude_valuation: this.rateValue2,
             describe: this.describe,
             id: this.$store.state.orderId,
             quality_valuation: this.quality
+            // quality_valuation: this.rateValue1
           },
           header: {
             "content-type": "application/json" // 默认值
@@ -79,15 +95,14 @@ export default {
           // 成功，返回上一层
           wx.navigateBack({
             delta: 1,
-            success: res=> {
-              console.log("初始化");
-                this.rateValue=0;
-                this.describe="";
-            }   
+            success: res => {
+              console.log("初始化:");
+              this.describe = "";
+            }
           });
           // 告诉上一层要干掉这一个订单的评价按钮
-          const eventChannel = this.$mp.page.getOpenerEventChannel();
-          eventChannel.emit("makeEvalOver", { data: "true" });
+          // const eventChannel = this.$mp.page.getOpenerEventChannel();
+          // eventChannel.emit("makeEvalOver", { data: "true" });
         })
         .catch(err => {
           console.log(err);
