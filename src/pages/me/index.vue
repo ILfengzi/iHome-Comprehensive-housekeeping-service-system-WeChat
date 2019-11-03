@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-11-01 18:07:10
+ * @LastEditTime: 2019-11-03 10:38:52
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -155,7 +155,7 @@ export default {
         this.country = e.mp.detail.userInfo.country;
         this.province = e.mp.detail.userInfo.province;
         this.city = e.mp.detail.userInfo.city;
-        this.position = e.mp.detail.userInfo.position;
+        // this.position = e.mp.detail.userInfo.position;
         this.haveLogin = false;
 
         let havePhone = this.$store.state.havePhone;
