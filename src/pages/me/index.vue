@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-11-03 10:38:52
+ * @LastEditTime: 2019-11-03 17:25:11
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -111,12 +111,13 @@ export default {
       phoneNumber: "" //输入的手机号码
     };
   },
-  mounted() {
+  onShow() {
     /*********测试注释 */
     // this.country = this.$store.state.user.country;
     // this.province = this.$store.state.user.province;
     // this.city = this.$store.state.user.city;
-    // this.position = this.$store.state.position;
+    this.position = this.$store.state.position;
+    console.log("测试 fakeId：", this.$store.state.fakeId);
     //如果是员工，则请求数据
     if (this.position === 1) {
       this.$https
@@ -133,9 +134,15 @@ export default {
         })
         .then(res => {
           console.log(res);
-          this.count = res.map.count;
-          this.sum = res.map.sum;
-          this.monthcount = res.map.monthcount;
+          if (res.map.count !== null) {
+            this.count = res.map.count;
+          }
+          if (res.map.sum !== null) {
+            this.sum = res.map.sum;
+          }
+          if (res.map.monthcount !== null) {
+            this.monthcount = res.map.monthcount;
+          }
         })
         .catch(err => {
           console.log(err);
