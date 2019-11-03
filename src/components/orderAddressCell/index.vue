@@ -2,7 +2,7 @@
  * @Description: myAddress组件，无跳转功能
  * @Author: 
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-10-24 20:13:01
+ * @LastEditTime: 2019-11-03 23:11:30
  * @LastEditors: Lin Changkun
  -->
  
@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="icon">
-      <img class="mod" src="/static/images/icon/修改.png" @click="isEdit" />
-      <img @click="showModal" class="cal" src="/static/images/icon/删除.png" />
+      <img class="mod" src="/static/images/icon/xiugai.png" @click="isEdit" />
+      <img @click="showModal" class="cal" src="/static/images/icon/shanchu.png" />
       <mp-modal ref="mpModal" title="提示" content="确定删除该地址？" :showCancel="true" @confirm="confirm"></mp-modal>
     </div>
   </div>

@@ -2,7 +2,7 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-28 10:19:47
+ * @LastEditTime: 2019-11-03 22:53:22
  * @LastEditors: Lin Changkun
  -->
 
@@ -21,7 +21,7 @@
         <span class="title">所在地区：</span>
         <!-- <input v-model="formaddr.area" class="area"> -->
         <div :inputArea="inputArea" class="area">{{editAddress.province}}{{aa}}{{editAddress.city}}</div>
-        <img class="btn" src="/static/images/icon/选择展开.png" @click="showMulLinkageTwoPicker" />
+        <img class="btn" src="/static/images/icon/xuanzezhankai.png" @click="showMulLinkageTwoPicker" />
         <mp-picker
           ref="mpPicker"
           mode="multiLinkageSelector"

@@ -2,13 +2,13 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-27 22:15:24
+ * @LastEditTime: 2019-11-03 22:49:00
  * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="evaluate">
-    <div class="user_info" style="background:url('/static/images/评价背景.png')">
+    <div class="user_info" style="background:url('/static/images/pingjiabeijing.png')">
       <!-- 用户信息 -->
       <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
