@@ -2,7 +2,7 @@
  * @Description: “关于我们”界面
  * @Author: Celine
  * @Date: 2019-10-15 17:28:28
- * @LastEditTime: 2019-10-28 19:56:20
+ * @LastEditTime: 2019-11-03 10:50:50
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -21,7 +21,7 @@ export default {
         "http://qukufile2.qianqian.com/data2/pic/8d356491f24692ff802cc49c80f51fee/612356223/612356223.jpg@s_1,w_224,h_224",
       name: "卡路里",
       author: "火箭少女",
-      src: "http://47.100.139.184:8080/卡路里.mp3"
+      src: "http://47.100.139.184/image/wechat/卡路里.mp3"
     };
   },
 
