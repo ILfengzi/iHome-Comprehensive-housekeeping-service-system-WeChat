@@ -2,13 +2,8 @@
  * @Description: 支付预览
  * @Author: Lin Changkun
  * @Date: 2019-10-18 20:00:45
-<<<<<<< HEAD
- * @LastEditTime: 2019-10-31 14:57:36
- * @LastEditors: Wanlin Chen
-=======
- * @LastEditTime: 2019-10-31 14:44:57
+ * @LastEditTime: 2019-11-04 00:00:57
  * @LastEditors: Lin Changkun
->>>>>>> ad9da26c485397a28b53160a8e640ea601491dd1
  -->
 <template>
   <div class="page">
@@ -161,10 +156,7 @@ export default {
       // }
     };
   },
-  created(){
-  },
-  mounted() {
-    
+  onShow() {  
     //将台
     // this.order.price = this.$store.state.orderForm.price;
     // this.order.date = this.$store.state.orderForm.date;
@@ -273,6 +265,7 @@ export default {
               this.show6 = false;
               this.showRegister = false;
               this.showCustomPopup = false;
+              console.log("密码缓存已清除");
             }
           });
    

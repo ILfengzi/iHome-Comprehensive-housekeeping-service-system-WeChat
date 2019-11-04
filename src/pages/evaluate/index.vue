@@ -2,7 +2,7 @@
  * @Description: 我的评价
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-11-03 22:49:00
+ * @LastEditTime: 2019-11-04 09:45:10
  * @LastEditors: Lin Changkun
  -->
 
@@ -12,7 +12,7 @@
       <!-- 用户信息 -->
       <img src="/static/images/logo.jpg" alt />
       <div class="user_detail">
-        <h4>Celine</h4>
+        <h4>iHome</h4>
         <span>已贡献{{length}}条数据</span>
       </div>
     </div>

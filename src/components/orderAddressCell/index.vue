@@ -1,8 +1,8 @@
 <!--
- * @Description: myAddress组件，无跳转功能
- * @Author: 
+ * @Description: 地址组件
+ * @Author: Celine
  * @Date: 2019-10-18 08:44:31
- * @LastEditTime: 2019-11-03 23:11:30
+ * @LastEditTime: 2019-11-04 11:18:16
  * @LastEditors: Lin Changkun
  -->
  
@@ -61,6 +61,7 @@ export default {
       this.$store.dispatch("setOldUserAddress", this.userAddress);
       this.$emit("isEdit", this.userAddress);
     },
+
   }
 };
 </script>

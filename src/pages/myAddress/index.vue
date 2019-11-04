@@ -1,25 +1,25 @@
 <!--
- * @Description: "订单跳转"的我的地址页面
+ * @Description: "我的地址"跳转过来的我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-27 22:21:12
+ * @LastEditTime: 2019-11-04 11:20:31
  * @LastEditors: Lin Changkun
  -->
 
 <template>
   <div class="addresslist">
-    <div v-for="(item,index) in userAddress" :key="index">
-        <orderAddressCell
-        :province="item.province"
-        :city="item.city"
-        :phone="item.phone"
-        :detail="item.detail"
-        :username="item.username"
-        @click="swithToOrder"
-        ></orderAddressCell>
-    </div>
+    <!-- <div v-for="(item,index) in userAddress" :key="index"> -->
+    <orderAddressCell
+      v-for="(item,index) in userAddress"
+      :key="index"
+      :index="index"
+      :userAddress="item"
+      @isDelete="isDelete"
+      @isEdit="isEdit"
+    ></orderAddressCell>
+    <!-- </div> -->
     <div class="btn">
-      <button @click="switchToNewAddress" form-type="submit" type="primary">新建</button>
+      <button @click="goNewaddress" form-type="submit" type="primary">新建</button>
     </div>
   </div>
 </template>
@@ -37,14 +37,15 @@ export default {
     orderAddressCell
   },
 
-  onShow() {
-     console.log("成功加载");        
+ onShow() {
+    console.log("成功加载");
+    //输入完成，传递输入值给后端、刷新页面
     this.$https
-      .request({   
+      .request({
         url: this.$interfaces.getUserAddress,
         data: {
-          id: this.$store.state.fakeId, //注意!!！！！！正式用
-          // id: 1 //输入值
+          userId: this.$store.state.fakeId //正式用：用户id
+          // userId: 3
         },
         header: {
           "content-type": "application/json" // 默认值
@@ -56,22 +57,52 @@ export default {
         // 成功，刷新页面
         this.userAddress = res.addressList;
         console.log(this.userAddress);
-        
       })
       .catch(err => {
         console.log(err);
       });
   },
+  
   methods: {
-    switchToNewAddress() {
+    //跳转到新建页面
+    goNewaddress() {
+      this.$store.dispatch("setIsNewAddress", true);
       wx.navigateTo({
         url: "../newaddress/main"
       });
     },
-    swithToOrder: function() {
-      console.log(123);
-      wx.navigateBack({
-        delta: 1 // 回退前 delta(默认为1) 页面
+
+    isDelete(e, index) {
+      console.log("删除咯？");
+      console.log(e);
+      console.log(index);
+      this.$https
+        .request({
+          url: this.$interfaces.deleteUserAddress,
+          data: {
+            id: e
+          },
+          header: {
+            "content-type": "application/json" // 默认值
+          },
+          method: "POST"
+        })
+        .then(res => {
+      //成功，从第index位开始，删除一个元素
+      this.userAddress.splice(index, 1);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    },
+
+    // 编辑地址
+    isEdit(e) {
+      console.log("编辑咯？旧地址：");
+      console.log(e);
+      this.$store.dispatch("setIsNewAddress", false);
+      wx.navigateTo({
+        url: "../newaddress/main"
       });
     }
   }

@@ -2,7 +2,7 @@
  * @Description: "我的"页面
  * @Author: Celine
  * @Date: 2019-10-09 11:02:29
- * @LastEditTime: 2019-11-03 17:25:11
+ * @LastEditTime: 2019-11-04 08:43:21
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -257,7 +257,7 @@ export default {
     },
     swithToaddress() {
       wx.navigateTo({
-        url: "../address/main"
+        url: "../myAddress/main"
       });
     }
   },

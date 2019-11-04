@@ -2,7 +2,7 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-11-03 22:53:22
+ * @LastEditTime: 2019-11-04 11:24:53
  * @LastEditors: Lin Changkun
  -->
 
@@ -45,7 +45,7 @@
       </div>
       <div class="form_group defaultaddr">
         <span class="title">设为默认地址</span>
-        <mp-switch :checkd="inputDefault" @change="switchChange"></mp-switch>
+        <mp-switch v-model="switchValue" @change="switchChange"></mp-switch>
       </div>
       <div class="save">
         <button @click="submited" form-type="submit" type="primary" size="large">保存</button>
@@ -68,6 +68,7 @@ export default {
   },
   data() {
     return {
+      switchValue: false,
       mode: "multiLinkageSelector",
       deepLength: 2,
       pickerValueDefault: [0, 0],
@@ -229,7 +230,9 @@ export default {
             })
             .then(res => {
               console.log(res);
-              // 成功，刷新页面
+              // ⚠️尝试修复默认地址按钮的bug
+              this.switchValue = false;
+              // 成功，回退
               wx.navigateBack({
                 delta: 1 // 回退前 delta(默认为1) 页面
               });
@@ -287,6 +290,8 @@ export default {
             })
             .then(res => {
               console.log(res);
+              // ⚠️尝试修复默认地址按钮的bug
+              this.switchValue = false;
               // 成功，刷新页面
               wx.navigateBack({
                 delta: 1 // 回退前 delta(默认为1) 页面
@@ -350,7 +355,7 @@ textarea {
   height: 60rpx;
   line-height: 60rpx;
   padding: 10rpx 20rpx;
-  margin-right: 36px;
+  margin-right: 30px;
   word-wrap: break-word;
   word-break: break-all;
 }

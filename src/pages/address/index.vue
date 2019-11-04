@@ -2,7 +2,7 @@
  * @Description: "订单跳转"过来的我的地址页面
  * @Author: Celine
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-10-28 10:01:36
+ * @LastEditTime: 2019-11-04 10:24:38
  * @LastEditors: Lin Changkun
  -->
 
@@ -36,6 +36,7 @@ export default {
   components: {
     addressCell
   },
+  
   onShow() {
     console.log("成功加载");
     //输入完成，传递输入值给后端、刷新页面
