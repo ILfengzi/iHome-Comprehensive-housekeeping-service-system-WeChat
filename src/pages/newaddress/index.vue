@@ -2,7 +2,7 @@
  * @Description: 新建地址、编辑地址页面
  * @Author: Wanlin Chen
  * @Date: 2019-10-14 09:03:52
- * @LastEditTime: 2019-11-04 11:24:53
+ * @LastEditTime: 2019-11-04 11:35:41
  * @LastEditors: Lin Changkun
  -->
 
@@ -355,7 +355,7 @@ textarea {
   height: 60rpx;
   line-height: 60rpx;
   padding: 10rpx 20rpx;
-  margin-right: 30px;
+  margin-right: 20px;
   word-wrap: break-word;
   word-break: break-all;
 }
