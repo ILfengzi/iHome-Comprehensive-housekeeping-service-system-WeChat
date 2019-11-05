@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-11-05 09:44:29
+ * @LastEditTime: 2019-11-05 09:53:56
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -102,14 +102,14 @@ export default {
       images: [
         {
           // url: "http://47.100.139.184/image/wechat/首页轮播1.jpg"
-          url: "/static/images/homeImg/首页轮播1.jpg"
+          url: "/static/images/homeImg/lunbo1.jpg"
         },
         {
           // url: "http://47.100.139.184/image/wechat/首页轮播2.jpg"
-          url: "/static/images/homeImg/首页轮播2.jpg"
+          url: "/static/images/homeImg/lunbo2.jpg"
         },
         {
-          url: "/static/images/homeImg/首页轮播3.jpg"
+          url: "/static/images/homeImg/lunbo3.jpg"
         }
       ],
       inputShowed: false, //搜索
