@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-11-05 09:53:56
+ * @LastEditTime: 2019-11-05 10:49:09
  * @LastEditors: Lin Changkun
  -->
 <template>
@@ -101,100 +101,91 @@ export default {
       phoneNumber: "", //输入的手机号码
       images: [
         {
-          // url: "http://47.100.139.184/image/wechat/首页轮播1.jpg"
-          url: "/static/images/homeImg/lunbo1.jpg"
+          url: "http://47.100.139.184/image/wechat/lunbo1.jpg"
+          // url: "/static/homeImg/lunbo1.jpg"
         },
         {
-          // url: "http://47.100.139.184/image/wechat/首页轮播2.jpg"
-          url: "/static/images/homeImg/lunbo2.jpg"
+          url: "http://47.100.139.184/image/wechat/lunbo2.jpg"
         },
         {
-          url: "/static/images/homeImg/lunbo3.jpg"
+          url: "http://47.100.139.184/image/wechat/lunbo3.jpg"
         }
       ],
       inputShowed: false, //搜索
       inputVal: "", //输入值
       grids: [
         {
-          // src: "http://47.100.139.184/image/wechat/xinju.png",
-          src: "/static/images/homeImg/xinju.png",
+          src: "http://47.100.139.184/image/wechat/xinju.png",
           name: "新居",
           index: 7
         },
         {
-          // src: "/static/images/homeImg/caboli.png",
-          src: "/static/images/homeImg/caboli.png",
+          src: "http://47.100.139.184/image/wechat/caboli.png",
           name: "擦玻璃",
           index: 2
         },
         {
-          // src: "/static/images/homeImg/baojie.png",
-          src: "/static/images/homeImg/baojie.png",
+          src: "http://47.100.139.184/image/wechat/baojie.png",
           name: "日常保洁",
           index: 3
         },
         {
-          // src: "/static/images/homeImg/zuofan.png",
-          src: "/static/images/homeImg/zuofan.png",
+          src: "http://47.100.139.184/image/wechat/zuofan.png",
           name: "做饭",
           index: 4
         },
         {
-          // src: "/static/images/homeImg/jiesong.png",
-          src: "/static/images/homeImg/jiesong.png",
+          src: "http://47.100.139.184/image/wechat/jiesong.png",
           name: "接送",
           index: 5
         },
         {
-          // src: "/static/images/homeImg/ktwx.png",
-          src: "/static/images/homeImg/ktwx.png",
+          src: "http://47.100.139.184/image/wechat/ktwx.png",
           name: "空调维修",
           index: 1
         },
         {
-          // src: "/static/images/homeImg/matong.png",
-          src: "/static/images/homeImg/matong.png",
+          src: "http://47.100.139.184/image/wechat/matong.png",
           name: "通马桶",
           index: 6
         },
         {
-          // src: "/static/images/homeImg/all.png",
-          src: "/static/images/homeImg/all.png",
+          src: "http://47.100.139.184/image/wechat/all.png",
           name: "全部服务",
           index: 8
         }
       ],
       service: [
         {
-          img: "/static/images/homeImg/bjdc.jpg",
+          img: "http://47.100.139.184/image/wechat/bjdc.jpg",
           title: "背景调查",
           describe: "入职前的背景调查，保障从业人员无任何背景问题",
           level: "完全放心",
           count: "层层把关"
         },
         {
-          img: "/static/images/homeImg/zypx.jpg",
+          img: "http://47.100.139.184/image/wechat/zypx.jpg",
           title: "专业培训",
           describe: "定期的专业培训，不断提高从业人员的服务质量和专业素养",
           level: "完全安心",
           count: "服务提升"
         },
         {
-          img: "/static/images/homeImg/zyrz.jpg",
+          img: "http://47.100.139.184/image/wechat/zyrz.jpg",
           title: "专业认证",
           describe: "每个从业人员皆持证上岗，且都经过行业的专业认证",
           level: "完全走心",
           count: "行业认可"
         },
         {
-          img: "/static/images/homeImg/fwzd.jpg",
+          img: "http://47.100.139.184/image/wechat/fwzd.jpg",
           title: "服务周到",
           describe: "周到的服务，一丝不苟、细致入微是我们的追求",
           level: "完全称心",
           count: "客户至上"
         },
         {
-          img: "/static/images/homeImg/shbz.jpg",
+          img: "http://47.100.139.184/image/wechat/shbz.jpg",
           title: "售后保障",
           describe: "完善的售后制度，时刻保障您的权益，完全无后顾之忧",
           level: "完全诚心",
