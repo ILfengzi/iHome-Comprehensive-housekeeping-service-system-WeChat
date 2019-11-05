@@ -2,12 +2,13 @@
  * @Description: 首页
  * @Author: 
  * @Date: 2019-10-05 22:25:02
- * @LastEditTime: 2019-11-02 10:14:31
+ * @LastEditTime: 2019-11-05 09:44:29
  * @LastEditors: Lin Changkun
  -->
 <template>
-  <scroll-view class="home" scroll-y="true">
+  <!-- <scroll-view class="home" scroll-y="true"> -->
     <!-- 轮播图 -->
+    <div>
     <div>
       <Swiper :images="images" />
     </div>
@@ -78,29 +79,8 @@
         ></service-cell>
       </div>
     </div>
-
-    <!-- //获取手机号模态框
-    <div class="modal-mask" catchtouchmove="preventTouchMove" v-if="showModel"></div>
-    <div class="modal-dialog" v-if="showModel">
-      <div class="modal-title">申请获取您的手机号码：</div>
-      <div class="modal-content">
-        <div class="modal-input">
-          <input
-            placeholder-class="input-holder"
-            type="number"
-            maxlength="11"
-            class="input"
-            v-model="phoneNumber"
-            placeholder="请输入您的手机号码"
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <div class="btn-cancel" @tap="onCancel" data-status="cancel">拒绝</div>
-        <div class="btn-confirm" @click="onConfirm" data-status="confirm">确定</div>
-      </div>
-    </div> -->
-  </scroll-view>
+    </div>
+  <!-- </scroll-view> -->
 </template>
 
 <script>
@@ -121,86 +101,100 @@ export default {
       phoneNumber: "", //输入的手机号码
       images: [
         {
-          url: "http://47.100.139.184/image/wechat/首页轮播1.jpg"
+          // url: "http://47.100.139.184/image/wechat/首页轮播1.jpg"
+          url: "/static/images/homeImg/首页轮播1.jpg"
         },
         {
-          url: "http://47.100.139.184/image/wechat/首页轮播2.jpg"
+          // url: "http://47.100.139.184/image/wechat/首页轮播2.jpg"
+          url: "/static/images/homeImg/首页轮播2.jpg"
         },
         {
-          url: "http://47.100.139.184/image/wechat/首页轮播3.jpg"
+          url: "/static/images/homeImg/首页轮播3.jpg"
         }
       ],
       inputShowed: false, //搜索
       inputVal: "", //输入值
       grids: [
-        { src: "http://47.100.139.184/image/wechat/xinju.png", name: "新居", index: 7 },
         {
-          src: "http://47.100.139.184/image/wechat/caboli.png",
+          // src: "http://47.100.139.184/image/wechat/xinju.png",
+          src: "/static/images/homeImg/xinju.png",
+          name: "新居",
+          index: 7
+        },
+        {
+          // src: "/static/images/homeImg/caboli.png",
+          src: "/static/images/homeImg/caboli.png",
           name: "擦玻璃",
           index: 2
         },
         {
-          src: "http://47.100.139.184/image/wechat/baojie.png",
+          // src: "/static/images/homeImg/baojie.png",
+          src: "/static/images/homeImg/baojie.png",
           name: "日常保洁",
           index: 3
         },
         {
-          src: "http://47.100.139.184/image/wechat/zuofan.png",
+          // src: "/static/images/homeImg/zuofan.png",
+          src: "/static/images/homeImg/zuofan.png",
           name: "做饭",
           index: 4
         },
         {
-          src: "http://47.100.139.184/image/wechat/jiesong.png",
+          // src: "/static/images/homeImg/jiesong.png",
+          src: "/static/images/homeImg/jiesong.png",
           name: "接送",
           index: 5
         },
         {
-          src: "http://47.100.139.184/image/wechat/ktwx.png",
+          // src: "/static/images/homeImg/ktwx.png",
+          src: "/static/images/homeImg/ktwx.png",
           name: "空调维修",
           index: 1
         },
         {
-          src: "http://47.100.139.184/image/wechat/matong.png",
+          // src: "/static/images/homeImg/matong.png",
+          src: "/static/images/homeImg/matong.png",
           name: "通马桶",
           index: 6
         },
         {
-          src: "http://47.100.139.184/image/wechat/all.png",
+          // src: "/static/images/homeImg/all.png",
+          src: "/static/images/homeImg/all.png",
           name: "全部服务",
           index: 8
         }
       ],
       service: [
         {
-          img: "http://47.100.139.184/image/wechat/bjdc.jpg",
+          img: "/static/images/homeImg/bjdc.jpg",
           title: "背景调查",
           describe: "入职前的背景调查，保障从业人员无任何背景问题",
           level: "完全放心",
           count: "层层把关"
         },
         {
-          img: "http://47.100.139.184/image/wechat/zypx.jpg",
+          img: "/static/images/homeImg/zypx.jpg",
           title: "专业培训",
           describe: "定期的专业培训，不断提高从业人员的服务质量和专业素养",
           level: "完全安心",
           count: "服务提升"
         },
         {
-          img: "http://47.100.139.184/image/wechat/zyrz.jpg",
+          img: "/static/images/homeImg/zyrz.jpg",
           title: "专业认证",
           describe: "每个从业人员皆持证上岗，且都经过行业的专业认证",
           level: "完全走心",
           count: "行业认可"
         },
         {
-          img: "http://47.100.139.184/image/wechat/fwzd.jpg",
+          img: "/static/images/homeImg/fwzd.jpg",
           title: "服务周到",
           describe: "周到的服务，一丝不苟、细致入微是我们的追求",
           level: "完全称心",
           count: "客户至上"
         },
         {
-          img: "http://47.100.139.184/image/wechat/shbz.jpg",
+          img: "/static/images/homeImg/shbz.jpg",
           title: "售后保障",
           describe: "完善的售后制度，时刻保障您的权益，完全无后顾之忧",
           level: "完全诚心",
@@ -231,11 +225,6 @@ export default {
         this.getRole();
       }
     });
-    // console.log("showModel@@@@", this.$store.state.showModel);
-    // if (this.$store.state.showModel == "false") {
-    //   this.showDialogBtn();
-    // }
-    // this.getRole();
   },
 
   methods: {
@@ -271,7 +260,7 @@ export default {
               // console.log("存起的用户信息：", this.$store.state.user);
               this.$store.dispatch("setHavePhone", res.map.havephone);
               console.log("position:", this.$store.state.position);
-              console.log("fakeId:",this.$store.state.fakeId);
+              console.log("fakeId:", this.$store.state.fakeId);
               // console.log("showModal",this.$store.state.showModel);
               // if (res.map.havephone == "false") {
               //   this.showDialogBtn();
@@ -362,64 +351,7 @@ export default {
             console.log(err);
           });
       }
-    },
-
-    // /**
-    //  * 以下是模态框处理事件
-    //  */
-    // //弹窗
-    // showDialogBtn() {
-    //   this.showModel = true;
-    //   console.log("我进来了哦！！！！");
-    //   console.log(this.showModel);
-    // },
-    // //弹出框蒙层截断touchmove事件
-    // preventTouchMove() {},
-
-    // // 对话框取消按钮点击事件
-    // onCancel() {
-    //   this.showModel = false;
-    // },
-
-    // // 对话框确认按钮点击事件
-    // onConfirm() {
-    //   //输入完成
-    //   console.log("输入完成");
-    //   //校验手机号码
-    //   this.isPoneAvailable(this.phoneNumber);
-    // },
-
-    // isPoneAvailable(phone) {
-    //   let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
-    //   if (!myreg.test(phone)) {
-    //     wx.showToast({
-    //       title: "请输入正确的手机号码",
-    //       icon: "none",
-    //       duration: 2000
-    //     });
-    //   } else {
-    //     //向后端发送数据
-    //     this.$https
-    //       .request({
-    //         url: this.$interfaces.sendPhoneNumber,
-    //         data: {
-    //           userid: this.$store.state.fakeId, // 用户id
-    //           phone: this.phoneNumber // 手机号
-    //         },
-    //         header: {
-    //           "content-type": "application/json" // 默认值
-    //         },
-    //         method: "POST"
-    //       })
-    //       .then(res => {
-    //         console.log(res);
-    //         this.onCancel();
-    //       })
-    //       .catch(err => {
-    //         console.log(err);
-    //       });
-    //   }
-    // }
+    }
   },
   computed: {}
 };
@@ -457,77 +389,4 @@ export default {
   background-color: #fff;
   border: 1px solid #ebeef5;*/
 }
-
-/* //模态框格式
-.modal-mask {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.5;
-  overflow: hidden;
-  z-index: 9000;
-  color: #fff;
-}
-.modal-dialog {
-  width: 540rpx;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  left: 0;
-  z-index: 9999;
-  background: #f9f9f9;
-  margin: -180rpx 105rpx;
-  border-radius: 36rpx;
-}
-.modal-title {
-  padding-top: 50rpx;
-  font-size: 36rpx;
-  color: #030303;
-  text-align: center;
-}
-.modal-content {
-  padding: 50rpx 32rpx;
-}
-.modal-input {
-  display: flex;
-  background: #fff;
-  border: 2rpx solid #ddd;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-}
-.input {
-  width: 100%;
-  height: 82rpx;
-  font-size: 28rpx;
-  line-height: 28rpx;
-  padding: 0 20rpx;
-  box-sizing: border-box;
-  color: #333;
-}
-input-holder {
-  color: #666;
-  font-size: 28rpx;
-}
-.modal-footer {
-  display: flex;
-  flex-direction: row;
-  height: 86rpx;
-  border-top: 1px solid #dedede;
-  font-size: 34rpx;
-  line-height: 86rpx;
-}
-.btn-cancel {
-  width: 50%;
-  color: #666;
-  text-align: center;
-  border-right: 1px solid #dedede;
-}
-.btn-confirm {
-  width: 50%;
-  color: #0ebb1d;
-  text-align: center;
-} */
 </style>
